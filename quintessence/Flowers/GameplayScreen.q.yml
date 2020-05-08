@@ -1,0 +1,12 @@
+parent_classes:
+  - class: AllegroFlare::Screen
+    scope: public
+    init_with: "{}"
+functions:
+  - name: primary_timer_func
+    override: true
+    body: |
+      return;
+dependencies:
+  - symbol: AllegroFlare::Screen
+    headers: [ AllegroFlare/Screen.hpp ]
