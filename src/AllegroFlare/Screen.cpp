@@ -50,30 +50,17 @@ namespace AllegroFlare
 
    void Screen::initialize()
    {
+      if (initialized) return;
+
       if (!framework->is_initialized())
       {
-         std::cout << CONSOLE_COLOR_YELLOW << "[Screen::Screen()] auto-initializing with default config" << CONSOLE_COLOR_DEFAULT << std::endl;
-         framework->initialize();
-         if (!this->display)
-         {
-            std::cout << CONSOLE_COLOR_YELLOW << "[Screen::Screen()] auto-creating display" << CONSOLE_COLOR_DEFAULT << std::endl;
-            int display_width = framework->get_config().get_or_default_int("", "screen_width", 1280);
-            int display_height = framework->get_config().get_or_default_int("", "screen_height", 720);
-            this->display = framework->create_display(display_width, display_height);
-         }
-      }
-
-      if (!display)
-      {
-         std::cout << "[Screen::Screen()] display is NULL, cannot create backbuffer_sub_bitmap" << std::endl;
-      }
-      else
-      {
-         ALLEGRO_BITMAP *backbuffer = al_get_backbuffer(display->al_display);
-         create_and_use_backbuffer_sub_bitmap_of(backbuffer);
+         std::stringstream error_message;
+         error_message << "[AllegroFlare::Screen.initialize() error]: cannot initialize without initialized framework";
+         throw std::runtime_error(error_message.str());
       }
 
       screens->add(this);
+      set_on_display(display);
 
       initialized = true;
    }

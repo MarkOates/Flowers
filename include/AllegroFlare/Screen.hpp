@@ -28,6 +28,9 @@ namespace AllegroFlare
       Display *display;
 
       Screen(Framework *framework=nullptr, Screens *screens=nullptr, Display *display=nullptr);
+      virtual ~Screen();
+
+      // expecting target to be bitmap of ALLEGRO_DISPLAY, e.g. al_get_backbuffer(display->al_display);
       void create_and_use_backbuffer_sub_bitmap_of(ALLEGRO_BITMAP *new_target);
       void set_on_display(Display *display);
       void prepare_drawing_state(bool prepare_3d=false);
@@ -56,8 +59,6 @@ namespace AllegroFlare
       virtual void native_menu_click_func();
       virtual void receive_signal(int signal, void *data);
       virtual void receive_signal(std::string const signal, void *data);
-
-      virtual ~Screen();
    };
 }
 
