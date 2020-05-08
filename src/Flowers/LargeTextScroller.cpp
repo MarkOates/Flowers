@@ -23,6 +23,12 @@ LargeTextScroller::~LargeTextScroller()
 }
 
 
+void LargeTextScroller::set_scroll_speed(float scroll_speed)
+{
+   this->scroll_speed = scroll_speed;
+}
+
+
 bool LargeTextScroller::get_finished()
 {
    return finished;

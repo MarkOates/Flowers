@@ -109,7 +109,7 @@ TEST_F(Flowers_LargeTextScrollerTest, draw__will_render_the_text_aligned_at_the_
 
    al_flip_display();
 
-   sleep(2);
+   //sleep(2);
 
    al_destroy_bitmap(text_bitmap);
 }
@@ -120,6 +120,7 @@ TEST_F(Flowers_LargeTextScrollerTest, increment_by_step__will_reposition_the_tex
    ALLEGRO_BITMAP *text_bitmap = create_text_bitmap("Hello Banner Text!!");
 
    Flowers::LargeTextScroller large_text_scroller(text_bitmap, 5.0f);
+   large_text_scroller.set_scroll_speed(10.0f);
 
    allegro_flare::placement2d place(al_get_display_width(display)/2, al_get_display_height(display)/2, 0, 0);
 

@@ -10,6 +10,7 @@ properties:
   - name: scroll_speed
     type: float
     init_with: 1.0f
+    setter: true
   - name: offset
     type: float
     init_with: 0.0f
