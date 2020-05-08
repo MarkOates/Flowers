@@ -22,12 +22,11 @@ namespace AllegroFlare
       bool initialized;
 
    public:
-      Framework *framework;
       Screens *screens;
       ALLEGRO_BITMAP *backbuffer_sub_bitmap;
       Display *display;
 
-      Screen(Framework *framework=nullptr, Screens *screens=nullptr, Display *display=nullptr);
+      Screen(Screens *screens=nullptr, Display *display=nullptr);
       virtual ~Screen();
 
       // expecting target to be bitmap of ALLEGRO_DISPLAY, e.g. al_get_backbuffer(display->al_display);

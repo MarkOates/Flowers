@@ -27,10 +27,9 @@ namespace AllegroFlare
    }
 
 
-   Screen::Screen(Framework *framework, Screens *screens, Display *display)
+   Screen::Screen(Screens *screens, Display *display)
       : initialized(false)
       , backbuffer_sub_bitmap(nullptr)
-      , framework(framework)
       , screens(screens)
       , display(display)
    {
@@ -51,13 +50,6 @@ namespace AllegroFlare
    void Screen::initialize()
    {
       if (initialized) return;
-
-      if (!framework->is_initialized())
-      {
-         std::stringstream error_message;
-         error_message << "[AllegroFlare::Screen.initialize() error]: cannot initialize without initialized framework";
-         throw std::runtime_error(error_message.str());
-      }
 
       screens->add(this);
       set_on_display(display);
