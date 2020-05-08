@@ -24,11 +24,12 @@ protected:
    {
       ASSERT_EQ(false, al_is_system_installed());
       ASSERT_EQ(true, al_init());
+      ASSERT_EQ(true, al_init_primitives_addon());
 
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
-      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      display = al_create_display(800, 600);
 
       ASSERT_NE(nullptr, display);
    }
