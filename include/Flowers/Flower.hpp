@@ -2,7 +2,6 @@
 
 
 #include <allegro5/allegro.h>
-#include <string>
 
 
 namespace Flowers
@@ -11,15 +10,18 @@ namespace Flowers
    {
    private:
       ALLEGRO_COLOR color;
+      float peduncle_height;
 
    public:
-      Flower(ALLEGRO_COLOR color={});
+      Flower(ALLEGRO_COLOR color={}, float peduncle_height=5);
       ~Flower();
 
       void set_color(ALLEGRO_COLOR color);
+      void set_peduncle_height(float peduncle_height);
 
       ALLEGRO_COLOR get_color();
-   std::string run();
+      float get_peduncle_height();
+   float calculate_receptacle_y();
    };
 }
 

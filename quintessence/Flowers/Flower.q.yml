@@ -5,10 +5,16 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+  - name: peduncle_height
+    type: float
+    init_with: 5
+    constructor_arg: true
+    getter: true
+    setter: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: calculate_receptacle_y
+    type: float
+    body: return peduncle_height;
 dependencies:
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
