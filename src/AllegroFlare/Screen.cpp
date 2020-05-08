@@ -26,11 +26,9 @@ namespace AllegroFlare
    }
 
 
-   Screen::Screen(Screens *screens, Display *display)
+   Screen::Screen(Display *display)
       : initialized(false)
       , backbuffer_sub_bitmap(nullptr)
-      , screens(screens)
-      , display(display)
    {
    }
 
@@ -42,7 +40,6 @@ namespace AllegroFlare
 
    void Screen::destruct()
    {
-      screens->remove(this);
    }
 
 
@@ -50,7 +47,6 @@ namespace AllegroFlare
    {
       if (initialized) return;
 
-      screens->add(this);
       set_on_display(display);
 
       initialized = true;
