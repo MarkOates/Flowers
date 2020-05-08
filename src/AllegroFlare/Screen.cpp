@@ -27,9 +27,8 @@ namespace AllegroFlare
 
 
    Screen::Screen(Display *display)
-      : initialized(false)
+      : display(display)
       , backbuffer_sub_bitmap(nullptr)
-      , display(display)
    {
    }
 

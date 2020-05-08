@@ -15,8 +15,8 @@ namespace AllegroFlare
    class Screen
    {
    public:
-      ALLEGRO_BITMAP *backbuffer_sub_bitmap;
       Display *display;
+      ALLEGRO_BITMAP *backbuffer_sub_bitmap;
 
       Screen(Display *display=nullptr);
       virtual ~Screen();
