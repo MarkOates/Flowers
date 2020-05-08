@@ -1,4 +1,14 @@
+properties:
+  - name: color
+    type: ALLEGRO_COLOR
+    init_with: "{}"
+    constructor_arg: true
+    getter: true
+    setter: true
 functions:
   - name: run
     type: std::string
     body: return "Hello World!";
+dependencies:
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
