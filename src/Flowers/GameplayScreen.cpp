@@ -1,7 +1,8 @@
 
 
 #include <Flowers/GameplayScreen.hpp>
-
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_color.h>
 
 
 namespace Flowers
@@ -20,16 +21,26 @@ GameplayScreen::~GameplayScreen()
 }
 
 
-void GameplayScreen::key_down_func()
+void GameplayScreen::key_down_func(ALLEGRO_EVENT* ev)
 {
-framework->shutdown_program = true;
+if (!ev) return;
+
+switch(ev->keyboard.keycode)
+{
+case ALLEGRO_KEY_ESCAPE:
+   framework->shutdown_program = true;
+   break;
+default:
+   break;
+}
 return;
 
 }
 
 void GameplayScreen::primary_timer_func()
 {
-//al_clear_to_color("violet")
+al_clear_to_color(al_color_name("violet"));
+
 return;
 
 }

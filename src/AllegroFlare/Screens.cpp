@@ -96,10 +96,10 @@ namespace AllegroFlare
    }
 
 
-   void Screens::key_down_funcs()
+   void Screens::key_down_funcs(ALLEGRO_EVENT *ev)
    {
       for (unsigned i=0; i<screens.size(); i++)
-         screens[i]->key_down_func();
+         screens[i]->key_down_func(ev);
    }
 
 
