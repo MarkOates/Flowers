@@ -14,11 +14,6 @@ namespace AllegroFlare
 {
    class Screen
    {
-   private:
-      friend class Display;
-
-      bool initialized;
-
    public:
       ALLEGRO_BITMAP *backbuffer_sub_bitmap;
       Display *display;
@@ -30,9 +25,6 @@ namespace AllegroFlare
       void create_and_use_backbuffer_sub_bitmap_of(ALLEGRO_BITMAP *new_target);
       void set_on_display(Display *display);
       void prepare_drawing_state(bool prepare_3d=false);
-
-      void initialize();
-      void destruct();
 
       virtual void on_event(ALLEGRO_EVENT *ev);
 

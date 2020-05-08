@@ -29,27 +29,13 @@ namespace AllegroFlare
    Screen::Screen(Display *display)
       : initialized(false)
       , backbuffer_sub_bitmap(nullptr)
+      , display(display)
    {
    }
 
 
    Screen::~Screen()
    {
-   }
-
-
-   void Screen::destruct()
-   {
-   }
-
-
-   void Screen::initialize()
-   {
-      if (initialized) return;
-
-      set_on_display(display);
-
-      initialized = true;
    }
 
 
