@@ -19,7 +19,8 @@ namespace Flowers
       ~FlowerRenderer();
 
 
-   void render_pistil(float y=1.0f);
+   void render_pistil();
+   void render_peduncle();
    void render();
    };
 }
