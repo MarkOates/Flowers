@@ -5,7 +5,6 @@
 #include <vector>
 #include <allegro5/allegro.h>
 #include <AllegroFlare/Display.hpp>
-#include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screens.hpp>
 
 
@@ -16,7 +15,6 @@ namespace AllegroFlare
    class Screen
    {
    private:
-      friend class Framework;
       friend class Display;
 
       bool initialized;

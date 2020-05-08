@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <allegro5/allegro_color.h>
-#include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/ConsoleColor.hpp>
 #include <AllegroFlare/Display.hpp>
 
