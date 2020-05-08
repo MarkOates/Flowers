@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <Flowers/Flower.hpp>
 
 
 namespace Flowers
@@ -8,9 +9,10 @@ namespace Flowers
    class FlowerRenderer
    {
    private:
+      Flowers::Flower* flower;
 
    public:
-      FlowerRenderer();
+      FlowerRenderer(Flowers::Flower* flower=nullptr);
       ~FlowerRenderer();
 
 
