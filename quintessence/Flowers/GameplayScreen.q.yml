@@ -1,0 +1,11 @@
+parent_classes:
+  - class: AllegroFlare::Screen
+    scope: public
+    init_with: "{}"
+functions:
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: AllegroFlare::Screen
+    headers: [ AllegroFlare/Screen.hpp ]
