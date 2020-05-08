@@ -1,8 +1,4 @@
 properties:
-  - name: framework
-    type: AllegroFlare::Framework*
-    init_with: nullptr
-    constructor_arg: true
   - name: screens
     type: AllegroFlare::Screens*
     init_with: nullptr
@@ -15,15 +11,23 @@ functions:
   - name: append
     type: bool
     body: |
+      if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screens");
+      if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screen");
+
+      screens->add(screen);
       return true;
   - name: remove
     type: bool
     body: |
+      if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screens");
+      if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screen");
+
+      screens->remove(screen);
       return true;
 dependencies:
   - symbol: AllegroFlare::Framework*
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::Screens*
-    type: [ AllegroFlare/Screens.hpp ]
+    headers: [ AllegroFlare/Screens.hpp ]
   - symbol: AllegroFlare::Screen*
-    type: [ AllegroFlare/Screen.hpp ]
+    headers: [ AllegroFlare/Screen.hpp ]

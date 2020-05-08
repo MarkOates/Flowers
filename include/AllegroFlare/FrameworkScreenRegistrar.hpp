@@ -1,7 +1,8 @@
 #pragma once
 
 
-#include <AllegroFlare/Framework.hpp>
+#include <AllegroFlare/Screen.hpp>
+#include <AllegroFlare/Screens.hpp>
 
 
 namespace AllegroFlare
@@ -9,12 +10,11 @@ namespace AllegroFlare
    class FrameworkScreenRegistrar
    {
    private:
-      AllegroFlare::Framework* framework;
       AllegroFlare::Screens* screens;
       AllegroFlare::Screen* screen;
 
    public:
-      FrameworkScreenRegistrar(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, AllegroFlare::Screen* screen=nullptr);
+      FrameworkScreenRegistrar(AllegroFlare::Screens* screens=nullptr, AllegroFlare::Screen* screen=nullptr);
       ~FrameworkScreenRegistrar();
 
 
