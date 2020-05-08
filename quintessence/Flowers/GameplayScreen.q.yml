@@ -2,11 +2,23 @@ parent_classes:
   - class: AllegroFlare::Screen
     scope: public
     init_with: "{}"
+properties:
+  - name: framework
+    type: AllegroFlare::Framework*
+    init_with: nullptr
 functions:
+  - name: key_down_func
+    override: true
+    body: |
+      framework->shutdown_program = true;
+      return;
   - name: primary_timer_func
     override: true
     body: |
+      //al_clear_to_color("violet")
       return;
 dependencies:
+  - symbol: AllegroFlare::Framework*
+    headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::Screen
     headers: [ AllegroFlare/Screen.hpp ]

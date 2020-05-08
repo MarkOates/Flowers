@@ -13,19 +13,12 @@ TEST(FlowersGame_ProgramRunnerTest, can_be_created_without_blowing_up)
    FlowersGame::ProgramRunner program_runner;
 }
 
-TEST(DISABLED_FlowersGame_ProgramRunnerTest, run__without_initialization_throws_an_error)
+TEST(FlowersGame_ProgramRunnerTest, run__will_run_the_program)
 {
    FlowersGame::ProgramRunner program_runner;
-   std::string expected_error_message = "[FlowersGame::ProgramRunner.run error]: must call initialize first";
-   ASSERT_THROW_WITH_MESSAGE(program_runner.run(), std::runtime_error, expected_error_message);
-   SUCCEED();
-}
-
-TEST(DISABLED_FlowersGame_ProgramRunnerTest, run__will_run_the_program)
-{
-   FlowersGame::ProgramRunner program_runner;
-   program_runner.initialize();
 
    program_runner.run();
+
+   SUCCEED();
 }
 

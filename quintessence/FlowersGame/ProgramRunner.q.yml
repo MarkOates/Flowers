@@ -5,6 +5,9 @@ properties:
   - name: framework
     type: AllegroFlare::Framework
     init_with: "screens"
+  - name: display
+    type: AllegroFlare::Display*
+    init_with: "nullptr"
   - name: initialized
     type: bool
     init_with: false
@@ -14,19 +17,36 @@ functions:
     body: |
       if (initialized) return;
       framework.initialize();
+      display = framework.create_display(1920, 1080);
       initialized = true;
       return;
   - name: run
     type: void
     body: |
-      if (!initialized) throw std::runtime_error("[FlowersGame::ProgramRunner.run error]: must call initialize first");
-      std::cout << "Hello, Flowers!" << std::endl;
+      initialize();
+
+      Flowers::GameplayScreen gameplay_screen;
+      AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &gameplay_screen);
+      registrar.append();
+
+      framework.run_loop();
+
+      registrar.remove();
 
       return;
     body_dependency_symbols:
       - std::cout
+      - AllegroFlare::FrameworkScreenRegistrar
+      - Flowers::GameplayScreen
+      - AllegroFlare::Display*
 dependencies:
+  - symbol: AllegroFlare::FrameworkScreenRegistrar
+    headers: [ AllegroFlare/FrameworkScreenRegistrar.hpp ]
   - symbol: AllegroFlare::Screens
     headers: [ AllegroFlare/Screens.hpp ]
   - symbol: AllegroFlare::Framework
     headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::Display*
+    headers: [ AllegroFlare/Display.hpp ]
+  - symbol: Flowers::GameplayScreen
+    headers: [ Flowers/GameplayScreen.hpp ]
