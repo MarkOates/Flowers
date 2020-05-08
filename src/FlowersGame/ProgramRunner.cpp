@@ -3,7 +3,7 @@
 #include <FlowersGame/ProgramRunner.hpp>
 #include <iostream>
 #include <AllegroFlare/FrameworkScreenRegistrar.hpp>
-#include <Flowers/GameplayScreen.hpp>
+#include <FlowersGame/ApplicationController.hpp>
 #include <AllegroFlare/Display.hpp>
 
 
@@ -39,8 +39,8 @@ void ProgramRunner::run()
 {
 initialize();
 
-Flowers::GameplayScreen gameplay_screen;
-AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &gameplay_screen);
+FlowersGame::ApplicationController application_controller;
+AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
 registrar.append();
 
 framework.run_loop();

@@ -1,27 +1,27 @@
 
 
-#include <Flowers/GameplayScreen.hpp>
+#include <FlowersGame/ApplicationController.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 
 
-namespace Flowers
+namespace FlowersGame
 {
 
 
-GameplayScreen::GameplayScreen()
+ApplicationController::ApplicationController()
    : AllegroFlare::Screen({})
    , framework(nullptr)
 {
 }
 
 
-GameplayScreen::~GameplayScreen()
+ApplicationController::~ApplicationController()
 {
 }
 
 
-void GameplayScreen::key_down_func(ALLEGRO_EVENT* ev)
+void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
 {
 if (!ev) return;
 
@@ -37,13 +37,13 @@ return;
 
 }
 
-void GameplayScreen::primary_timer_func()
+void ApplicationController::primary_timer_func()
 {
 al_clear_to_color(al_color_name("violet"));
 
 return;
 
 }
-} // namespace Flowers
+} // namespace FlowersGame
 
 

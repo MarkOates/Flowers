@@ -6,16 +6,16 @@
 #include <allegro5/allegro.h>
 
 
-namespace Flowers
+namespace FlowersGame
 {
-   class GameplayScreen : public AllegroFlare::Screen
+   class ApplicationController : public AllegroFlare::Screen
    {
    private:
       AllegroFlare::Framework* framework;
 
    public:
-      GameplayScreen();
-      ~GameplayScreen();
+      ApplicationController();
+      ~ApplicationController();
 
 
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;

@@ -25,8 +25,8 @@ functions:
     body: |
       initialize();
 
-      Flowers::GameplayScreen gameplay_screen;
-      AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &gameplay_screen);
+      FlowersGame::ApplicationController application_controller;
+      AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
       registrar.append();
 
       framework.run_loop();
@@ -37,7 +37,7 @@ functions:
     body_dependency_symbols:
       - std::cout
       - AllegroFlare::FrameworkScreenRegistrar
-      - Flowers::GameplayScreen
+      - FlowersGame::ApplicationController
       - AllegroFlare::Display*
 dependencies:
   - symbol: AllegroFlare::FrameworkScreenRegistrar
@@ -48,5 +48,5 @@ dependencies:
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::Display*
     headers: [ AllegroFlare/Display.hpp ]
-  - symbol: Flowers::GameplayScreen
-    headers: [ Flowers/GameplayScreen.hpp ]
+  - symbol: FlowersGame::ApplicationController
+    headers: [ FlowersGame/ApplicationController.hpp ]
