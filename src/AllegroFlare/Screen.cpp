@@ -35,6 +35,7 @@ namespace AllegroFlare
 
    Screen::~Screen()
    {
+      if (backbuffer_sub_bitmap) al_destroy_bitmap(backbuffer_sub_bitmap);
    }
 
 
