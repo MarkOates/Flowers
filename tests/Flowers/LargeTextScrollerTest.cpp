@@ -5,6 +5,8 @@
 
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro_flare/placement2d.h>
 
 class Flowers_LargeTextScrollerTest : public ::testing::Test
 {
@@ -20,6 +22,7 @@ protected:
    {
       ASSERT_EQ(false, al_is_system_installed());
       ASSERT_EQ(true, al_init());
+      ASSERT_EQ(true, al_init_primitives_addon());
 
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
@@ -54,6 +57,26 @@ protected:
 
       return bitmap;
    }
+
+   float get_display_center_x()
+   {
+      return al_get_display_width(display)/2;
+   }
+
+   float get_display_middle_y()
+   {
+      return al_get_display_height(display)/2;
+   }
+
+   float get_display_width()
+   {
+      return al_get_display_width(display);
+   }
+
+   float get_display_height()
+   {
+      return al_get_display_height(display);
+   }
 };
 
 TEST_F(Flowers_LargeTextScrollerTest, can_be_created_without_blowing_up)
@@ -62,17 +85,54 @@ TEST_F(Flowers_LargeTextScrollerTest, can_be_created_without_blowing_up)
 }
 
 // slightly eager test:
-TEST_F(Flowers_LargeTextScrollerTest, increment_by_step__will_reposition_the_text_horizontally)
+TEST_F(Flowers_LargeTextScrollerTest, draw__will_render_the_text_aligned_at_the_middle)
+{
+   ALLEGRO_BITMAP *text_bitmap = create_text_bitmap("Hello Banner Text!!");
+   float display_center_x = get_display_center_x();
+   float display_middle_y = get_display_middle_y();
+   float display_width = get_display_width();
+   float display_height = get_display_height();
+
+   Flowers::LargeTextScroller large_text_scroller(text_bitmap);
+
+   al_clear_to_color(al_color_name("pink"));
+
+   allegro_flare::placement2d place(al_get_display_width(display)/2, al_get_display_height(display)/2, 0, 0);
+   place.start_transform();
+
+   large_text_scroller.draw();
+
+   place.restore_transform();
+
+   al_draw_line(display_center_x, 0, display_center_x, display_height, al_color_name("blue"), 3.0);
+   al_draw_line(0, display_middle_y, display_width, display_middle_y, al_color_name("blue"), 3.0);
+
+   al_flip_display();
+
+   sleep(2);
+
+   al_destroy_bitmap(text_bitmap);
+}
+
+// slightly eager test:
+TEST_F(Flowers_LargeTextScrollerTest, increment_by_step__will_reposition_the_text_horizontally_respecting_scale)
 {
    ALLEGRO_BITMAP *text_bitmap = create_text_bitmap("Hello Banner Text!!");
 
-   Flowers::LargeTextScroller large_text_scroller(text_bitmap);
+   Flowers::LargeTextScroller large_text_scroller(text_bitmap, 5.0f);
+
+   allegro_flare::placement2d place(al_get_display_width(display)/2, al_get_display_height(display)/2, 0, 0);
 
    while(!large_text_scroller.get_finished())
    {
       al_clear_to_color(al_color_name("pink"));
+
       large_text_scroller.increment_by_step();
+
+      place.start_transform();
       large_text_scroller.draw();
+      place.restore_transform();
+
       al_flip_display();
    }
 

@@ -8,10 +8,11 @@ namespace Flowers
 {
 
 
-LargeTextScroller::LargeTextScroller(ALLEGRO_BITMAP* bitmap)
+LargeTextScroller::LargeTextScroller(ALLEGRO_BITMAP* bitmap, float scale)
    : bitmap(bitmap)
-   , offset(0.0f)
+   , scale(scale)
    , scroll_speed(1.0f)
+   , offset(0.0f)
    , finished(false)
 {
 }
@@ -31,15 +32,21 @@ bool LargeTextScroller::get_finished()
 void LargeTextScroller::increment_by_step()
 {
 if (finished) return;
-offset += scroll_speed;
-if (offset > al_get_bitmap_width(bitmap)) finished = true;
+offset += (scroll_speed * scale);
+if (offset > (al_get_bitmap_width(bitmap) * scale)) finished = true;
 return;
 
 }
 
 void LargeTextScroller::draw()
 {
-al_draw_bitmap(bitmap, -offset, 0, 0);
+float width = al_get_bitmap_width(bitmap);
+float height = al_get_bitmap_height(bitmap);
+float half_height = al_get_bitmap_height(bitmap)/2;
+al_draw_scaled_bitmap(bitmap,
+  0, 0, width, height,
+  -offset, -half_height*scale, width*scale, height*scale,
+  0);
 return;
 
 }

@@ -10,12 +10,13 @@ namespace Flowers
    {
    private:
       ALLEGRO_BITMAP* bitmap;
-      float offset;
+      float scale;
       float scroll_speed;
+      float offset;
       bool finished;
 
    public:
-      LargeTextScroller(ALLEGRO_BITMAP* bitmap=nullptr);
+      LargeTextScroller(ALLEGRO_BITMAP* bitmap=nullptr, float scale=3.0f);
       ~LargeTextScroller();
 
 
