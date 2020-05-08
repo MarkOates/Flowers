@@ -1,0 +1,31 @@
+properties:
+  - name: bitmap
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    constructor_arg: true
+  - name: offset
+    type: float
+    init_with: 0.0f
+  - name: scroll_speed
+    type: float
+    init_with: 1.0f
+  - name: finished
+    type: bool
+    init_with: false
+    getter: true
+functions:
+  - name: increment_by_step
+    type: void
+    body: |
+      offset += scroll_speed;
+      return;
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+  - name: draw
+    type: void
+    body: |
+      return;
+dependencies:
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]
