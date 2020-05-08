@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <string>
 
@@ -19,6 +20,7 @@ namespace Flowers
 
 
    void render();
+   ALLEGRO_BITMAP* create_bitmap();
    };
 }
 

@@ -19,10 +19,31 @@ functions:
     body_dependency_symbols:
       - al_draw_text
       - al_color_name
+  - name: create_bitmap
+    type: ALLEGRO_BITMAP*
+    body: |
+      if (!font) throw std::runtime_error("[Flowers::LargeTextRenderer.create_bitmap error]: font cannot be a nullptr");
+
+      allegro_flare::RenderCache render_cache;
+      int width = al_get_text_width(font, text.c_str());
+      int height = al_get_font_line_height(font);
+
+      render_cache.setup_surface(width, height, 0, 0);
+      render();
+      render_cache.finish_surface();
+
+      return render_cache.get_surface_bitmap();
+    body_dependency_symbols:
+      - ALLEGRO_BITMAP*
+      - allegro_flare::RenderCache
 dependencies:
+  - symbol: allegro_flare::RenderCache
+    headers: [ allegro_flare/render_cache.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
   - symbol: al_draw_text
     headers: [ allegro5/allegro_font.h ]
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_FONT*
     headers: [ allegro5/allegro_font.h ]

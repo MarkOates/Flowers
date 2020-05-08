@@ -62,6 +62,25 @@ TEST_F(Flowers_LargeTextRendererTest, render__returns_the_expected_response)
    large_text_renderer.render();
 
    al_flip_display();
-
-   sleep(2);
 }
+
+TEST_F(Flowers_LargeTextRendererTest, create_bitmap__with_a_nullptr_font_raises_an_exception)
+{
+   Flowers::LargeTextRenderer large_text_renderer;
+   std::string expected_error_message = "[Flowers::LargeTextRenderer.create_bitmap error]: font cannot be a nullptr";
+   ASSERT_THROW_WITH_MESSAGE(large_text_renderer.create_bitmap(), std::runtime_error, expected_error_message);
+}
+
+TEST_F(Flowers_LargeTextRendererTest, create_bitmap__returns_a_bitmap_with_the_rendered_text)
+{
+   ALLEGRO_FONT *font = al_create_builtin_font();
+   Flowers::LargeTextRenderer large_text_renderer(font, "Hello Large Text!");
+
+   al_clear_to_color(al_color_name("violet"));
+
+   ALLEGRO_BITMAP *render = large_text_renderer.create_bitmap();
+   al_draw_bitmap(render, 0, 0, 0);
+
+   al_flip_display();
+}
+
