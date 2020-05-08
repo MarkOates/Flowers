@@ -1,9 +1,10 @@
 
-//#include <ProgramRunner.hpp>
+#include <FlowersGame/ProgramRunner.hpp>
 #include <allegro5/allegro.h>
 
 int main(int argc, char **argv)
 {
-   //ProgramRunner().run();
+   FlowersGame::ProgramRunner().run();
    return 0;
 }
+

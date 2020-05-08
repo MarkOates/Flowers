@@ -1,0 +1,8 @@
+functions:
+  - name: run
+    type: void
+    body: |
+      std::cout << "Hello, Flowers!" << std::endl;
+      return;
+    body_dependency_symbols:
+      - std::cout
