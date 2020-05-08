@@ -1,0 +1,29 @@
+properties:
+  - name: framework
+    type: AllegroFlare::Framework*
+    init_with: nullptr
+    constructor_arg: true
+  - name: screens
+    type: AllegroFlare::Screens*
+    init_with: nullptr
+    constructor_arg: true
+  - name: screen
+    type: AllegroFlare::Screen*
+    init_with: nullptr
+    constructor_arg: true
+functions:
+  - name: append
+    type: bool
+    body: |
+      return true;
+  - name: remove
+    type: bool
+    body: |
+      return true;
+dependencies:
+  - symbol: AllegroFlare::Framework*
+    headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::Screens*
+    type: [ AllegroFlare/Screens.hpp ]
+  - symbol: AllegroFlare::Screen*
+    type: [ AllegroFlare/Screen.hpp ]
