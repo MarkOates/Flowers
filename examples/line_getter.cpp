@@ -36,9 +36,24 @@ T random_element(std::vector<T> &elements)
 }
 
 
+
+void initialize()
+{
+   al_init();
+
+   ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
+   al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
+   al_destroy_path(resource_path);;
+
+   srand(time(NULL));
+}
+
+
 int main(int argc, char **argv)
 {
-   std::vector<std::string> lines = fetch_lines_from_file("foobar.txt");
+   initialize();
+
+   std::vector<std::string> lines = fetch_lines_from_file("data/file_with_lines.txt");
    std::string random_line = random_element(lines);
 
    std::cout << "Your random line is: " << random_line << std::endl;
