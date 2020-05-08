@@ -9,6 +9,9 @@
 #include <Flowers/FlowerRenderer.hpp>
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+
+#include <allegro_flare/placement2d.h>
 
 class Flowers_FlowerRendererTest : public ::testing::Test
 {
@@ -53,19 +56,35 @@ TEST_F(Flowers_FlowerRendererTest, DISABLED_can_be_created_without_blowing_up)
 
 TEST_F(Flowers_FlowerRendererTest, render__with_a_nullptr_flower_raises_an_exception)
 {
+   al_init_primitives_addon();
+
    std::string expected_error_message = "[Flower::FlowerRenderer.render() error]: You must pass a valid flower";
    Flowers::FlowerRenderer flower_renderer;
    ASSERT_THROW_WITH_MESSAGE(flower_renderer.render(), std::runtime_error, expected_error_message);
 }
 
 
-TEST_F(Flowers_FlowerRendererTest, render__returns_the_expected_response)
+//TEST_F(Flowers_FlowerRendererTest, render__without_initialization_of_the_primitives_addon_raises_an_exception)
+//{
+//   std::string expected_error_message =
+//      "[Flower::FlowerRenderer.render() error]: You must al_init_primitives_addon()";
+//   Flowers::FlowerRenderer flower_renderer;
+//   ASSERT_THROW_WITH_MESSAGE(flower_renderer.render(), std::runtime_error, expected_error_message);
+//}
+
+
+TEST_F(Flowers_FlowerRendererTest, render__renders_a_flower_with_default_values)
 {
    Flowers::Flower flower;
    Flowers::FlowerRenderer flower_renderer(&flower);
 
+   allegro_flare::placement2d place(al_get_display_width(display)/2, al_get_display_height(display)/2, 0, 0);
+   place.start_transform();
+
    al_clear_to_color(al_color_name("pink"));
    flower_renderer.render();
+
+   place.restore_transform();
 
    al_flip_display();
 
