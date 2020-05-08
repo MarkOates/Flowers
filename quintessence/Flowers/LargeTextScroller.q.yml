@@ -15,16 +15,17 @@ properties:
     getter: true
 functions:
   - name: increment_by_step
+    private: true
     type: void
     body: |
+      if (finished) return;
       offset += scroll_speed;
+      if (offset > al_get_bitmap_width(bitmap)) finished = true;
       return;
-  - name: run
-    type: std::string
-    body: return "Hello World!";
   - name: draw
     type: void
     body: |
+      al_draw_bitmap(bitmap, -offset, 0, 0);
       return;
 dependencies:
   - symbol: ALLEGRO_BITMAP*

@@ -30,18 +30,16 @@ bool LargeTextScroller::get_finished()
 
 void LargeTextScroller::increment_by_step()
 {
+if (finished) return;
 offset += scroll_speed;
+if (offset > al_get_bitmap_width(bitmap)) finished = true;
 return;
 
 }
 
-std::string LargeTextScroller::run()
-{
-return "Hello World!";
-}
-
 void LargeTextScroller::draw()
 {
+al_draw_bitmap(bitmap, -offset, 0, 0);
 return;
 
 }

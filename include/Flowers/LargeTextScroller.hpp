@@ -2,7 +2,6 @@
 
 
 #include <allegro5/allegro.h>
-#include <string>
 
 
 namespace Flowers
@@ -22,7 +21,6 @@ namespace Flowers
 
       bool get_finished();
    void increment_by_step();
-   std::string run();
    void draw();
    };
 }
