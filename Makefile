@@ -161,6 +161,8 @@ focus:
 	@(./bin/tests/$(FOCUSED_COMPONENT_NAME)Test --gtest_filter=*$(FOCUSED_TEST_NAME)* && (make celebrate_passing_tests) || (make signal_failing_tests && exit 1) )
 	$(call output_terminal_message,"Make all the programs")
 	@make programs
+	$(call output_terminal_message,"Make all the example programs")
+	@make examples
 	$(call output_terminal_message,"Celebrate integrated component tests")
 	@make celebrate_built_component
 
