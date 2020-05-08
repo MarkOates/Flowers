@@ -19,17 +19,21 @@ namespace AllegroFlare
       friend class Framework;
       friend class Display;
 
-   public:
-      Framework &framework;
-      Screens &screens;
+      bool initialized;
 
+   public:
+      Framework *framework;
+      Screens *screens;
       ALLEGRO_BITMAP *backbuffer_sub_bitmap;
       Display *display;
 
-      Screen(Framework &framework, Screens &screens, Display *display=nullptr);
+      Screen(Framework *framework=nullptr, Screens *screens=nullptr, Display *display=nullptr);
       void create_and_use_backbuffer_sub_bitmap_of(ALLEGRO_BITMAP *new_target);
       void set_on_display(Display *display);
       void prepare_drawing_state(bool prepare_3d=false);
+
+      void initialize();
+      void destruct();
 
       virtual void on_event(ALLEGRO_EVENT *ev);
 

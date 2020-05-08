@@ -27,22 +27,39 @@ namespace AllegroFlare
    }
 
 
-   Screen::Screen(Framework &framework, Screens &screens, Display *display)
-      : backbuffer_sub_bitmap(nullptr)
+   Screen::Screen(Framework *framework, Screens *screens, Display *display)
+      : initialized(false)
+      , backbuffer_sub_bitmap(nullptr)
       , framework(framework)
       , screens(screens)
       , display(display)
    {
-      if (!framework.is_initialized())
+   }
+
+
+   Screen::~Screen()
+   {
+   }
+
+
+   void Screen::destruct()
+   {
+      screens->remove(this);
+   }
+
+
+   void Screen::initialize()
+   {
+      if (!framework->is_initialized())
       {
          std::cout << CONSOLE_COLOR_YELLOW << "[Screen::Screen()] auto-initializing with default config" << CONSOLE_COLOR_DEFAULT << std::endl;
-         framework.initialize();
+         framework->initialize();
          if (!this->display)
          {
             std::cout << CONSOLE_COLOR_YELLOW << "[Screen::Screen()] auto-creating display" << CONSOLE_COLOR_DEFAULT << std::endl;
-            int display_width = framework.get_config().get_or_default_int("", "screen_width", 1280);
-            int display_height = framework.get_config().get_or_default_int("", "screen_height", 720);
-            this->display = framework.create_display(display_width, display_height);
+            int display_width = framework->get_config().get_or_default_int("", "screen_width", 1280);
+            int display_height = framework->get_config().get_or_default_int("", "screen_height", 720);
+            this->display = framework->create_display(display_width, display_height);
          }
       }
 
@@ -56,13 +73,9 @@ namespace AllegroFlare
          create_and_use_backbuffer_sub_bitmap_of(backbuffer);
       }
 
-      screens.add(this);
-   }
+      screens->add(this);
 
-
-   Screen::~Screen()
-   {
-      screens.remove(this);
+      initialized = true;
    }
 
 
