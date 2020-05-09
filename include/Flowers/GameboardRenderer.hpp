@@ -17,6 +17,7 @@ namespace Flowers
       ~GameboardRenderer();
 
 
+   void draw_featured_flower();
    void draw_cursor();
    void render();
    std::string run();

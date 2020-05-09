@@ -22,6 +22,18 @@ GameboardRenderer::~GameboardRenderer()
 }
 
 
+void GameboardRenderer::draw_featured_flower()
+{
+//allegro_flare::placement2d featured_flower_placement(flower.get_x(), flower.get_y(), 0, 0);
+//flower_placement.start_transform();
+Flowers::Flower featured_flower = gameboard->get_featured_flower_ref();
+//featured_flower.set_x(50);
+//featured_flower.set_y(200);
+Flowers::FlowerRenderer renderer(&featured_flower);
+renderer.render();
+
+}
+
 void GameboardRenderer::draw_cursor()
 {
 int cursor_width = gameboard->calc_cell_width();
@@ -67,6 +79,8 @@ for (auto &flower : gameboard->get_flowers_ref())
 }
 
 // draw the cursor (overlay)
+
+draw_featured_flower();
 
 }
 

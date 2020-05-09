@@ -100,6 +100,9 @@ case ALLEGRO_KEY_RIGHT:
 case ALLEGRO_KEY_LEFT:
    gameboard.move_cursor_left();
    break;
+case ALLEGRO_KEY_ENTER:
+   gameboard.pick_flower();
+   break;
 default:
    break;
 }

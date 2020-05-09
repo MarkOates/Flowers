@@ -25,6 +25,10 @@ properties:
   - name: num_rows
     type: int
     init_with: 4
+  - name: featured_flower
+    type: Flowers::Flower
+    init_with: ""
+    getter_ref: true
 functions:
   - name: calc_cell_width
     type: float
@@ -55,6 +59,10 @@ functions:
       return;
     body_dependency_symbols:
       - Flowers::FlowerGenerator
+  - name: flower_at_cursor
+    type: Flowers::Flower
+    body: |
+      return flowers.front();
   - name: move_cursor_up
     type: void
     body: |
@@ -79,7 +87,13 @@ functions:
       cursor_x += 1;
       if (cursor_x >= num_columns) cursor_x = cursor_x % num_columns;
       return;
+  - name: pick_flower
+    type: void
+    body: |
+      featured_flower = flower_at_cursor();
 dependencies:
+  - symbol: Flowers::Flower
+    headers: [ Flowers/Flower.hpp ]
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
   - symbol: Flowers::FlowerGenerator
