@@ -2,6 +2,7 @@
 
 
 #include <string>
+#include <utility>
 #include <vector>
 
 
@@ -10,15 +11,16 @@ namespace Flowers
    class QuoteGenerator
    {
    private:
-      std::string filename;
-      std::vector<std::string> quotes;
+      std::vector<std::pair<std::string, std::string>> quotes;
 
    public:
       QuoteGenerator();
       ~QuoteGenerator();
 
 
-   std::string generate_quote();
+   void shuffle();
+   void populate_quotes();
+   std::pair<std::string, std::string> generate_quote();
    };
 }
 

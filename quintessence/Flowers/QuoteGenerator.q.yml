@@ -1,12 +1,39 @@
 properties:
-  - name: filename
-    type: std::string
-    init_with: "\"data/content/quotes.txt\""
   - name: quotes
-    type: std::vector<std::string>
+    type: std::vector<std::pair<std::string, std::string>>
     init_with: "{}"
 functions:
+  - name: shuffle
+    type: void
+    body: |
+      unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+      std::shuffle(quotes.begin(), quotes.end(), std::default_random_engine(seed));
+    body_dependency_symbols:
+      - std::chrono::system_clock::now
+      - std::default_random_engine
+      - std::shuffle
+  - name: populate_quotes
+    type: void
+    body: |
+      quotes = {
+         { "The great thing about getting older is that you don't lose all the other ages you've been.", "Unknown" },
+      };
   - name: generate_quote
-    type: std::string
-    body:
-      return "Hello World!";
+    type: std::pair<std::string, std::string>
+    body: |
+      if (quotes.empty()) { populate_quotes(); shuffle(); }
+      if (quotes.empty()) return { "no quotes", "" };
+      std::pair<std::string, std::string> quote_selection = quotes.back();
+      quotes.pop_back();
+      return quote_selection;
+dependencies:
+  - symbol: std::chrono::system_clock::now
+    headers: [ chrono ]
+  - symbol: std::default_random_engine
+    headers: [ random ]
+  - symbol: std::shuffle
+    headers: [ algorithm ]
+  - symbol: std::pair<std::string, std::string>
+    headers: [ utility, string ]
+  - symbol: std::vector<std::pair<std::string, std::string>>
+    headers: [ vector, string ]
