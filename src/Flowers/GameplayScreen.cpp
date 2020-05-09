@@ -62,13 +62,6 @@ void GameplayScreen::initialize()
 spawn_initial_flowers();
 return;
 
-Flowers::Flower flower;
-flower.set_x(gameboard_width/2);
-flower.set_y(gameboard_height/2);
-flower.set_peduncle_height(40);
-flowers.push_back(flower);
-return;
-
 }
 
 void GameplayScreen::primary_timer_func()
