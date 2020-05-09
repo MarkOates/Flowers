@@ -1,0 +1,8 @@
+functions:
+  - name: mutations
+    type: std::vector<Flowers::Flower>
+    body: |
+      return {};
+dependencies:
+  - symbol: std::vector<Flowers::Flower>
+    headers: [ vector, Flowers/Flower.hpp ]
