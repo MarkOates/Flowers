@@ -20,7 +20,7 @@ namespace Flowers
       int gameboard_height;
 
    public:
-      GameplayScreen(AllegroFlare::FontBin* font_bin=nullptr, int screen_width=1, int screen_height=1);
+      GameplayScreen(AllegroFlare::FontBin* font_bin=nullptr, int screen_width=1920, int screen_height=1080);
       ~GameplayScreen();
 
 

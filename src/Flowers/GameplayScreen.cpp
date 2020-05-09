@@ -41,7 +41,7 @@ return;
 
 void GameplayScreen::primary_timer_func()
 {
-allegro_flare::placement2d place(800/2, 600/2, gameboard_width, gameboard_height);
+allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_width, gameboard_height);
 place.align = AllegroFlare::vec2d(0.5, 0.5);
 place.start_transform();
 

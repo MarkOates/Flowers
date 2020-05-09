@@ -15,7 +15,7 @@ TEST(Flowers_GameplayScreenTest, primary_timer_func__renders_the_flowers)
    al_init();
    al_init_primitives_addon();
 
-   ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
    Flowers::GameplayScreen gameplay_screen;
    gameplay_screen.initialize();
