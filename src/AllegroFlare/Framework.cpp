@@ -69,7 +69,9 @@ namespace AllegroFlare
 
 
    Framework::~Framework()
-   {}
+   {
+      destruct();
+   }
 
 
 

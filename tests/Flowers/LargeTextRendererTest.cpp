@@ -82,5 +82,7 @@ TEST_F(Flowers_LargeTextRendererTest, create_bitmap__returns_a_bitmap_with_the_r
    al_draw_bitmap(render, 0, 0, 0);
 
    al_flip_display();
+
+   //sleep(3);
 }
 

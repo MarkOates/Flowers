@@ -37,7 +37,7 @@ return;
 
 void ProgramRunner::destruct()
 {
-if (initialized) framework.destruct();
+//if (initialized) framework.destruct();
 
 }
 
@@ -57,7 +57,7 @@ framework.run_loop();
 
 registrar.remove();
 
-destruct();
+//destruct();
 
 return;
 

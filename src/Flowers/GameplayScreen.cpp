@@ -78,8 +78,24 @@ return;
 
 }
 
+void GameplayScreen::key_down_func(ALLEGRO_EVENT* ev)
+{
+switch(ev->keyboard.keycode)
+{
+case ALLEGRO_KEY_1:
+   spawn_quote();
+   break;
+default:
+   break;
+}
+return;
+
+}
+
 void GameplayScreen::primary_timer_func()
 {
+al_clear_to_color(al_color_name("black"));
+
 // update
 
 for (auto &large_text_scroller : large_text_scrollers)

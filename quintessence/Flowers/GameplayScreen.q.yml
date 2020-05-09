@@ -73,9 +73,27 @@ functions:
     body: |
       spawn_initial_flowers();
       return;
+  - name: key_down_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      switch(ev->keyboard.keycode)
+      {
+      case ALLEGRO_KEY_1:
+         spawn_quote();
+         break;
+      default:
+         break;
+      }
+      return;
   - name: primary_timer_func
     override: true
     body: |
+      al_clear_to_color(al_color_name("black"));
+
       // update
 
       for (auto &large_text_scroller : large_text_scrollers)
@@ -135,6 +153,8 @@ functions:
 dependencies:
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
+  - symbol: ALLEGRO_EVENT*
+    headers: [ allegro5/allegro.h ]
   - symbol: std::vector<Flowers::LargeTextScroller>
     headers: [ vector, Flowers/LargeTextScroller.hpp ]
   - symbol: Flowers::LargeTextRenderer

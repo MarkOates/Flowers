@@ -6,6 +6,7 @@
 #include <Flowers/Flower.hpp>
 #include <Flowers/LargeTextScroller.hpp>
 #include <Flowers/QuoteGenerator.hpp>
+#include <allegro5/allegro.h>
 #include <vector>
 
 
@@ -31,6 +32,7 @@ namespace Flowers
    void spawn_quote();
    void spawn_initial_flowers();
    void initialize();
+   void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
    void primary_timer_func() override;
    };
 }
