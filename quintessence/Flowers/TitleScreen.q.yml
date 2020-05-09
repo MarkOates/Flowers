@@ -1,0 +1,18 @@
+parent_classes:
+  - class: AllegroFlare::Screen
+    scope: public
+    init_with: "{}"
+functions:
+  - name: primary_timer_func
+    override: true
+    type: void
+    body: |
+      al_clear_to_color({0,0,0,0});
+      return;
+    body_dependency_symbols:
+      - al_clear_to_color
+dependencies:
+  - symbol: al_clear_to_color
+    headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Screen
+    headers: [ AllegroFlare/Screen.hpp ]
