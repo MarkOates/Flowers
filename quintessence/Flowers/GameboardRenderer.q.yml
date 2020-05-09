@@ -1,0 +1,50 @@
+properties:
+  - name: gameboard_width
+    type: int
+    init_with: (1920 * 0.6)
+  - name: gameboard_height
+    type: int
+    init_with: (1080 * 0.5)
+  - name: gameboard
+    type: Flowers::Gameboard*
+    init_with: nullptr
+    constructor_arg: true
+functions:
+  - name: render
+    type: void
+    body: |
+      if (!gameboard)
+      {
+         throw std::runtime_error("[Flowers::GameboardRenderer.render error]: gameboard cannot be a nullptr");
+      }
+
+      al_draw_filled_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"));
+      al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);
+
+      for (auto &flower : gameboard->get_flowers_ref())
+      {
+         allegro_flare::placement2d flower_placement(flower.get_x(), flower.get_y(), 0, 0);
+         flower_placement.start_transform();
+         Flowers::FlowerRenderer renderer(&flower);
+         renderer.render();
+         flower_placement.restore_transform();
+      }
+    body_dependency_symbols:
+      - al_draw_rectangle
+      - al_color_name
+      - Flowers::FlowerRenderer
+      - allegro_flare::placement2d
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
+  - symbol: Flowers::Gameboard*
+    headers: [ Flowers/Gameboard.hpp ]
+  - symbol: al_draw_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: Flowers::FlowerRenderer
+    headers: [ Flowers/FlowerRenderer.hpp ]

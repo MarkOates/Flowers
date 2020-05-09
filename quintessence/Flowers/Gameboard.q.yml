@@ -1,0 +1,68 @@
+properties:
+  - name: cursor_x
+    type: int
+    init_with: 0
+  - name: cursor_y
+    type: int
+    init_with: 0
+  - name: width
+    type: int
+    init_with: 1
+  - name: height
+    type: int
+    init_with: 1
+  - name: flowers
+    type: std::vector<Flowers::Flower>
+    init_with: "{}"
+    getter_ref: true
+  - name: num_columns
+    type: int
+    init_with: 6
+  - name: num_rows
+    type: int
+    init_with: 4
+functions:
+  - name: spawn_initial_flowers
+    type: void
+    body: |
+      float cell_width = (float)width / num_columns;
+      float cell_height = (float)height / num_rows;
+
+      Flowers::FlowerGenerator flower_generator;
+
+      for (unsigned y=0; y<num_rows; y++)
+      {
+         for (unsigned x=0; x<num_columns; x++)
+         {
+            Flowers::Flower flower = flower_generator.generate_random_flower();
+
+            flower.set_x(cell_width * x + cell_width * 0.5);
+            flower.set_y(cell_height * y + cell_height * 0.5);
+
+            flowers.push_back(flower);
+         }
+      }
+      return;
+    body_dependency_symbols:
+      - Flowers::FlowerGenerator
+  - name: move_cursor_up
+    type: void
+    body: |
+      return;
+  - name: move_cursor_down
+    type: void
+    body: |
+      return;
+  - name: move_cursor_left
+    type: void
+    body: |
+      return;
+  - name: move_cursor_right
+    type: void
+    body: |
+      return;
+dependencies:
+  - symbol: std::vector<Flowers::Flower>
+    headers: [ vector, Flowers/Flower.hpp ]
+  - symbol: Flowers::FlowerGenerator
+    headers: [ Flowers/FlowerGenerator.hpp ]

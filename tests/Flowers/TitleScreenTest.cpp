@@ -26,6 +26,9 @@ TEST(Flowers_TitleScreenTest, primary_timer_func__draws_the_title)
 
    sleep(2);
 
+   font_bin.clear();
+   al_uninstall_system();
+
    SUCCEED();
 }
 

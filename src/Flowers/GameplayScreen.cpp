@@ -8,6 +8,7 @@
 #include <allegro_flare/placement2d.h>
 #include <Flowers/FlowerUpdater.hpp>
 #include <Flowers/FlowerRenderer.hpp>
+#include <Flowers/GameboardRenderer.hpp>
 
 
 namespace Flowers
@@ -47,7 +48,7 @@ large_text_scrollers.push_back(large_text_scroller);
 
 }
 
-void GameplayScreen::spawn_initial_flowers()
+void GameplayScreen::xxx_spawn_initial_flowers()
 {
 int num_columns = 6;
 int num_rows = 4;
@@ -75,7 +76,7 @@ return;
 
 void GameplayScreen::initialize()
 {
-spawn_initial_flowers();
+gameboard.spawn_initial_flowers();
 return;
 
 }
@@ -131,6 +132,9 @@ for (auto &flower : flowers)
 allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_width, gameboard_height);
 place.align = AllegroFlare::vec2d(0.5, 0.5);
 place.start_transform();
+
+Flowers::GameboardRenderer gameboard_renderer(&gameboard);
+gameboard_renderer.render();
 
 al_draw_filled_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"));
 al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);

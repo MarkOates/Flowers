@@ -31,7 +31,7 @@ properties:
     type: Flowers::QuoteGenerator
     init_with: "{}"
   - name: gameboard
-    type: Flowers::Gameplay::Board
+    type: Flowers::Gameboard
     init_with: "{}"
 functions:
   - name: spawn_quote
@@ -46,7 +46,7 @@ functions:
       large_text_scrollers.push_back(large_text_scroller);
     body_dependency_symbols:
       - Flowers::LargeTextRenderer
-  - name: spawn_initial_flowers
+  - name: xxx_spawn_initial_flowers
     type: void
     body: |
       int num_columns = 6;
@@ -75,7 +75,7 @@ functions:
   - name: initialize
     type: void
     body: |
-      spawn_initial_flowers();
+      gameboard.spawn_initial_flowers();
       return;
   - name: key_down_func
     override: true
@@ -132,6 +132,9 @@ functions:
       place.align = AllegroFlare::vec2d(0.5, 0.5);
       place.start_transform();
 
+      Flowers::GameboardRenderer gameboard_renderer(&gameboard);
+      gameboard_renderer.render();
+
       al_draw_filled_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"));
       al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);
 
@@ -170,9 +173,10 @@ functions:
       - allegro_flare::placement2d
       - Flowers::FlowerUpdater
       - Flowers::FlowerRenderer
+      - Flowers::GameboardRenderer
 dependencies:
-  - symbol: Flowers::Gameplay::Board
-    headers: [ Flowers/Gameplay/Board.hpp ]
+  - symbol: Flowers::Gameboard
+    headers: [ Flowers/Gameboard.hpp ]
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
   - symbol: ALLEGRO_EVENT*
@@ -197,5 +201,7 @@ dependencies:
     headers: [ Flowers/FlowerRenderer.hpp ]
   - symbol: Flowers::FlowerGenerator
     headers: [ Flowers/FlowerGenerator.hpp ]
+  - symbol: Flowers::GameboardRenderer
+    headers: [ Flowers/GameboardRenderer.hpp ]
   - symbol: Flowers::QuoteGenerator
     headers: [ Flowers/QuoteGenerator.hpp ]
