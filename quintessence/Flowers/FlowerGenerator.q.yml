@@ -19,7 +19,12 @@ functions:
   - name: generate_random_flower
     type: Flowers::Flower
     body: |
-      return Flowers::Flower{};
+      Flowers::Flower flower;
+
+      flower.set_petal_color(random_color());
+      flower.set_peduncle_height(random_int_incl(30, 50));
+
+      return flower;
 dependencies:
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]

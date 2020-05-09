@@ -1,6 +1,7 @@
 
 
 #include <Flowers/GameplayScreen.hpp>
+#include <Flowers/FlowerGenerator.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 #include <allegro_flare/placement2d.h>
@@ -38,15 +39,16 @@ int num_rows = 4;
 float cell_width = (float)gameboard_width / num_columns;
 float cell_height = (float)gameboard_height / num_rows;
 
+Flowers::FlowerGenerator flower_generator;
+
 for (unsigned y=0; y<num_rows; y++)
 {
    for (unsigned x=0; x<num_columns; x++)
    {
-      Flowers::Flower flower;
+      Flowers::Flower flower = flower_generator.generate_random_flower();
+
       flower.set_x(cell_width * x + cell_width * 0.5);
       flower.set_y(cell_height * y + cell_height * 0.5);
-
-      flower.set_peduncle_height(40);
 
       flowers.push_back(flower);
    }

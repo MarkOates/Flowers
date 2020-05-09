@@ -24,7 +24,7 @@ TEST(Flowers_GameplayScreenTest, primary_timer_func__renders_the_flowers)
 
    al_flip_display();
 
-   sleep(1);
+   sleep(5);
 
    al_uninstall_system();
 

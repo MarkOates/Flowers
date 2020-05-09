@@ -32,7 +32,12 @@ return al_map_rgb(random_int_incl(0, 255), random_int_incl(0, 255), random_int_i
 
 Flowers::Flower FlowerGenerator::generate_random_flower()
 {
-return Flowers::Flower{};
+Flowers::Flower flower;
+
+flower.set_petal_color(random_color());
+flower.set_peduncle_height(random_int_incl(30, 50));
+
+return flower;
 
 }
 } // namespace Flowers
