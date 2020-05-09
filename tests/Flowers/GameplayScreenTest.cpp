@@ -47,10 +47,12 @@ TEST(Flowers_GameplayScreenTest, spawn_quote__will_create_a_new_quote)
    gameplay_screen.initialize();
 
    gameplay_screen.spawn_quote();
-
-   al_flip_display();
-
-   sleep(1);
+   int flips = 60;
+   for (int i=0; i<flips; i++)
+   {
+      gameplay_screen.primary_timer_func();
+      al_flip_display();
+   }
 
    al_uninstall_system();
 

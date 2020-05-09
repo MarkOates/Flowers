@@ -95,7 +95,9 @@ return;
 
 void GameplayScreen::primary_timer_func()
 {
-ALLEGRO_COLOR background_color = al_color_html("c6dee7");
+ALLEGRO_COLOR deep_green = al_color_html("004e2c");
+ALLEGRO_COLOR light_blue = al_color_html("c6dee7");
+ALLEGRO_COLOR background_color = deep_green;
 al_clear_to_color(background_color);
 
 // update
@@ -117,6 +119,7 @@ allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_widt
 place.align = AllegroFlare::vec2d(0.5, 0.5);
 place.start_transform();
 
+al_draw_filled_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"));
 al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);
 
 for (auto &flower : flowers)
