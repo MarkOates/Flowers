@@ -22,6 +22,7 @@ namespace FlowersGame
 
 
    void initialize();
+   void destruct();
    void run();
    };
 }

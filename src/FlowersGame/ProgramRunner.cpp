@@ -35,6 +35,12 @@ return;
 
 }
 
+void ProgramRunner::destruct()
+{
+if (initialized) framework.destruct();
+
+}
+
 void ProgramRunner::run()
 {
 initialize();
@@ -43,9 +49,12 @@ FlowersGame::ApplicationController application_controller(&framework, &screens);
 AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
 registrar.append();
 
+application_controller.create_gameplay_screen();
 framework.run_loop();
 
 registrar.remove();
+
+destruct();
 
 return;
 

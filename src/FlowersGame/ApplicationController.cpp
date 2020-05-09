@@ -27,6 +27,7 @@ void ApplicationController::create_gameplay_screen()
 {
 Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
 AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
+gameplay_screen->initialize();
 return;
 
 }

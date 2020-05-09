@@ -20,6 +20,10 @@ functions:
       display = framework.create_display(1920, 1080);
       initialized = true;
       return;
+  - name: destruct
+    type: void
+    body: |
+      if (initialized) framework.destruct();
   - name: run
     type: void
     body: |
@@ -29,9 +33,12 @@ functions:
       AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
       registrar.append();
 
+      application_controller.create_gameplay_screen();
       framework.run_loop();
 
       registrar.remove();
+
+      destruct();
 
       return;
     body_dependency_symbols:

@@ -17,6 +17,7 @@ functions:
     body: |
       Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
       AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
+      gameplay_screen->initialize();
       return;
   - name: key_down_func
     parameters:
