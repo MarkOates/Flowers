@@ -32,7 +32,6 @@ namespace Flowers
 
 
    void spawn_quote();
-   void xxx_spawn_initial_flowers();
    void initialize();
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
    void primary_timer_func() override;
