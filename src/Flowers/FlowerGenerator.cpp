@@ -35,6 +35,7 @@ Flowers::Flower FlowerGenerator::generate_random_flower()
 Flowers::Flower flower;
 
 flower.set_petal_color(random_color());
+flower.set_num_petals(random_int_incl(5, 8));
 flower.set_peduncle_height(random_int_incl(30, 50));
 
 return flower;
