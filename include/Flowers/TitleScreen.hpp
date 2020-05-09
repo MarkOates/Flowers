@@ -19,6 +19,7 @@ namespace Flowers
 
 
    ALLEGRO_DISPLAY* infer_display();
+   void draw_press_enter_text();
    void draw_title();
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
    void primary_timer_func() override;

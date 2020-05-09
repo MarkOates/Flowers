@@ -37,6 +37,7 @@ void GameplayScreen::spawn_quote()
 {
 if (!font_bin) throw std::runtime_error("Flowers/GameplayScreen::spawn_quote: error: font_bin is a nullptr");
 
+//ALLEGRO_COLOR background_color = al_color_html("c6dee7");
 ALLEGRO_FONT *quote_font = font_bin->operator[]("Voga-Medium.otf 32");
 std::pair<std::string, std::string> quote = quote_generator.generate_quote();
 Flowers::LargeTextRenderer large_text_renderer(quote_font, quote.first);
@@ -94,7 +95,8 @@ return;
 
 void GameplayScreen::primary_timer_func()
 {
-al_clear_to_color(al_color_name("black"));
+ALLEGRO_COLOR background_color = al_color_html("c6dee7");
+al_clear_to_color(background_color);
 
 // update
 
