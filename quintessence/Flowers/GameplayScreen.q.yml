@@ -2,10 +2,63 @@ parent_classes:
   - class: AllegroFlare::Screen
     scope: public
     init_with: "{}"
+properties:
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+  - name: flowers
+    type: std::vector<Flowers::Flower>
+    init_with: "{}"
+  - name: screen_width
+    type: int
+    init_with: 1
+    constructor_arg: true
+  - name: screen_height
+    type: int
+    init_with: 1
+    constructor_arg: true
+  - name: gameboard_width
+    type: int
+    init_with: 600
+  - name: gameboard_height
+    type: int
+    init_with: 300
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: initialize
+    type: void
+    body: |
+      Flowers::Flower flower;
+      flower.set_peduncle_height(40);
+      flowers.push_back(flower);
+      return;
+  - name: primary_timer_func
+    override: true
+    body: |
+      allegro_flare::placement2d place(0, 0, gameboard_width, gameboard_height);
+      place.align = AllegroFlare::vec2d(0.5, 0.5);
+      place.start_transform();
+
+      for (auto &flower : flowers)
+      {
+         Flowers::FlowerRenderer renderer(&flower);
+         renderer.render();
+      }
+
+      place.restore_transform();
+      return;
+    body_dependency_symbols:
+      - allegro_flare::placement2d
+      - Flowers::FlowerRenderer
 dependencies:
+  - symbol: std::vector<Flowers::Flower>
+    headers: [ vector, Flowers/Flower.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: AllegroFlare::Screen
     headers: [ AllegroFlare/Screen.hpp ]
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
+  - symbol: Flowers::FlowerRenderer
+    headers: [ Flowers/FlowerRenderer.hpp ]
+

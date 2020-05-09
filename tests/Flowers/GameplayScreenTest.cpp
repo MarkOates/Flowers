@@ -3,14 +3,30 @@
 
 #include <Flowers/GameplayScreen.hpp>
 
+#include <allegro5/allegro_primitives.h>
+
 TEST(Flowers_GameplayScreenTest, can_be_created_without_blowing_up)
 {
    Flowers::GameplayScreen gameplay_screen;
 }
 
-TEST(Flowers_GameplayScreenTest, run__returns_the_expected_response)
+TEST(Flowers_GameplayScreenTest, primary_timer_func__renders_the_flowers)
 {
+   al_init();
+   al_init_primitives_addon();
+
+   ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+
    Flowers::GameplayScreen gameplay_screen;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, gameplay_screen.run());
+   gameplay_screen.initialize();
+
+   gameplay_screen.primary_timer_func();
+
+   al_flip_display();
+
+   sleep(2);
+
+   al_uninstall_system();
+
+   SUCCEED();
 }
