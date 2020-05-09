@@ -135,17 +135,6 @@ functions:
       Flowers::GameboardRenderer gameboard_renderer(&gameboard);
       gameboard_renderer.render();
 
-      al_draw_filled_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"));
-      al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);
-
-      for (auto &flower : flowers)
-      {
-         allegro_flare::placement2d flower_placement(flower.get_x(), flower.get_y(), 0, 0);
-         flower_placement.start_transform();
-         Flowers::FlowerRenderer renderer(&flower);
-         renderer.render();
-         flower_placement.restore_transform();
-      }
       for (auto &large_text_scroller : large_text_scrollers)
       {
          large_text_scroller.draw();

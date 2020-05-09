@@ -7,10 +7,10 @@ properties:
     init_with: 0
   - name: width
     type: int
-    init_with: 1
+    init_with: (1920 * 0.6)
   - name: height
     type: int
-    init_with: 1
+    init_with: (1080 * 0.5)
   - name: flowers
     type: std::vector<Flowers::Flower>
     init_with: "{}"
