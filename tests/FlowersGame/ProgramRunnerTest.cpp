@@ -17,7 +17,7 @@ TEST(FlowersGame_ProgramRunnerTest, run__will_run_the_program)
 {
    FlowersGame::ProgramRunner program_runner;
 
-   //program_runner.run();
+   program_runner.run();
 
    SUCCEED();
 }

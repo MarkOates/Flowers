@@ -39,7 +39,7 @@ void ProgramRunner::run()
 {
 initialize();
 
-FlowersGame::ApplicationController application_controller;
+FlowersGame::ApplicationController application_controller(&framework, &screens);
 AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
 registrar.append();
 

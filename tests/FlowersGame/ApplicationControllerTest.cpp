@@ -14,7 +14,29 @@ TEST(FlowersGame_ApplicationControllerTest, primary_timer_func__runs_through_the
    ALLEGRO_DISPLAY *display = al_create_display(800, 600);
 
    FlowersGame::ApplicationController application_controller;
+
    application_controller.primary_timer_func();
 
    al_uninstall_system();
 }
+
+TEST(FlowersGame_ApplicationControllerTest, key_down_func__when_the_escape_key_is_pressed_shuts_down_the_program)
+{
+   al_init();
+   ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+
+   AllegroFlare::Screens screens;
+   AllegroFlare::Framework framework(screens);
+
+   FlowersGame::ApplicationController application_controller(&framework, &screens);
+
+   ALLEGRO_EVENT keyboard_event;
+   keyboard_event.keyboard.keycode = ALLEGRO_KEY_ESCAPE;
+
+   application_controller.key_down_func(&keyboard_event);
+
+   EXPECT_EQ(true, framework.shutdown_program);
+
+   al_uninstall_system();
+}
+

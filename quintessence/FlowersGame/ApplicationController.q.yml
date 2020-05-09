@@ -6,6 +6,11 @@ properties:
   - name: framework
     type: AllegroFlare::Framework*
     init_with: nullptr
+    constructor_arg: true
+  - name: screens
+    type: AllegroFlare::Screens*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: key_down_func
     parameters:
@@ -15,16 +20,33 @@ functions:
     override: true
     body: |
       if (!ev) return;
+      if (!framework)
+      {
+         std::stringstream error_message;
+         error_message << "FlowersGame::ApplicationController.key_down_func error: nullptr framework";
+         throw std::runtime_error(error_message.str());
+      }
+      if (!screens) throw std::runtime_error("FlowersGame::ApplicationController.key_down_func error: nullptr screens");
 
       switch(ev->keyboard.keycode)
       {
       case ALLEGRO_KEY_ESCAPE:
          framework->shutdown_program = true;
          break;
+      case ALLEGRO_KEY_1:
+         {
+            Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
+            AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
+         }
+         break;
       default:
          break;
       }
       return;
+    body_dependency_symbols:
+      - AllegroFlare::Screens*
+      - AllegroFlare::FrameworkScreenRegistrar
+      - Flowers::GameplayScreen*
   - name: primary_timer_func
     override: true
     body: |
@@ -41,7 +63,13 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
+  - symbol: Flowers::GameplayScreen*
+    headers: [ Flowers/GameplayScreen.hpp ]
+  - symbol: AllegroFlare::FrameworkScreenRegistrar
+    headers: [ AllegroFlare/FrameworkScreenRegistrar.hpp ]
   - symbol: AllegroFlare::Framework*
     headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::Screens*
+    headers: [ AllegroFlare/Screens.hpp ]
   - symbol: AllegroFlare::Screen
     headers: [ AllegroFlare/Screen.hpp ]

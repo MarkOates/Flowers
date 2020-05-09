@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
+#include <AllegroFlare/Screens.hpp>
 #include <allegro5/allegro.h>
 
 
@@ -12,9 +13,10 @@ namespace FlowersGame
    {
    private:
       AllegroFlare::Framework* framework;
+      AllegroFlare::Screens* screens;
 
    public:
-      ApplicationController();
+      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr);
       ~ApplicationController();
 
 
