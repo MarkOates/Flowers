@@ -1,7 +1,7 @@
 properties:
-  - name: color
+  - name: pistil_color
     type: ALLEGRO_COLOR
-    init_with: "{}"
+    init_with: "{16,16,32,255}"
     constructor_arg: true
     getter: true
     setter: true

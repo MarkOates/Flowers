@@ -8,8 +8,8 @@ namespace Flowers
 {
 
 
-Flower::Flower(ALLEGRO_COLOR color, float peduncle_height, float x, float y)
-   : color(color)
+Flower::Flower(ALLEGRO_COLOR pistil_color, float peduncle_height, float x, float y)
+   : pistil_color(pistil_color)
    , peduncle_height(peduncle_height)
    , x(x)
    , y(y)
@@ -25,9 +25,9 @@ Flower::~Flower()
 }
 
 
-void Flower::set_color(ALLEGRO_COLOR color)
+void Flower::set_pistil_color(ALLEGRO_COLOR pistil_color)
 {
-   this->color = color;
+   this->pistil_color = pistil_color;
 }
 
 
@@ -67,9 +67,9 @@ void Flower::set_dead(bool dead)
 }
 
 
-ALLEGRO_COLOR Flower::get_color()
+ALLEGRO_COLOR Flower::get_pistil_color()
 {
-   return color;
+   return pistil_color;
 }
 
 

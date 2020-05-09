@@ -29,9 +29,9 @@ void FlowerRenderer::render_pistil()
 float receptacle_y = flower->calculate_receptacle_y();
 float y = receptacle_y;
 float stigma_radius = 10.0f;
-ALLEGRO_COLOR color = flower->get_color();
+ALLEGRO_COLOR pistil_color = flower->get_pistil_color();
 
-al_draw_filled_circle(0, -y, stigma_radius, color);
+al_draw_filled_circle(0, -y, stigma_radius, pistil_color);
 al_draw_circle(0, -y, stigma_radius, outline_color, outline_thickness);
 return;
 

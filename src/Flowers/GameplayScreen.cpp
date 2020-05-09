@@ -32,7 +32,7 @@ GameplayScreen::~GameplayScreen()
 
 void GameplayScreen::initialize()
 {
-Flowers::Flower flower;
+Flowers::Flower flower({255,16,32,255});
 flower.set_x(gameboard_width/2);
 flower.set_y(gameboard_height/2);
 flower.set_peduncle_height(40);
@@ -58,7 +58,7 @@ allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_widt
 place.align = AllegroFlare::vec2d(0.5, 0.5);
 place.start_transform();
 
-al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("red"), 3.0);
+al_draw_rectangle(0, 0, gameboard_width, gameboard_height, al_color_name("saddlebrown"), 3.0);
 
 for (auto &flower : flowers)
 {
