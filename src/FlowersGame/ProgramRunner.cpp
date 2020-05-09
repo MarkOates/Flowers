@@ -3,7 +3,7 @@
 #include <FlowersGame/ProgramRunner.hpp>
 #include <iostream>
 #include <AllegroFlare/FrameworkScreenRegistrar.hpp>
-#include <FlowersGame/ApplicationController.hpp>
+#include <FlowersGame/Game.hpp>
 #include <AllegroFlare/Display.hpp>
 
 
@@ -48,14 +48,14 @@ initialize();
 AllegroFlare::FontBin font_bin;
 font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
 
-FlowersGame::ApplicationController application_controller(&framework, &screens, &font_bin);
-AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
+FlowersGame::Game game(&framework, &font_bin);
+AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &game);
 registrar.append();
 
-application_controller.create_gameplay_screen();
 framework.run_loop();
 
 registrar.remove();
+
 
 //destruct();
 

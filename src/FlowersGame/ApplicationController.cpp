@@ -3,7 +3,6 @@
 #include <FlowersGame/ApplicationController.hpp>
 #include <AllegroFlare/Screens.hpp>
 #include <AllegroFlare/FrameworkScreenRegistrar.hpp>
-#include <Flowers/GameplayScreen.hpp>
 
 
 namespace FlowersGame
@@ -23,15 +22,6 @@ ApplicationController::~ApplicationController()
 {
 }
 
-
-void ApplicationController::create_gameplay_screen()
-{
-Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen(font_bin);
-AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
-gameplay_screen->initialize();
-return;
-
-}
 
 void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
 {

@@ -1,0 +1,89 @@
+parent_classes:
+  - class: AllegroFlare::Screen
+    scope: public
+    init_with: "{}"
+properties:
+  - name: framework
+    type: AllegroFlare::Framework*
+    init_with: nullptr
+    constructor_arg: true
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+functions:
+  - name: infer_display
+    type: ALLEGRO_DISPLAY*
+    body: return al_get_current_display();
+  - name: draw_press_enter_text
+    body: |
+      int display_width = al_get_display_width(infer_display());
+      int display_height = al_get_display_height(infer_display());
+      ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 28");
+      ALLEGRO_COLOR color = al_color_html("9bb6d3");
+      float line_height = al_get_font_line_height(font);
+      std::string title = "Copyright 2020 - Mark Oates";
+      al_draw_text(font, color, display_width/2, display_height/2 - line_height/2 + 200, ALLEGRO_ALIGN_CENTER, title.c_str());
+      return;
+    body_dependency_symbols:
+      - al_draw_text
+      - al_color_name
+  - name: draw_title
+    body: |
+      int display_width = al_get_display_width(infer_display());
+      int display_height = al_get_display_height(infer_display());
+      ALLEGRO_FONT *font = font_bin->operator[]("BodoniFLF-Roman.ttf 190");
+      //7c3658
+      //344b6d
+      ALLEGRO_COLOR color = al_color_html("344b6d");
+      //ALLEGRO_COLOR color = al_color_html("7c3658");
+      float line_height = al_get_font_line_height(font);
+      std::string title = "f  l  o  w  e  r  s";
+      al_draw_text(font, color, display_width/2, display_height/2 - line_height/2, ALLEGRO_ALIGN_CENTER, title.c_str());
+    body_dependency_symbols:
+      - al_draw_text
+      - al_color_name
+  - name: key_down_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      switch(ev->keyboard.keycode)
+      {
+      case ALLEGRO_KEY_ESCAPE:
+         framework->shutdown_program = true;
+         break;
+      case ALLEGRO_KEY_ENTER:
+         break;
+      }
+      return;
+  - name: primary_timer_func
+    override: true
+    type: void
+    body: |
+      ALLEGRO_COLOR background_color = al_color_html("c6dee7");
+      al_clear_to_color(background_color);
+      draw_title();
+      draw_press_enter_text();
+      return;
+    body_dependency_symbols:
+      - al_clear_to_color
+dependencies:
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: al_draw_text
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_clear_to_color
+    headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Screen
+    headers: [ AllegroFlare/Screen.hpp ]
+  - symbol: ALLEGRO_EVENT*
+    headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_DISPLAY*
+    headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Framework*
+    headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]

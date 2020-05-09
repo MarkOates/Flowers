@@ -28,23 +28,3 @@ TEST(FlowersGame_ApplicationControllerTest, key_down_func__when_the_escape_key_i
    al_uninstall_system();
 }
 
-TEST(FlowersGame_ApplicationControllerTest,
-   create_gameplay_screen__will_create_a_new_gameplay_screen_and_append_it_to_the_screens)
-{
-   al_init();
-   ALLEGRO_DISPLAY *display = al_create_display(800, 600);
-   AllegroFlare::FontBin font_bin;
-   font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
-
-   AllegroFlare::Screens screens;
-   AllegroFlare::Framework framework(screens);
-
-   FlowersGame::ApplicationController application_controller(&framework, &screens, &font_bin);
-
-   application_controller.create_gameplay_screen();
-
-   ASSERT_EQ(1, screens.get_num_screens());
-
-   al_uninstall_system();
-}
-

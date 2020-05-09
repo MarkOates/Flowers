@@ -32,22 +32,22 @@ functions:
       AllegroFlare::FontBin font_bin;
       font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
 
-      FlowersGame::ApplicationController application_controller(&framework, &screens, &font_bin);
-      AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &application_controller);
+      FlowersGame::Game game(&framework, &font_bin);
+      AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &game);
       registrar.append();
 
-      application_controller.create_gameplay_screen();
       framework.run_loop();
 
       registrar.remove();
 
+      
       //destruct();
 
       return;
     body_dependency_symbols:
       - std::cout
       - AllegroFlare::FrameworkScreenRegistrar
-      - FlowersGame::ApplicationController
+      - FlowersGame::Game
       - AllegroFlare::Display*
 dependencies:
   - symbol: AllegroFlare::FrameworkScreenRegistrar
@@ -58,5 +58,5 @@ dependencies:
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::Display*
     headers: [ AllegroFlare/Display.hpp ]
-  - symbol: FlowersGame::ApplicationController
-    headers: [ FlowersGame/ApplicationController.hpp ]
+  - symbol: FlowersGame::Game
+    headers: [ FlowersGame/Game.hpp ]

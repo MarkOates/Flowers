@@ -16,13 +16,6 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
-  - name: create_gameplay_screen
-    type: void
-    body: |
-      Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen(font_bin);
-      AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
-      gameplay_screen->initialize();
-      return;
   - name: key_down_func
     parameters:
       - name: ev
@@ -51,7 +44,6 @@ functions:
     body_dependency_symbols:
       - AllegroFlare::Screens*
       - AllegroFlare::FrameworkScreenRegistrar
-      - Flowers::GameplayScreen*
 dependencies:
   - symbol: al_clear_to_color
     headers: [ allegro5/allegro.h ]
@@ -59,8 +51,6 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
-  - symbol: Flowers::GameplayScreen*
-    headers: [ Flowers/GameplayScreen.hpp ]
   - symbol: AllegroFlare::FrameworkScreenRegistrar
     headers: [ AllegroFlare/FrameworkScreenRegistrar.hpp ]
   - symbol: AllegroFlare::Framework*
