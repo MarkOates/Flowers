@@ -10,7 +10,7 @@ TEST(FlowersGame_GameTest, can_be_created_without_blowing_up)
    FlowersGame::Game game;
 }
 
-TEST(FlowersGame_GameTest, primary_timer_func__draws_the_title)
+TEST(DISABLED_FlowersGame_GameTest, primary_timer_func__draws_the_title)
 {
    al_init();
    al_init_font_addon();

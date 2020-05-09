@@ -61,10 +61,15 @@ functions:
   - name: draw_gameplay
     type: void
     body: |
+      allegro_flare::placement2d place(0, 0, 1920, 1080);
+      place.align = AllegroFlare::vec2d(0.5, 0.5);
+      place.start_reverse_transform();
       Flowers::FlowerRenderer(&flower_of_interest).render();
+      place.restore_transform();
       return;
     body_dependency_symbols:
       - Flowers::FlowerRenderer
+      - allegro_flare::placement2d
   - name: key_down_func
     override: true
     parameters:
@@ -116,3 +121,5 @@ dependencies:
     headers: [ Flowers/FlowerRenderer.hpp ]
   - symbol: Flowers::Flower
     headers: [ Flowers/Flower.hpp ]
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]

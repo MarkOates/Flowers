@@ -6,6 +6,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <Flowers/FlowerRenderer.hpp>
+#include <allegro_flare/placement2d.h>
 #include <allegro5/allegro.h>
 
 
@@ -73,7 +74,11 @@ draw_press_enter_text();
 
 void Game::draw_gameplay()
 {
+allegro_flare::placement2d place(0, 0, 1920, 1080);
+place.align = AllegroFlare::vec2d(0.5, 0.5);
+place.start_reverse_transform();
 Flowers::FlowerRenderer(&flower_of_interest).render();
+place.restore_transform();
 return;
 
 }
