@@ -25,16 +25,50 @@ Gameboard::~Gameboard()
 }
 
 
+int Gameboard::get_cursor_x()
+{
+   return cursor_x;
+}
+
+
+int Gameboard::get_cursor_y()
+{
+   return cursor_y;
+}
+
+
+int Gameboard::get_width()
+{
+   return width;
+}
+
+
+int Gameboard::get_height()
+{
+   return height;
+}
+
+
 std::vector<Flowers::Flower> &Gameboard::get_flowers_ref()
 {
    return flowers;
 }
 
 
+float Gameboard::calc_cell_width()
+{
+return (float)width / num_columns;
+}
+
+float Gameboard::calc_cell_height()
+{
+return (float)height / num_rows;
+}
+
 void Gameboard::spawn_initial_flowers()
 {
-float cell_width = (float)width / num_columns;
-float cell_height = (float)height / num_rows;
+float cell_width = calc_cell_width();
+float cell_height = calc_cell_height();
 
 Flowers::FlowerGenerator flower_generator;
 

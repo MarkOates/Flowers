@@ -23,7 +23,13 @@ namespace Flowers
       ~Gameboard();
 
 
+      int get_cursor_x();
+      int get_cursor_y();
+      int get_width();
+      int get_height();
       std::vector<Flowers::Flower> &get_flowers_ref();
+   float calc_cell_width();
+   float calc_cell_height();
    void spawn_initial_flowers();
    void move_cursor_up();
    void move_cursor_down();

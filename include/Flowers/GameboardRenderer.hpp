@@ -10,8 +10,6 @@ namespace Flowers
    class GameboardRenderer
    {
    private:
-      int gameboard_width;
-      int gameboard_height;
       Flowers::Gameboard* gameboard;
 
    public:
@@ -19,6 +17,7 @@ namespace Flowers
       ~GameboardRenderer();
 
 
+   void draw_cursor();
    void render();
    std::string run();
    };

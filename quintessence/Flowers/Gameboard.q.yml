@@ -2,15 +2,19 @@ properties:
   - name: cursor_x
     type: int
     init_with: 0
+    getter: true
   - name: cursor_y
     type: int
     init_with: 0
+    getter: true
   - name: width
     type: int
     init_with: (1920 * 0.6)
+    getter: true
   - name: height
     type: int
     init_with: (1080 * 0.5)
+    getter: true
   - name: flowers
     type: std::vector<Flowers::Flower>
     init_with: "{}"
@@ -22,11 +26,17 @@ properties:
     type: int
     init_with: 4
 functions:
+  - name: calc_cell_width
+    type: float
+    body: return (float)width / num_columns;
+  - name: calc_cell_height
+    type: float
+    body: return (float)height / num_rows;
   - name: spawn_initial_flowers
     type: void
     body: |
-      float cell_width = (float)width / num_columns;
-      float cell_height = (float)height / num_rows;
+      float cell_width = calc_cell_width();
+      float cell_height = calc_cell_height();
 
       Flowers::FlowerGenerator flower_generator;
 
