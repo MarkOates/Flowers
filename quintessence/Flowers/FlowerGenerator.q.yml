@@ -1,0 +1,29 @@
+functions:
+  - name: random_int_incl
+    parameters:
+      - name: min
+        type: int
+        default_argument: 0
+      - name: max
+        type: int
+        default_argument: 1
+    type: int
+    body: |
+      return rand()%(max-min+1) + min;
+  - name: random_color
+    type: ALLEGRO_COLOR
+    body: |
+      return al_map_rgb(random_int_incl(0, 255), random_int_incl(0, 255), random_int_incl(0, 255));
+    body_dependency_symbols:
+      - al_map_rgb
+  - name: generate_random_flower
+    type: Flowers::Flower
+    body: |
+      return Flowers::Flower{};
+dependencies:
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_map_rgb
+    headers: [ allegro5/allegro.h ]
+  - symbol: Flowers::Flower
+    headers: [ Flowers/Flower.hpp ]

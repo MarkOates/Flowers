@@ -45,7 +45,9 @@ for (unsigned y=0; y<num_rows; y++)
       Flowers::Flower flower;
       flower.set_x(cell_width * x + cell_width * 0.5);
       flower.set_y(cell_height * y + cell_height * 0.5);
+
       flower.set_peduncle_height(40);
+
       flowers.push_back(flower);
    }
 }
