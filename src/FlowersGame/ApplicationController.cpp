@@ -23,6 +23,14 @@ ApplicationController::~ApplicationController()
 }
 
 
+void ApplicationController::create_gameplay_screen()
+{
+Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
+AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
+return;
+
+}
+
 void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
 {
 if (!ev) return;
@@ -38,12 +46,6 @@ switch(ev->keyboard.keycode)
 {
 case ALLEGRO_KEY_ESCAPE:
    framework->shutdown_program = true;
-   break;
-case ALLEGRO_KEY_1:
-   {
-      Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
-      AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
-   }
    break;
 default:
    break;

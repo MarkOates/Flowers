@@ -12,6 +12,12 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: create_gameplay_screen
+    type: void
+    body: |
+      Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
+      AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
+      return;
   - name: key_down_func
     parameters:
       - name: ev
@@ -32,12 +38,6 @@ functions:
       {
       case ALLEGRO_KEY_ESCAPE:
          framework->shutdown_program = true;
-         break;
-      case ALLEGRO_KEY_1:
-         {
-            Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
-            AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
-         }
          break;
       default:
          break;

@@ -20,6 +20,7 @@ namespace FlowersGame
       ~ApplicationController();
 
 
+   void create_gameplay_screen();
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
    };
 }
