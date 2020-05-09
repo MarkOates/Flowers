@@ -35,7 +35,6 @@ ALLEGRO_FONT *font = font_bin->operator[]("BodoniFLF-Roman.ttf 190");
 ALLEGRO_COLOR color = al_color_name("pink");
 float line_height = al_get_font_line_height(font);
 std::string title = "f  l  o  w  e  r  s";
-//std::string title = "F  L  O  W  E  R  S";
 al_draw_text(font, color, display_width/2, display_height/2 - line_height/2, ALLEGRO_ALIGN_CENTER, title.c_str());
 
 }
