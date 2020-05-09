@@ -1,0 +1,12 @@
+properties:
+  - name: filename
+    type: std::string
+    init_with: "\"data/content/quotes.txt\""
+  - name: quotes
+    type: std::vector<std::string>
+    init_with: "{}"
+functions:
+  - name: generate_quote
+    type: std::string
+    body:
+      return "Hello World!";
