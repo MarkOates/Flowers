@@ -25,7 +25,7 @@ if (!flower) throw std::runtime_error("[Flower::FlowerUpdater.update() error]: Y
 
 // update flower age
 
-flower->set_age(flower->get_age() + 1);
+flower->set_age(flower->get_age() + 1.0/60.0f);
 
 
 // update flower death
