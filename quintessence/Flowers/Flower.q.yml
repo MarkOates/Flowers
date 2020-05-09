@@ -17,6 +17,12 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+  - name: peduncle_thickness
+    type: float
+    init_with: 3.0f
+    constructor_arg: true
+    getter: true
+    setter: true
   - name: x
     type: float
     init_with: 0

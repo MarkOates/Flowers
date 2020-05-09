@@ -48,7 +48,7 @@ functions:
     type: void
     body: |
       float peduncle_height = flower->get_peduncle_height();
-      float peduncle_thickness = 8.0f;
+      float peduncle_thickness = flower->get_peduncle_thickness();
       ALLEGRO_COLOR peduncle_color = al_color_name("green");
 
       al_draw_line(0, 0, 0, -peduncle_height, peduncle_color, peduncle_thickness);

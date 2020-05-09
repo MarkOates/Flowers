@@ -8,10 +8,11 @@ namespace Flowers
 {
 
 
-Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float peduncle_height, float x, float y)
+Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float peduncle_height, float peduncle_thickness, float x, float y)
    : pistil_color(pistil_color)
    , petal_color(petal_color)
    , peduncle_height(peduncle_height)
+   , peduncle_thickness(peduncle_thickness)
    , x(x)
    , y(y)
    , age(0.0)
@@ -43,6 +44,12 @@ void Flower::set_petal_color(ALLEGRO_COLOR petal_color)
 void Flower::set_peduncle_height(float peduncle_height)
 {
    this->peduncle_height = peduncle_height;
+}
+
+
+void Flower::set_peduncle_thickness(float peduncle_thickness)
+{
+   this->peduncle_thickness = peduncle_thickness;
 }
 
 
@@ -103,6 +110,12 @@ ALLEGRO_COLOR Flower::get_petal_color()
 float Flower::get_peduncle_height()
 {
    return peduncle_height;
+}
+
+
+float Flower::get_peduncle_thickness()
+{
+   return peduncle_thickness;
 }
 
 
