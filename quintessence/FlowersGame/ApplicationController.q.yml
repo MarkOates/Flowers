@@ -11,11 +11,15 @@ properties:
     type: AllegroFlare::Screens*
     init_with: nullptr
     constructor_arg: true
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: create_gameplay_screen
     type: void
     body: |
-      Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
+      Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen(font_bin);
       AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
       gameplay_screen->initialize();
       return;
@@ -65,3 +69,5 @@ dependencies:
     headers: [ AllegroFlare/Screens.hpp ]
   - symbol: AllegroFlare::Screen
     headers: [ AllegroFlare/Screen.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]

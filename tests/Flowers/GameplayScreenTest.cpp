@@ -4,6 +4,8 @@
 #include <Flowers/GameplayScreen.hpp>
 
 #include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 TEST(Flowers_GameplayScreenTest, can_be_created_without_blowing_up)
 {
@@ -24,9 +26,34 @@ TEST(Flowers_GameplayScreenTest, primary_timer_func__renders_the_flowers)
 
    al_flip_display();
 
-   sleep(3);
+   al_uninstall_system();
+
+   SUCCEED();
+}
+
+TEST(Flowers_GameplayScreenTest, spawn_quote__will_create_a_new_quote)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_ttf_addon();
+   al_init_font_addon();
+
+   AllegroFlare::FontBin font_bin;
+   font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
+   ASSERT_NE(nullptr, font_bin["Voga-Medium.otf 16"]);
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+
+   Flowers::GameplayScreen gameplay_screen(&font_bin);
+   gameplay_screen.initialize();
+
+   gameplay_screen.spawn_quote();
+
+   al_flip_display();
+
+   sleep(1);
 
    al_uninstall_system();
 
    SUCCEED();
 }
+

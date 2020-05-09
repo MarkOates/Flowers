@@ -3,6 +3,7 @@ properties:
     type: ALLEGRO_BITMAP*
     init_with: nullptr
     constructor_arg: true
+    getter: true
   - name: scale
     type: float
     init_with: 3.0f

@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
@@ -14,9 +15,10 @@ namespace FlowersGame
    private:
       AllegroFlare::Framework* framework;
       AllegroFlare::Screens* screens;
+      AllegroFlare::FontBin* font_bin;
 
    public:
-      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr);
+      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, AllegroFlare::FontBin* font_bin=nullptr);
       ~ApplicationController();
 
 

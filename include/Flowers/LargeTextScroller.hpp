@@ -21,6 +21,7 @@ namespace Flowers
 
       void set_scroll_speed(float scroll_speed);
 
+      ALLEGRO_BITMAP* get_bitmap();
       bool get_finished();
    void increment_by_step();
    void draw();

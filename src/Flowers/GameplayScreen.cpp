@@ -1,6 +1,7 @@
 
 
 #include <Flowers/GameplayScreen.hpp>
+#include <Flowers/LargeTextRenderer.hpp>
 #include <Flowers/FlowerGenerator.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
@@ -22,6 +23,7 @@ GameplayScreen::GameplayScreen(AllegroFlare::FontBin* font_bin, int screen_width
    , screen_height(screen_height)
    , gameboard_width((1920 * 0.6))
    , gameboard_height((1080 * 0.5))
+   , quote_generator({})
 {
 }
 
@@ -30,6 +32,18 @@ GameplayScreen::~GameplayScreen()
 {
 }
 
+
+void GameplayScreen::spawn_quote()
+{
+if (!font_bin) throw std::runtime_error("Flowers/GameplayScreen::spawn_quote: error: font_bin is a nullptr");
+
+ALLEGRO_FONT *quote_font = font_bin->operator[]("Voga-Medium.otf 32");
+std::pair<std::string, std::string> quote = quote_generator.generate_quote();
+Flowers::LargeTextRenderer large_text_renderer(quote_font, quote.first);
+Flowers::LargeTextScroller large_text_scroller(large_text_renderer.create_bitmap());
+large_text_scrollers.push_back(large_text_scroller);
+
+}
 
 void GameplayScreen::spawn_initial_flowers()
 {
@@ -95,8 +109,26 @@ for (auto &flower : flowers)
    renderer.render();
    flower_placement.restore_transform();
 }
+for (auto &large_text_scroller : large_text_scrollers)
+{
+   large_text_scroller.draw();
+}
 
 place.restore_transform();
+
+
+// cleanup
+
+for (int i=0; i<large_text_scrollers.size(); i++)
+{
+   Flowers::LargeTextScroller &large_text_scroller = large_text_scrollers[i];
+   if (large_text_scroller.get_finished())
+   {
+      al_destroy_bitmap(large_text_scroller.get_bitmap());
+      large_text_scrollers.erase(large_text_scrollers.begin() + i);
+      i--;
+   }
+}
 return;
 
 }

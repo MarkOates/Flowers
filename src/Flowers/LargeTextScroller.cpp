@@ -30,6 +30,12 @@ void LargeTextScroller::set_scroll_speed(float scroll_speed)
 }
 
 
+ALLEGRO_BITMAP* LargeTextScroller::get_bitmap()
+{
+   return bitmap;
+}
+
+
 bool LargeTextScroller::get_finished()
 {
    return finished;

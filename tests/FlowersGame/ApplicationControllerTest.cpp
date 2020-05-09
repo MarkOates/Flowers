@@ -33,11 +33,13 @@ TEST(FlowersGame_ApplicationControllerTest,
 {
    al_init();
    ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+   AllegroFlare::FontBin font_bin;
+   font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
 
    AllegroFlare::Screens screens;
    AllegroFlare::Framework framework(screens);
 
-   FlowersGame::ApplicationController application_controller(&framework, &screens);
+   FlowersGame::ApplicationController application_controller(&framework, &screens, &font_bin);
 
    application_controller.create_gameplay_screen();
 

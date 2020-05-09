@@ -10,10 +10,11 @@ namespace FlowersGame
 {
 
 
-ApplicationController::ApplicationController(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens)
+ApplicationController::ApplicationController(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, AllegroFlare::FontBin* font_bin)
    : AllegroFlare::Screen({})
    , framework(framework)
    , screens(screens)
+   , font_bin(font_bin)
 {
 }
 
@@ -25,7 +26,7 @@ ApplicationController::~ApplicationController()
 
 void ApplicationController::create_gameplay_screen()
 {
-Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen;
+Flowers::GameplayScreen *gameplay_screen = new Flowers::GameplayScreen(font_bin);
 AllegroFlare::FrameworkScreenRegistrar(screens, gameplay_screen).append();
 gameplay_screen->initialize();
 return;
