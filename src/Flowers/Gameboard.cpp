@@ -90,24 +90,32 @@ return;
 
 void Gameboard::move_cursor_up()
 {
+cursor_y -= 1;
+while (cursor_y < 0) cursor_y += num_rows;
 return;
 
 }
 
 void Gameboard::move_cursor_down()
 {
+cursor_y += 1;
+if (cursor_y >= num_rows) cursor_y = cursor_y % num_rows;
 return;
 
 }
 
 void Gameboard::move_cursor_left()
 {
+cursor_x -= 1;
+while (cursor_x < 0) cursor_x += num_columns;
 return;
 
 }
 
 void Gameboard::move_cursor_right()
 {
+cursor_x += 1;
+if (cursor_x >= num_columns) cursor_x = cursor_x % num_columns;
 return;
 
 }

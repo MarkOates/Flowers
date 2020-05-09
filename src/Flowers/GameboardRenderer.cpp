@@ -26,10 +26,13 @@ void GameboardRenderer::draw_cursor()
 {
 int cursor_width = gameboard->calc_cell_width();
 int cursor_height = gameboard->calc_cell_height();
-int cursor_screen_x = gameboard->get_cursor_x() * cursor_width;
-int cursor_screen_y = gameboard->get_cursor_y() * cursor_height;
+
+int cursor_screen_x1 = gameboard->get_cursor_x() * cursor_width;
+int cursor_screen_y1 = gameboard->get_cursor_y() * cursor_height;
+int cursor_screen_x2 = cursor_screen_x1 + cursor_width;
+int cursor_screen_y2 = cursor_screen_y1 + cursor_height;
 ALLEGRO_COLOR cursor_color = al_color_name("yellow");
-al_draw_rectangle(cursor_screen_x, cursor_screen_y, cursor_width, cursor_height, cursor_color, 9.0f);
+al_draw_rectangle(cursor_screen_x1, cursor_screen_y1, cursor_screen_x2, cursor_screen_y2, cursor_color, 9.0f);
 return;
 
 }
