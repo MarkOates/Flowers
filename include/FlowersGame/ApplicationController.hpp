@@ -21,7 +21,6 @@ namespace FlowersGame
 
 
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
-   void primary_timer_func() override;
    };
 }
 

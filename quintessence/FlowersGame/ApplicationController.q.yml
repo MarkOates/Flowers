@@ -47,15 +47,6 @@ functions:
       - AllegroFlare::Screens*
       - AllegroFlare::FrameworkScreenRegistrar
       - Flowers::GameplayScreen*
-  - name: primary_timer_func
-    override: true
-    body: |
-      al_clear_to_color(al_color_name("violet"));
-
-      return;
-    body_dependency_symbols:
-      - al_clear_to_color
-      - al_color_name
 dependencies:
   - symbol: al_clear_to_color
     headers: [ allegro5/allegro.h ]

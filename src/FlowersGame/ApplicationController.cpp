@@ -4,8 +4,6 @@
 #include <AllegroFlare/Screens.hpp>
 #include <AllegroFlare/FrameworkScreenRegistrar.hpp>
 #include <Flowers/GameplayScreen.hpp>
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_color.h>
 
 
 namespace FlowersGame
@@ -50,14 +48,6 @@ case ALLEGRO_KEY_1:
 default:
    break;
 }
-return;
-
-}
-
-void ApplicationController::primary_timer_func()
-{
-al_clear_to_color(al_color_name("violet"));
-
 return;
 
 }
