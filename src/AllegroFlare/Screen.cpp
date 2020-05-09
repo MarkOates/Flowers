@@ -27,7 +27,8 @@ namespace AllegroFlare
 
 
    Screen::Screen(Display *display)
-      : display(display)
+      : type("")
+      , display(display)
       , backbuffer_sub_bitmap(nullptr)
    {
    }
@@ -36,6 +37,24 @@ namespace AllegroFlare
    Screen::~Screen()
    {
       if (backbuffer_sub_bitmap) al_destroy_bitmap(backbuffer_sub_bitmap);
+   }
+
+
+   void Screen::set_type(std::string type)
+   {
+      this->type = type;
+   }
+
+
+   std::string Screen::get_type()
+   {
+      return type;
+   }
+
+
+   bool Screen::is_type(std::string possible_type)
+   {
+      return type == possible_type;
    }
 
 

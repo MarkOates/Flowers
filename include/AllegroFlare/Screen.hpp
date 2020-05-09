@@ -14,12 +14,19 @@ namespace AllegroFlare
 {
    class Screen
    {
+   private:
+      std::string type;
+
    public:
       Display *display;
       ALLEGRO_BITMAP *backbuffer_sub_bitmap;
 
       Screen(Display *display=nullptr);
       virtual ~Screen();
+
+      void set_type(std::string type);
+      std::string get_type();
+      bool is_type(std::string possible_type);
 
       // expecting target to be bitmap of ALLEGRO_DISPLAY, e.g. al_get_backbuffer(display->al_display);
       void create_and_use_backbuffer_sub_bitmap_of(ALLEGRO_BITMAP *new_target);
