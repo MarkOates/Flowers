@@ -1,7 +1,6 @@
 #pragma once
 
 
-#include <string>
 
 
 namespace Flowers
@@ -11,13 +10,18 @@ namespace Flowers
       class Board
       {
       private:
+         int cursor_x;
+         int cursor_y;
 
       public:
          Board();
          ~Board();
 
 
-      std::string run();
+      void move_cursor_up();
+      void move_cursor_down();
+      void move_cursor_left();
+      void move_cursor_right();
       };
    }
 }

@@ -30,6 +30,9 @@ properties:
   - name: quote_generator
     type: Flowers::QuoteGenerator
     init_with: "{}"
+  - name: gameboard
+    type: Flowers::Gameplay::Board
+    init_with: "{}"
 functions:
   - name: spawn_quote
     body: |
@@ -85,6 +88,18 @@ functions:
       {
       case ALLEGRO_KEY_1:
          spawn_quote();
+         break;
+      case ALLEGRO_KEY_UP:
+         gameboard.move_cursor_up();
+         break;
+      case ALLEGRO_KEY_DOWN:
+         gameboard.move_cursor_down();
+         break;
+      case ALLEGRO_KEY_RIGHT:
+         gameboard.move_cursor_right();
+         break;
+      case ALLEGRO_KEY_LEFT:
+         gameboard.move_cursor_left();
          break;
       default:
          break;
@@ -156,6 +171,8 @@ functions:
       - Flowers::FlowerUpdater
       - Flowers::FlowerRenderer
 dependencies:
+  - symbol: Flowers::Gameplay::Board
+    headers: [ Flowers/Gameplay/Board.hpp ]
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
   - symbol: ALLEGRO_EVENT*

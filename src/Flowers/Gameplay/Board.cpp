@@ -11,6 +11,8 @@ namespace Gameplay
 
 
 Board::Board()
+   : cursor_x(0)
+   , cursor_y(0)
 {
 }
 
@@ -20,9 +22,28 @@ Board::~Board()
 }
 
 
-std::string Board::run()
+void Board::move_cursor_up()
 {
-return "Hello World!";
+return;
+
+}
+
+void Board::move_cursor_down()
+{
+return;
+
+}
+
+void Board::move_cursor_left()
+{
+return;
+
+}
+
+void Board::move_cursor_right()
+{
+return;
+
 }
 } // namespace Gameplay
 } // namespace Flowers

@@ -24,6 +24,7 @@ GameplayScreen::GameplayScreen(AllegroFlare::FontBin* font_bin, int screen_width
    , gameboard_width((1920 * 0.6))
    , gameboard_height((1080 * 0.5))
    , quote_generator({})
+   , gameboard({})
 {
 }
 
@@ -85,6 +86,18 @@ switch(ev->keyboard.keycode)
 {
 case ALLEGRO_KEY_1:
    spawn_quote();
+   break;
+case ALLEGRO_KEY_UP:
+   gameboard.move_cursor_up();
+   break;
+case ALLEGRO_KEY_DOWN:
+   gameboard.move_cursor_down();
+   break;
+case ALLEGRO_KEY_RIGHT:
+   gameboard.move_cursor_right();
+   break;
+case ALLEGRO_KEY_LEFT:
+   gameboard.move_cursor_left();
    break;
 default:
    break;

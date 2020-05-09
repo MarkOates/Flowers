@@ -1,4 +1,24 @@
+properties:
+  - name: cursor_x
+    type: int
+    init_with: 0
+  - name: cursor_y
+    type: int
+    init_with: 0
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: move_cursor_up
+    type: void
+    body: |
+      return;
+  - name: move_cursor_down
+    type: void
+    body: |
+      return;
+  - name: move_cursor_left
+    type: void
+    body: |
+      return;
+  - name: move_cursor_right
+    type: void
+    body: |
+      return;

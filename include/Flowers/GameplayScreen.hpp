@@ -4,6 +4,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <Flowers/Flower.hpp>
+#include <Flowers/Gameplay/Board.hpp>
 #include <Flowers/LargeTextScroller.hpp>
 #include <Flowers/QuoteGenerator.hpp>
 #include <allegro5/allegro.h>
@@ -23,6 +24,7 @@ namespace Flowers
       int gameboard_width;
       int gameboard_height;
       Flowers::QuoteGenerator quote_generator;
+      Flowers::Gameplay::Board gameboard;
 
    public:
       GameplayScreen(AllegroFlare::FontBin* font_bin=nullptr, int screen_width=1920, int screen_height=1080);
