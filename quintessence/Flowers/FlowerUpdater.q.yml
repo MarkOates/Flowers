@@ -1,0 +1,25 @@
+properties:
+  - name: flower
+    type: Flowers::Flower*
+    init_with: nullptr
+    constructor_arg: true
+functions:
+  - name: update
+    type: void
+    body: |
+      if (!flower) throw std::runtime_error("[Flower::FlowerUpdater.update() error]: You must pass a valid flower");
+
+      float flower_age = flower->get_age();
+      float flower_lifespan = flower->get_lifespan();
+      if (flower_age > flower_lifespan)
+      {
+         flower->set_dead(true);
+      }
+      return;
+    body_dependency_symbols:
+      - std::runtime_error
+dependencies:
+  - symbol: std::runtime_error
+    headers: [ stdexcept ]
+  - symbol: Flowers::Flower*
+    headers: [ Flowers/Flower.hpp ]

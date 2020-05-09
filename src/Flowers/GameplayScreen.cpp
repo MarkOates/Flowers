@@ -4,6 +4,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 #include <allegro_flare/placement2d.h>
+#include <Flowers/FlowerUpdater.hpp>
 #include <Flowers/FlowerRenderer.hpp>
 
 
@@ -15,6 +16,7 @@ GameplayScreen::GameplayScreen(AllegroFlare::FontBin* font_bin, int screen_width
    : AllegroFlare::Screen({})
    , font_bin(font_bin)
    , flowers({})
+   , large_text_scrollers({})
    , screen_width(screen_width)
    , screen_height(screen_height)
    , gameboard_width(600)
@@ -41,6 +43,17 @@ return;
 
 void GameplayScreen::primary_timer_func()
 {
+// update
+
+for (auto &flower : flowers)
+{
+   Flowers::FlowerUpdater updater(&flower);
+   updater.update();
+}
+
+
+// draw
+
 allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_width, gameboard_height);
 place.align = AllegroFlare::vec2d(0.5, 0.5);
 place.start_transform();

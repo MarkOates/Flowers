@@ -10,6 +10,9 @@ properties:
   - name: flowers
     type: std::vector<Flowers::Flower>
     init_with: "{}"
+  - name: large_text_scrollers
+    type: std::vector<Flowers::LargeTextScroller>
+    init_with: "{}"
   - name: screen_width
     type: int
     init_with: 1920
@@ -37,6 +40,17 @@ functions:
   - name: primary_timer_func
     override: true
     body: |
+      // update
+
+      for (auto &flower : flowers)
+      {
+         Flowers::FlowerUpdater updater(&flower);
+         updater.update();
+      }
+
+
+      // draw
+
       allegro_flare::placement2d place(screen_width/2, screen_height/2, gameboard_width, gameboard_height);
       place.align = AllegroFlare::vec2d(0.5, 0.5);
       place.start_transform();
@@ -58,10 +72,13 @@ functions:
       - al_draw_rectangle
       - al_color_name
       - allegro_flare::placement2d
+      - Flowers::FlowerUpdater
       - Flowers::FlowerRenderer
 dependencies:
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
+  - symbol: std::vector<Flowers::LargeTextScroller>
+    headers: [ vector, Flowers/LargeTextScroller.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: AllegroFlare::Screen
@@ -72,5 +89,7 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
+  - symbol: Flowers::FlowerUpdater
+    headers: [ Flowers/FlowerUpdater.hpp ]
   - symbol: Flowers::FlowerRenderer
     headers: [ Flowers/FlowerRenderer.hpp ]

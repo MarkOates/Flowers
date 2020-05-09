@@ -23,6 +23,21 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+  - name: age
+    type: float
+    init_with: 0.0
+    getter: true
+    setter: true
+  - name: lifespan
+    type: float
+    init_with: 10.0
+    getter: true
+    setter: true
+  - name: dead
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
 functions:
   - name: calculate_receptacle_y
     type: float

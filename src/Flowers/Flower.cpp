@@ -13,6 +13,9 @@ Flower::Flower(ALLEGRO_COLOR color, float peduncle_height, float x, float y)
    , peduncle_height(peduncle_height)
    , x(x)
    , y(y)
+   , age(0.0)
+   , lifespan(10.0)
+   , dead(false)
 {
 }
 
@@ -46,6 +49,24 @@ void Flower::set_y(float y)
 }
 
 
+void Flower::set_age(float age)
+{
+   this->age = age;
+}
+
+
+void Flower::set_lifespan(float lifespan)
+{
+   this->lifespan = lifespan;
+}
+
+
+void Flower::set_dead(bool dead)
+{
+   this->dead = dead;
+}
+
+
 ALLEGRO_COLOR Flower::get_color()
 {
    return color;
@@ -67,6 +88,24 @@ float Flower::get_x()
 float Flower::get_y()
 {
    return y;
+}
+
+
+float Flower::get_age()
+{
+   return age;
+}
+
+
+float Flower::get_lifespan()
+{
+   return lifespan;
+}
+
+
+bool Flower::get_dead()
+{
+   return dead;
 }
 
 

@@ -4,6 +4,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <Flowers/Flower.hpp>
+#include <Flowers/LargeTextScroller.hpp>
 #include <vector>
 
 
@@ -14,6 +15,7 @@ namespace Flowers
    private:
       AllegroFlare::FontBin* font_bin;
       std::vector<Flowers::Flower> flowers;
+      std::vector<Flowers::LargeTextScroller> large_text_scrollers;
       int screen_width;
       int screen_height;
       int gameboard_width;
