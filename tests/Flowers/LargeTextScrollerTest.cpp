@@ -1,6 +1,11 @@
 
 #include <gtest/gtest.h>
 
+#define ASSERT_THROW_WITH_MESSAGE(code, raised_exception_type, raised_exception_message) \
+   try { code; FAIL() << "Expected " # raised_exception_type; } \
+   catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
+   catch (...) { FAIL() << "Expected " # raised_exception_type; }
+
 #include <Flowers/LargeTextScroller.hpp>
 
 #include <allegro5/allegro_font.h>
@@ -84,6 +89,13 @@ TEST_F(Flowers_LargeTextScrollerTest, can_be_created_without_blowing_up)
    Flowers::LargeTextScroller large_text_scroller;
 }
 
+TEST_F(Flowers_LargeTextScrollerTest, draw__with_a_nullptr_bitmap_raises_an_exception)
+{
+   std::string expected_error_message = "[Flowers::LargeTextScroller.draw() error]: can not have nullptr bitmap";
+   Flowers::LargeTextScroller large_text_scroller;
+   ASSERT_THROW_WITH_MESSAGE(large_text_scroller.draw(), std::runtime_error, expected_error_message);
+}
+
 // slightly eager test:
 TEST_F(Flowers_LargeTextScrollerTest, draw__will_render_the_text_aligned_at_the_middle)
 {
@@ -112,6 +124,16 @@ TEST_F(Flowers_LargeTextScrollerTest, draw__will_render_the_text_aligned_at_the_
    //sleep(2);
 
    al_destroy_bitmap(text_bitmap);
+}
+
+TEST_F(Flowers_LargeTextScrollerTest, increment_by_step__with_a_nullptr_bitmap_raises_an_exception)
+{
+   al_init_primitives_addon();
+
+   std::string expected_error_message =
+      "[Flowers::LargeTextScroller.increment_by_step() error]: can not have nullptr bitmap";
+   Flowers::LargeTextScroller large_text_scroller;
+   ASSERT_THROW_WITH_MESSAGE(large_text_scroller.increment_by_step(), std::runtime_error, expected_error_message);
 }
 
 // slightly eager test:

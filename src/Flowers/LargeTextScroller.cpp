@@ -1,7 +1,8 @@
 
 
 #include <Flowers/LargeTextScroller.hpp>
-
+#include <sstream>
+#include <sstream>
 
 
 namespace Flowers
@@ -37,6 +38,13 @@ bool LargeTextScroller::get_finished()
 
 void LargeTextScroller::increment_by_step()
 {
+if (!bitmap)
+{
+   std::stringstream error_message;
+   error_message << "[Flowers::LargeTextScroller.increment_by_step() error]: can not have nullptr bitmap";
+   throw std::runtime_error(error_message.str());
+}
+
 if (finished) return;
 offset += (scroll_speed * scale);
 if (offset > (al_get_bitmap_width(bitmap) * scale)) finished = true;
@@ -46,6 +54,8 @@ return;
 
 void LargeTextScroller::draw()
 {
+if (!bitmap) throw std::runtime_error("[Flowers::LargeTextScroller.draw() error]: can not have nullptr bitmap");
+
 float width = al_get_bitmap_width(bitmap);
 float height = al_get_bitmap_height(bitmap);
 float half_height = al_get_bitmap_height(bitmap)/2;

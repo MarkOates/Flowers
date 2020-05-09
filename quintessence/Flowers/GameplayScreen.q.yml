@@ -23,10 +23,10 @@ properties:
     constructor_arg: true
   - name: gameboard_width
     type: int
-    init_with: 600
+    init_with: (1920 * 0.6)
   - name: gameboard_height
     type: int
-    init_with: 300
+    init_with: (1080 * 0.5)
 functions:
   - name: spawn_initial_flowers
     type: void
@@ -64,6 +64,11 @@ functions:
     body: |
       // update
 
+      for (auto &large_text_scroller : large_text_scrollers)
+      {
+         //Flowers::FlowerUpdater updater(&flower);
+         //updater.update();
+      }
       for (auto &flower : flowers)
       {
          Flowers::FlowerUpdater updater(&flower);

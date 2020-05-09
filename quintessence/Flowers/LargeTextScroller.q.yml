@@ -23,13 +23,24 @@ functions:
     private: true
     type: void
     body: |
+      if (!bitmap)
+      {
+         std::stringstream error_message;
+         error_message << "[Flowers::LargeTextScroller.increment_by_step() error]: can not have nullptr bitmap";
+         throw std::runtime_error(error_message.str());
+      }
+
       if (finished) return;
       offset += (scroll_speed * scale);
       if (offset > (al_get_bitmap_width(bitmap) * scale)) finished = true;
       return;
+    body_dependency_symbols:
+      - std::stringstream
   - name: draw
     type: void
     body: |
+      if (!bitmap) throw std::runtime_error("[Flowers::LargeTextScroller.draw() error]: can not have nullptr bitmap");
+
       float width = al_get_bitmap_width(bitmap);
       float height = al_get_bitmap_height(bitmap);
       float half_height = al_get_bitmap_height(bitmap)/2;
@@ -38,6 +49,8 @@ functions:
         -offset, -half_height*scale, width*scale, height*scale,
         0);
       return;
+    body_dependency_symbols:
+      - std::stringstream
 dependencies:
   - symbol: ALLEGRO_BITMAP*
     headers: [ allegro5/allegro.h ]

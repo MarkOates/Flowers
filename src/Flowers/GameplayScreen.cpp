@@ -20,8 +20,8 @@ GameplayScreen::GameplayScreen(AllegroFlare::FontBin* font_bin, int screen_width
    , large_text_scrollers({})
    , screen_width(screen_width)
    , screen_height(screen_height)
-   , gameboard_width(600)
-   , gameboard_height(300)
+   , gameboard_width((1920 * 0.6))
+   , gameboard_height((1080 * 0.5))
 {
 }
 
@@ -68,6 +68,11 @@ void GameplayScreen::primary_timer_func()
 {
 // update
 
+for (auto &large_text_scroller : large_text_scrollers)
+{
+   //Flowers::FlowerUpdater updater(&flower);
+   //updater.update();
+}
 for (auto &flower : flowers)
 {
    Flowers::FlowerUpdater updater(&flower);
