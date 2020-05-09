@@ -69,15 +69,29 @@ return;
 
 }
 
+void FlowerRenderer::render_null_flower()
+{
+ALLEGRO_COLOR null_flower_placeholder_color{64, 64, 64, 64};
+al_draw_filled_circle(0, 0, 10.0f, null_flower_placeholder_color);
+
+}
+
 void FlowerRenderer::render()
 {
 if (!flower) throw std::runtime_error("[Flower::FlowerRenderer.render() error]: You must pass a valid flower");
 //if (!al_is_primitives_addon_initialized())
 //   throw std::runtime_error("[Flower::FlowerRenderer.render() error]: You must al_init_primitives_addon()");
 
-render_peduncle();
-render_petals();
-render_pistil();
+if (flower->get_null_object())
+{
+   render_null_flower();
+}
+else
+{
+   render_peduncle();
+   render_petals();
+   render_pistil();
+}
 
 return;
 

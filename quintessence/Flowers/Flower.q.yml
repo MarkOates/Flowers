@@ -49,6 +49,11 @@ properties:
     init_with: false
     getter: true
     setter: true
+  - name: null_object
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
 functions:
   - name: calculate_receptacle_y
     type: float

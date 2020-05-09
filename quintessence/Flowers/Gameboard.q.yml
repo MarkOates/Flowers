@@ -25,9 +25,9 @@ properties:
   - name: num_rows
     type: int
     init_with: 4
-  - name: featured_flower
-    type: Flowers::Flower
-    init_with: ""
+  - name: featured_flowers
+    type: std::vector<Flowers::Flower>
+    init_with: "{}"
     getter_ref: true
 functions:
   - name: calc_cell_width
@@ -105,7 +105,7 @@ functions:
   - name: pick_flower
     type: void
     body: |
-      featured_flower = flower_at_cursor();
+      featured_flowers.push_back(flower_at_cursor());
 dependencies:
   - symbol: Flowers::Flower*
     headers: [ Flowers/Flower.hpp ]

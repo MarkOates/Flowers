@@ -17,7 +17,7 @@ namespace Flowers
       std::vector<Flowers::Flower> flowers;
       int num_columns;
       int num_rows;
-      Flowers::Flower featured_flower;
+      std::vector<Flowers::Flower> featured_flowers;
 
    public:
       Gameboard();
@@ -29,7 +29,7 @@ namespace Flowers
       int get_width();
       int get_height();
       std::vector<Flowers::Flower> &get_flowers_ref();
-      Flowers::Flower &get_featured_flower_ref();
+      std::vector<Flowers::Flower> &get_featured_flowers_ref();
    float calc_cell_width();
    float calc_cell_height();
    void spawn_initial_flowers();

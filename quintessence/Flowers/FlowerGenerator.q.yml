@@ -16,6 +16,12 @@ functions:
       return al_map_rgb(random_int_incl(0, 255), random_int_incl(0, 255), random_int_incl(0, 255));
     body_dependency_symbols:
       - al_map_rgb
+  - name: generate_null_flower
+    type: Flowers::Flower
+    body: |
+      Flowers::Flower flower;
+      flower.set_null_object(true);
+      return flower;
   - name: generate_random_flower
     type: Flowers::Flower
     body: |

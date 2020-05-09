@@ -26,11 +26,19 @@ void GameboardRenderer::draw_featured_flower()
 {
 //allegro_flare::placement2d featured_flower_placement(flower.get_x(), flower.get_y(), 0, 0);
 //flower_placement.start_transform();
-Flowers::Flower featured_flower = gameboard->get_featured_flower_ref();
 //featured_flower.set_x(50);
 //featured_flower.set_y(200);
-Flowers::FlowerRenderer renderer(&featured_flower);
-renderer.render();
+int cursor_x = 0;
+int spacing_x = 80;
+for (auto &flower : gameboard->get_featured_flowers_ref())
+{
+   allegro_flare::placement2d flower_placement(cursor_x * spacing_x, -100, 0, 0);
+   flower_placement.start_transform();
+   Flowers::FlowerRenderer renderer(&flower);
+   renderer.render();
+   flower_placement.restore_transform();
+   cursor_x++;
+}
 
 }
 

@@ -16,7 +16,7 @@ Gameboard::Gameboard()
    , flowers({})
    , num_columns(6)
    , num_rows(4)
-   , featured_flower()
+   , featured_flowers({})
 {
 }
 
@@ -56,9 +56,9 @@ std::vector<Flowers::Flower> &Gameboard::get_flowers_ref()
 }
 
 
-Flowers::Flower &Gameboard::get_featured_flower_ref()
+std::vector<Flowers::Flower> &Gameboard::get_featured_flowers_ref()
 {
-   return featured_flower;
+   return featured_flowers;
 }
 
 
@@ -145,7 +145,7 @@ return;
 
 void Gameboard::pick_flower()
 {
-featured_flower = flower_at_cursor();
+featured_flowers.push_back(flower_at_cursor());
 
 }
 } // namespace Flowers

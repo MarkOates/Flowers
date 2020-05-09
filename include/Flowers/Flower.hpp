@@ -18,6 +18,7 @@ namespace Flowers
       int num_petals;
       float lifespan;
       bool dead;
+      bool null_object;
 
    public:
       Flower(ALLEGRO_COLOR pistil_color={16,16,32,255}, ALLEGRO_COLOR petal_color={64,16,32,255}, float peduncle_height=5, float x=0, float y=0);
@@ -32,6 +33,7 @@ namespace Flowers
       void set_num_petals(int num_petals);
       void set_lifespan(float lifespan);
       void set_dead(bool dead);
+      void set_null_object(bool null_object);
 
       ALLEGRO_COLOR get_pistil_color();
       ALLEGRO_COLOR get_petal_color();
@@ -42,6 +44,7 @@ namespace Flowers
       int get_num_petals();
       float get_lifespan();
       bool get_dead();
+      bool get_null_object();
    float calculate_receptacle_y();
    };
 }

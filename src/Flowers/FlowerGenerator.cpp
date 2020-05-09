@@ -30,6 +30,14 @@ return al_map_rgb(random_int_incl(0, 255), random_int_incl(0, 255), random_int_i
 
 }
 
+Flowers::Flower FlowerGenerator::generate_null_flower()
+{
+Flowers::Flower flower;
+flower.set_null_object(true);
+return flower;
+
+}
+
 Flowers::Flower FlowerGenerator::generate_random_flower()
 {
 Flowers::Flower flower;

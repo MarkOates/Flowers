@@ -18,6 +18,7 @@ Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float pedu
    , num_petals(6)
    , lifespan(10.0)
    , dead(false)
+   , null_object(false)
 {
 }
 
@@ -81,6 +82,12 @@ void Flower::set_dead(bool dead)
 }
 
 
+void Flower::set_null_object(bool null_object)
+{
+   this->null_object = null_object;
+}
+
+
 ALLEGRO_COLOR Flower::get_pistil_color()
 {
    return pistil_color;
@@ -132,6 +139,12 @@ float Flower::get_lifespan()
 bool Flower::get_dead()
 {
    return dead;
+}
+
+
+bool Flower::get_null_object()
+{
+   return null_object;
 }
 
 

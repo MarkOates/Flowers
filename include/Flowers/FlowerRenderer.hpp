@@ -23,6 +23,7 @@ namespace Flowers
    void render_petals();
    void render_pistil();
    void render_peduncle();
+   void render_null_flower();
    void render();
    };
 }
