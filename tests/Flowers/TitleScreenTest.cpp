@@ -24,7 +24,7 @@ TEST(Flowers_TitleScreenTest, primary_timer_func__draws_the_title)
    title_screen.primary_timer_func();
    al_flip_display();
 
-   sleep(2);
+   //sleep(2);
 
    font_bin.clear();
    al_uninstall_system();

@@ -110,6 +110,6 @@ TEST_F(Flowers_FlowerRendererTest, render__renders_a_flower_with_color)
 
    al_flip_display();
 
-   sleep(2);
+   //sleep(2);
 }
 
