@@ -26,6 +26,7 @@ namespace Flowers
       ~GameplayScreen();
 
 
+   void spawn_initial_flowers();
    void initialize();
    void primary_timer_func() override;
    };
