@@ -94,7 +94,10 @@ TEST_F(Flowers_FlowerRendererTest, render__renders_a_flower_with_default_values)
 
 TEST_F(Flowers_FlowerRendererTest, render__renders_a_flower_with_color)
 {
-   Flowers::Flower flower(al_color_name("aqua"), 40);
+   Flowers::Flower flower;
+   flower.set_pistil_color(al_color_name("aqua"));
+   flower.set_peduncle_height(50);
+   flower.set_petal_color(al_color_name("yellow"));
    Flowers::FlowerRenderer flower_renderer(&flower);
 
    allegro_flare::placement2d place(al_get_display_width(display)/2, al_get_display_height(display)/2, 0, 0);
@@ -107,6 +110,6 @@ TEST_F(Flowers_FlowerRendererTest, render__renders_a_flower_with_color)
 
    al_flip_display();
 
-   //sleep(2);
+   sleep(2);
 }
 

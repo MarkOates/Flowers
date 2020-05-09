@@ -8,12 +8,14 @@ namespace Flowers
 {
 
 
-Flower::Flower(ALLEGRO_COLOR pistil_color, float peduncle_height, float x, float y)
+Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float peduncle_height, float x, float y)
    : pistil_color(pistil_color)
+   , petal_color(petal_color)
    , peduncle_height(peduncle_height)
    , x(x)
    , y(y)
    , age(0.0)
+   , num_petals(6)
    , lifespan(10.0)
    , dead(false)
 {
@@ -28,6 +30,12 @@ Flower::~Flower()
 void Flower::set_pistil_color(ALLEGRO_COLOR pistil_color)
 {
    this->pistil_color = pistil_color;
+}
+
+
+void Flower::set_petal_color(ALLEGRO_COLOR petal_color)
+{
+   this->petal_color = petal_color;
 }
 
 
@@ -55,6 +63,12 @@ void Flower::set_age(float age)
 }
 
 
+void Flower::set_num_petals(int num_petals)
+{
+   this->num_petals = num_petals;
+}
+
+
 void Flower::set_lifespan(float lifespan)
 {
    this->lifespan = lifespan;
@@ -70,6 +84,12 @@ void Flower::set_dead(bool dead)
 ALLEGRO_COLOR Flower::get_pistil_color()
 {
    return pistil_color;
+}
+
+
+ALLEGRO_COLOR Flower::get_petal_color()
+{
+   return petal_color;
 }
 
 
@@ -94,6 +114,12 @@ float Flower::get_y()
 float Flower::get_age()
 {
    return age;
+}
+
+
+int Flower::get_num_petals()
+{
+   return num_petals;
 }
 
 

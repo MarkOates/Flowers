@@ -1,6 +1,8 @@
 
 
 #include <Flowers/FlowerRenderer.hpp>
+#include <cmath>
+#include <cmath>
 #include <stdexcept>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
@@ -15,6 +17,7 @@ FlowerRenderer::FlowerRenderer(Flowers::Flower* flower)
    : flower(flower)
    , outline_thickness(4.0f)
    , outline_color(al_color_name("purple"))
+   , TAU(6.283f)
 {
 }
 
@@ -24,6 +27,24 @@ FlowerRenderer::~FlowerRenderer()
 }
 
 
+void FlowerRenderer::render_petals()
+{
+float petal_radius = 10.0f;
+float anchor_x = 0;
+float anchor_y = flower->calculate_receptacle_y();
+float petal_distance_from_center = 20.0f;
+ALLEGRO_COLOR petal_color = flower->get_petal_color();
+for (int i=0; i<flower->get_num_petals(); i++)
+{
+   float rotation = (float)i / flower->get_num_petals();
+   float x = anchor_x + std::sin(rotation * TAU) * petal_distance_from_center;
+   float y = anchor_y + std::cos(rotation * TAU) * petal_distance_from_center;
+   al_draw_filled_circle(x, -y, petal_radius, petal_color);
+}
+return;
+
+}
+
 void FlowerRenderer::render_pistil()
 {
 float receptacle_y = flower->calculate_receptacle_y();
@@ -32,7 +53,7 @@ float stigma_radius = 10.0f;
 ALLEGRO_COLOR pistil_color = flower->get_pistil_color();
 
 al_draw_filled_circle(0, -y, stigma_radius, pistil_color);
-al_draw_circle(0, -y, stigma_radius, outline_color, outline_thickness);
+//al_draw_circle(0, -y, stigma_radius, outline_color, outline_thickness);
 return;
 
 }
@@ -55,6 +76,7 @@ if (!flower) throw std::runtime_error("[Flower::FlowerRenderer.render() error]: 
 //   throw std::runtime_error("[Flower::FlowerRenderer.render() error]: You must al_init_primitives_addon()");
 
 render_peduncle();
+render_petals();
 render_pistil();
 
 return;

@@ -10,30 +10,36 @@ namespace Flowers
    {
    private:
       ALLEGRO_COLOR pistil_color;
+      ALLEGRO_COLOR petal_color;
       float peduncle_height;
       float x;
       float y;
       float age;
+      int num_petals;
       float lifespan;
       bool dead;
 
    public:
-      Flower(ALLEGRO_COLOR pistil_color={16,16,32,255}, float peduncle_height=5, float x=0, float y=0);
+      Flower(ALLEGRO_COLOR pistil_color={16,16,32,255}, ALLEGRO_COLOR petal_color={64,16,32,255}, float peduncle_height=5, float x=0, float y=0);
       ~Flower();
 
       void set_pistil_color(ALLEGRO_COLOR pistil_color);
+      void set_petal_color(ALLEGRO_COLOR petal_color);
       void set_peduncle_height(float peduncle_height);
       void set_x(float x);
       void set_y(float y);
       void set_age(float age);
+      void set_num_petals(int num_petals);
       void set_lifespan(float lifespan);
       void set_dead(bool dead);
 
       ALLEGRO_COLOR get_pistil_color();
+      ALLEGRO_COLOR get_petal_color();
       float get_peduncle_height();
       float get_x();
       float get_y();
       float get_age();
+      int get_num_petals();
       float get_lifespan();
       bool get_dead();
    float calculate_receptacle_y();

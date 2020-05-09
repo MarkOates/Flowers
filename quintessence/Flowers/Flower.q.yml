@@ -5,6 +5,12 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+  - name: petal_color
+    type: ALLEGRO_COLOR
+    init_with: "{64,16,32,255}"
+    constructor_arg: true
+    getter: true
+    setter: true
   - name: peduncle_height
     type: float
     init_with: 5
@@ -26,6 +32,11 @@ properties:
   - name: age
     type: float
     init_with: 0.0
+    getter: true
+    setter: true
+  - name: num_petals
+    type: int
+    init_with: 6
     getter: true
     setter: true
   - name: lifespan
