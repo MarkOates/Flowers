@@ -95,9 +95,19 @@ return;
 
 }
 
+Flowers::Flower* Gameboard::flower_at(int x, int y)
+{
+if (x < 0 || y < 0) return nullptr;
+if (x >= num_columns || y >= num_rows) return nullptr;
+return &flowers[x + y*num_columns];
+
+}
+
 Flowers::Flower Gameboard::flower_at_cursor()
 {
-return flowers.front();
+Flowers::Flower *flower = flower_at(cursor_x, cursor_y);
+if (!flower) throw std::runtime_error("Flowers/Gameboard.flower_at_cursor unexpectedly returned nullptr");
+return *flower;
 
 }
 

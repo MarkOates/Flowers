@@ -33,6 +33,7 @@ namespace Flowers
    float calc_cell_width();
    float calc_cell_height();
    void spawn_initial_flowers();
+   Flowers::Flower* flower_at(int x=0, int y=0);
    Flowers::Flower flower_at_cursor();
    void move_cursor_up();
    void move_cursor_down();

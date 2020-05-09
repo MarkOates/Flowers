@@ -59,10 +59,25 @@ functions:
       return;
     body_dependency_symbols:
       - Flowers::FlowerGenerator
+  - name: flower_at
+    type: Flowers::Flower*
+    parameters:
+      - name: x
+        type: int
+        default_argument: 0
+      - name: y
+        type: int
+        default_argument: 0
+    body: |
+      if (x < 0 || y < 0) return nullptr;
+      if (x >= num_columns || y >= num_rows) return nullptr;
+      return &flowers[x + y*num_columns];
   - name: flower_at_cursor
     type: Flowers::Flower
     body: |
-      return flowers.front();
+      Flowers::Flower *flower = flower_at(cursor_x, cursor_y);
+      if (!flower) throw std::runtime_error("Flowers/Gameboard.flower_at_cursor unexpectedly returned nullptr");
+      return *flower;
   - name: move_cursor_up
     type: void
     body: |
@@ -92,6 +107,8 @@ functions:
     body: |
       featured_flower = flower_at_cursor();
 dependencies:
+  - symbol: Flowers::Flower*
+    headers: [ Flowers/Flower.hpp ]
   - symbol: Flowers::Flower
     headers: [ Flowers/Flower.hpp ]
   - symbol: std::vector<Flowers::Flower>
