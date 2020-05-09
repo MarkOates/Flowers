@@ -23,6 +23,13 @@ void FlowerUpdater::update()
 {
 if (!flower) throw std::runtime_error("[Flower::FlowerUpdater.update() error]: You must pass a valid flower");
 
+// update flower age
+
+flower->set_age(flower->get_age() + 1);
+
+
+// update flower death
+
 float flower_age = flower->get_age();
 float flower_lifespan = flower->get_lifespan();
 if (flower_age > flower_lifespan)
