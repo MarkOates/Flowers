@@ -5,6 +5,7 @@
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
+#include <Flowers/FlowerRenderer.hpp>
 #include <allegro5/allegro.h>
 
 
@@ -16,6 +17,9 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin)
    : AllegroFlare::Screen({})
    , framework(framework)
    , font_bin(font_bin)
+   , showing_title(true)
+   , flower_of_interest()
+   , state("undefined")
 {
 }
 
@@ -43,6 +47,13 @@ return;
 
 }
 
+void Game::start_game()
+{
+showing_title = false;
+return;
+
+}
+
 void Game::draw_title()
 {
 int display_width = al_get_display_width(infer_display());
@@ -56,6 +67,15 @@ float line_height = al_get_font_line_height(font);
 std::string title = "f  l  o  w  e  r  s";
 al_draw_text(font, color, display_width/2, display_height/2 - line_height/2, ALLEGRO_ALIGN_CENTER, title.c_str());
 
+draw_press_enter_text();
+
+}
+
+void Game::draw_gameplay()
+{
+Flowers::FlowerRenderer(&flower_of_interest).render();
+return;
+
 }
 
 void Game::key_down_func(ALLEGRO_EVENT* ev)
@@ -66,6 +86,7 @@ case ALLEGRO_KEY_ESCAPE:
    framework->shutdown_program = true;
    break;
 case ALLEGRO_KEY_ENTER:
+   start_game();
    break;
 }
 return;
@@ -76,8 +97,10 @@ void Game::primary_timer_func()
 {
 ALLEGRO_COLOR background_color = al_color_html("c6dee7");
 al_clear_to_color(background_color);
-draw_title();
-draw_press_enter_text();
+
+if (showing_title) draw_title();
+else draw_gameplay();
+
 return;
 
 }

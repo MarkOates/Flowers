@@ -37,7 +37,7 @@ return;
 
 void ProgramRunner::destruct()
 {
-//if (initialized) framework.destruct();
+if (initialized) framework.destruct();
 
 }
 

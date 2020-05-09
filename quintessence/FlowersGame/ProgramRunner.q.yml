@@ -23,7 +23,7 @@ functions:
   - name: destruct
     type: void
     body: |
-      //if (initialized) framework.destruct();
+      if (initialized) framework.destruct();
   - name: run
     type: void
     body: |
@@ -40,7 +40,7 @@ functions:
 
       registrar.remove();
 
-      
+
       //destruct();
 
       return;
