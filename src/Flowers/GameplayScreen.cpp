@@ -70,8 +70,7 @@ void GameplayScreen::primary_timer_func()
 
 for (auto &large_text_scroller : large_text_scrollers)
 {
-   //Flowers::FlowerUpdater updater(&flower);
-   //updater.update();
+   large_text_scroller.increment_by_step();
 }
 for (auto &flower : flowers)
 {
