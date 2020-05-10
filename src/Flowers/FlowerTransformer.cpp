@@ -65,6 +65,21 @@ float mix_ratio = 0.2;
 ALLEGRO_COLOR mix = AllegroFlare::color::mix(original_color, variance_color, mix_ratio);
 flower.set_petal_color(mix);
 
+// num petals
+if (random->get_one_in_chance(5))
+{
+   if (random->get_one_in_chance(2))
+   {
+      // add a petal
+      flower.set_num_petals(flower.get_num_petals() + 1);
+   }
+   else
+   {
+      // remove a petal
+      if (flower.get_num_petals() <= 0) flower.set_num_petals(flower.get_num_petals() - 1);
+   }
+}
+
 return flower;
 
 }
