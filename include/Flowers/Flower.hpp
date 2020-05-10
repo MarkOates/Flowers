@@ -48,6 +48,8 @@ namespace Flowers
       float get_lifespan();
       bool get_dead();
       bool get_null_object();
+      float &get_x_ref();
+      float &get_y_ref();
    float calculate_receptacle_y();
    };
 }

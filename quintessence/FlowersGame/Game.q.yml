@@ -11,6 +11,10 @@ properties:
     type: AllegroFlare::FontBin*
     init_with: nullptr
     constructor_arg: true
+  - name: motion
+    type: AllegroFlare::Motion*
+    init_with: nullptr
+    constructor_arg: true
   - name: showing_title
     type: bool
     init_with: true
@@ -43,6 +47,9 @@ functions:
   - name: start_game
     body: |
       showing_title = false;
+      return;
+  - name: reveal_mutations
+    body: |
       return;
   - name: create_mutations
     body: |
@@ -96,7 +103,11 @@ functions:
          start_game();
          break;
       case ALLEGRO_KEY_M:
-         create_mutations();
+         if (mutations.empty())
+         {
+            create_mutations();
+            reveal_mutations();
+         }
          break;
       }
       return;
@@ -130,6 +141,8 @@ dependencies:
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: AllegroFlare::Motion*
+    headers: [ AllegroFlare/Motion.hpp ]
   - symbol: Flowers::FlowerRenderer
     headers: [ Flowers/FlowerRenderer.hpp ]
   - symbol: Flowers::FlowerTransformer

@@ -15,10 +15,11 @@ namespace FlowersGame
 {
 
 
-Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin)
+Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, AllegroFlare::Motion* motion)
    : AllegroFlare::Screen({})
    , framework(framework)
    , font_bin(font_bin)
+   , motion(motion)
    , showing_title(true)
    , flower_of_interest()
    , mutations({})
@@ -53,6 +54,12 @@ return;
 void Game::start_game()
 {
 showing_title = false;
+return;
+
+}
+
+void Game::reveal_mutations()
+{
 return;
 
 }
@@ -104,7 +111,11 @@ case ALLEGRO_KEY_ENTER:
    start_game();
    break;
 case ALLEGRO_KEY_M:
-   create_mutations();
+   if (mutations.empty())
+   {
+      create_mutations();
+      reveal_mutations();
+   }
    break;
 }
 return;

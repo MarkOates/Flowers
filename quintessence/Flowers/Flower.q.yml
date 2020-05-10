@@ -29,12 +29,14 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+    getter_ref: true
   - name: y
     type: float
     init_with: 0
     constructor_arg: true
     getter: true
     setter: true
+    getter_ref: true
   - name: age
     type: float
     init_with: 0.0

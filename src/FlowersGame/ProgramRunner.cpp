@@ -48,7 +48,9 @@ initialize();
 AllegroFlare::FontBin font_bin;
 font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts");
 
-FlowersGame::Game game(&framework, &font_bin);
+AllegroFlare::Motion motion;
+
+FlowersGame::Game game(&framework, &font_bin, &framework.motion());
 AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &game);
 registrar.append();
 

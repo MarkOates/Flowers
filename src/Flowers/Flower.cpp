@@ -161,6 +161,18 @@ bool Flower::get_null_object()
 }
 
 
+float &Flower::get_x_ref()
+{
+   return x;
+}
+
+
+float &Flower::get_y_ref()
+{
+   return y;
+}
+
+
 float Flower::calculate_receptacle_y()
 {
 return peduncle_height;
