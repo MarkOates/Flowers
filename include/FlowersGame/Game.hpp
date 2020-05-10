@@ -7,6 +7,7 @@
 #include <AllegroFlare/Screen.hpp>
 #include <Flowers/Flower.hpp>
 #include <allegro5/allegro.h>
+#include <allegro_flare/placement2d.h>
 #include <string>
 #include <vector>
 
@@ -24,6 +25,7 @@ namespace FlowersGame
       std::vector<Flowers::Flower> mutations;
       std::vector<Flowers::Flower> flower_history;
       std::string state;
+      allegro_flare::placement2d camera_transform;
 
    public:
       Game(AllegroFlare::Framework* framework=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::Motion* motion=nullptr);

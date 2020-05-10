@@ -26,6 +26,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , mutations({})
    , flower_history({})
    , state("undefined")
+   , camera_transform(0, 0, 1920, 1080)
 {
 }
 
@@ -136,7 +137,7 @@ void Game::draw_gameplay()
 {
 // draw flower of focus
 
-allegro_flare::placement2d camera_transform(0, 0, 1920, 1080);
+//allegro_flare::placement2d camera_transform(0, 0, 1920, 1080);
 camera_transform.align = AllegroFlare::vec2d(0.5, 0.5);
 camera_transform.start_reverse_transform();
 
@@ -158,9 +159,7 @@ return;
 
 void Game::key_char_func(ALLEGRO_EVENT* ev)
 {
-switch(ev->keyboard.keycode)
-{
-}
+char char_pressed = ev->keyboard.unichar;
 return;
 
 }
@@ -181,6 +180,30 @@ case ALLEGRO_KEY_M:
       create_mutations();
       reveal_mutations();
    }
+   break;
+case ALLEGRO_KEY_A:
+   if (mutations.size() >= 1) select_mutation(0);
+   break;
+case ALLEGRO_KEY_B:
+   if (mutations.size() >= 2) select_mutation(1);
+   break;
+case ALLEGRO_KEY_C:
+   if (mutations.size() >= 3) select_mutation(2);
+   break;
+case ALLEGRO_KEY_D:
+   if (mutations.size() >= 4) select_mutation(3);
+   break;
+case ALLEGRO_KEY_E:
+   if (mutations.size() >= 5) select_mutation(4);
+   break;
+case ALLEGRO_KEY_F:
+   if (mutations.size() >= 6) select_mutation(5);
+   break;
+case ALLEGRO_KEY_G:
+   if (mutations.size() >= 7) select_mutation(6);
+   break;
+case ALLEGRO_KEY_H:
+   if (mutations.size() >= 8) select_mutation(7);
    break;
 }
 return;
