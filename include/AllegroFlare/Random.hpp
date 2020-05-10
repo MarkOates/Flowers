@@ -44,7 +44,7 @@ namespace AllegroFlare
       int roll_dice(int number_of_die, int sides);
 
       // Returns a random color
-      ALLEGRO_COLOR random_color();
+      ALLEGRO_COLOR get_random_color();
    };
 }
 

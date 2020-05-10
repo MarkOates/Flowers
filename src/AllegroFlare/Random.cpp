@@ -77,7 +77,7 @@ namespace AllegroFlare
 
 
 
-   ALLEGRO_COLOR Random::random_color()
+   ALLEGRO_COLOR Random::get_random_color()
    {
       return al_map_rgb(get_random_int(0, 255), get_random_int(0, 255), get_random_int(0, 255));
    }
