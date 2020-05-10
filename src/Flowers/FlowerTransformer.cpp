@@ -39,7 +39,24 @@ if (!(random))
 Flowers::Flower flower = *source_flower;
 
 // height
-flower.set_peduncle_height(flower.get_peduncle_height() * random->get_random_float(0.7f, 1.24f));
+if (random->get_one_in_chance(3))
+{
+   // jump
+   int length_variance = 13;
+   if (random->get_one_in_chance(2))
+   {
+      flower.set_peduncle_height(flower.get_peduncle_height() - length_variance);
+   }
+   else
+   {
+      flower.set_peduncle_height(flower.get_peduncle_height() + length_variance);
+   }
+}
+else
+{
+   // drift
+   flower.set_peduncle_height(flower.get_peduncle_height() * random->get_random_float(0.7f, 1.24f));
+}
 
 // pedal color
 ALLEGRO_COLOR original_color = flower.get_petal_color();
