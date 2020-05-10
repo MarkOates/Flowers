@@ -30,7 +30,7 @@ flower.set_peduncle_height(flower.get_peduncle_height() * random->get_random_flo
 // pedal color
 ALLEGRO_COLOR original_color = flower.get_petal_color();
 ALLEGRO_COLOR variance_color = random->get_random_color();
-float mix_ratio = 0.9;
+float mix_ratio = 0.1;
 ALLEGRO_COLOR mix = AllegroFlare::color::mix(original_color, variance_color, mix_ratio);
 flower.set_petal_color(mix);
 

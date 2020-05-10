@@ -22,7 +22,7 @@ namespace Flowers
       bool null_object;
 
    public:
-      Flower(ALLEGRO_COLOR pistil_color={16,16,32,255}, ALLEGRO_COLOR petal_color={64,16,32,255}, float peduncle_height=5, float peduncle_thickness=3.0f, float x=0, float y=0);
+      Flower(ALLEGRO_COLOR pistil_color={255,255,255,255}, ALLEGRO_COLOR petal_color={255,255,255,255}, float peduncle_height=5, float peduncle_thickness=3.0f, float x=0, float y=0);
       ~Flower();
 
       void set_pistil_color(ALLEGRO_COLOR pistil_color);

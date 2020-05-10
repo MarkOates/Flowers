@@ -1,13 +1,13 @@
 properties:
   - name: pistil_color
     type: ALLEGRO_COLOR
-    init_with: "{16,16,32,255}"
+    init_with: "{255,255,255,255}"
     constructor_arg: true
     getter: true
     setter: true
   - name: petal_color
     type: ALLEGRO_COLOR
-    init_with: "{64,16,32,255}"
+    init_with: "{255,255,255,255}"
     constructor_arg: true
     getter: true
     setter: true
