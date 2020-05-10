@@ -4,11 +4,66 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: random_int_incl
+    parameters:
+      - name: min
+        type: int
+        default_argument: 0
+      - name: max
+        type: int
+        default_argument: 1
+    type: int
+    body: |
+      return rand()%(max-min+1) + min;
+
+  - name: random_float_incl
+    type: float
+    parameters:
+      - name: min
+        type: int
+        default_argument: 0
+      - name: max
+        type: int
+        default_argument: 1
+    body: |
+      return ((float) rand()/RAND_MAX)*(max-min) + min;
+      //return 0.0f;
+
+  - name: random_color
+    type: ALLEGRO_COLOR
+    body: |
+      return al_map_rgb(random_int_incl(0, 255), random_int_incl(0, 255), random_int_incl(0, 255));
+    body_dependency_symbols:
+      - al_map_rgb
+
+  - name: mutation
+    type: Flowers::Flower
+    body: |
+      Flowers::Flower flower = *source_flower;
+
+      flower.set_peduncle_height(flower.get_peduncle_height() * random_float_incl(0.7f, 1.24f));
+
+      return flower;
+
   - name: mutations
     type: std::vector<Flowers::Flower>
     body: |
-      return {};
+      int number_of_mutations = random_int_incl(3, 7);
+      std::vector<Flowers::Flower> results = {};
+
+      for (int i=0; i<number_of_mutations; i++)
+      {
+         results.push_back(mutation());
+      }
+      return results;
+
 dependencies:
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_map_rgb
+    headers: [ allegro5/allegro.h ]
+  - symbol: Flowers::Flower
+    headers: [ Flowers/Flower.hpp ]
   - symbol: Flowers::Flower*
     headers: [ Flowers/Flower.hpp ]
   - symbol: std::vector<Flowers::Flower>

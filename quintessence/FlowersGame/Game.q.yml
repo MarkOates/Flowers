@@ -28,9 +28,13 @@ properties:
     type: std::string
     init_with: "\"undefined\""
 functions:
+
+
   - name: infer_display
     type: ALLEGRO_DISPLAY*
     body: return al_get_current_display();
+
+
   - name: draw_press_enter_text
     body: |
       int display_width = al_get_display_width(infer_display());
@@ -44,13 +48,35 @@ functions:
     body_dependency_symbols:
       - al_draw_text
       - al_color_name
+
+
   - name: start_game
     body: |
       showing_title = false;
+            create_mutations();
+            reveal_mutations();
       return;
+
+
   - name: reveal_mutations
     body: |
+      float TAU = 3.14159 * 2;
+      //int num_mutations = mutations.size();
+      for (int i=0; i<mutations.size(); i++)
+      {
+         auto &mutation = mutations[i];
+         float delta = (float) i / mutations.size();
+         float radius = 300;
+         float dest_x = std::sin(delta * TAU) * radius;
+         float dest_y = std::cos(delta * TAU) * radius;
+         motion->cmove_to(&mutation.get_x_ref(), dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
+         motion->cmove_to(&mutation.get_y_ref(), dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
+      }
       return;
+    body_dependency_symbols:
+      - cmath
+
+
   - name: create_mutations
     body: |
       Flowers::FlowerTransformer mutator(&flower_of_interest);
@@ -58,6 +84,8 @@ functions:
       return;
     body_dependency_symbols:
       - Flowers::FlowerTransformer
+
+
   - name: draw_title
     body: |
       int display_width = al_get_display_width(infer_display());
@@ -75,18 +103,35 @@ functions:
     body_dependency_symbols:
       - al_draw_text
       - al_color_name
+
+
   - name: draw_gameplay
     type: void
     body: |
-      allegro_flare::placement2d place(0, 0, 1920, 1080);
-      place.align = AllegroFlare::vec2d(0.5, 0.5);
-      place.start_reverse_transform();
+      // draw flower of focus
+
+      allegro_flare::placement2d camera_transform(0, 0, 1920, 1080);
+      camera_transform.align = AllegroFlare::vec2d(0.5, 0.5);
+      camera_transform.start_reverse_transform();
+
       Flowers::FlowerRenderer(&flower_of_interest).render();
-      place.restore_transform();
+
+      for (auto &mutation : mutations)
+      {
+         allegro_flare::placement2d flower_transform(mutation.get_x(), mutation.get_y(), 0, 0);
+         flower_transform.start_transform();
+         Flowers::FlowerRenderer(&mutation).render();
+         flower_transform.restore_transform();
+      }
+
+      camera_transform.restore_transform();
+
       return;
     body_dependency_symbols:
       - Flowers::FlowerRenderer
       - allegro_flare::placement2d
+
+
   - name: key_down_func
     override: true
     parameters:
@@ -111,6 +156,8 @@ functions:
          break;
       }
       return;
+
+
   - name: primary_timer_func
     override: true
     type: void
@@ -124,7 +171,11 @@ functions:
       return;
     body_dependency_symbols:
       - al_clear_to_color
+
+
 dependencies:
+  - symbol: cmath
+    headers: [ cmath ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
   - symbol: al_draw_text

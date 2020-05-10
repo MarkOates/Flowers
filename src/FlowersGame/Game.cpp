@@ -3,6 +3,7 @@
 #include <FlowersGame/Game.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
+#include <cmath>
 #include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
@@ -54,12 +55,26 @@ return;
 void Game::start_game()
 {
 showing_title = false;
+      create_mutations();
+      reveal_mutations();
 return;
 
 }
 
 void Game::reveal_mutations()
 {
+float TAU = 3.14159 * 2;
+//int num_mutations = mutations.size();
+for (int i=0; i<mutations.size(); i++)
+{
+   auto &mutation = mutations[i];
+   float delta = (float) i / mutations.size();
+   float radius = 300;
+   float dest_x = std::sin(delta * TAU) * radius;
+   float dest_y = std::cos(delta * TAU) * radius;
+   motion->cmove_to(&mutation.get_x_ref(), dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
+   motion->cmove_to(&mutation.get_y_ref(), dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
+}
 return;
 
 }
@@ -91,11 +106,24 @@ draw_press_enter_text();
 
 void Game::draw_gameplay()
 {
-allegro_flare::placement2d place(0, 0, 1920, 1080);
-place.align = AllegroFlare::vec2d(0.5, 0.5);
-place.start_reverse_transform();
+// draw flower of focus
+
+allegro_flare::placement2d camera_transform(0, 0, 1920, 1080);
+camera_transform.align = AllegroFlare::vec2d(0.5, 0.5);
+camera_transform.start_reverse_transform();
+
 Flowers::FlowerRenderer(&flower_of_interest).render();
-place.restore_transform();
+
+for (auto &mutation : mutations)
+{
+   allegro_flare::placement2d flower_transform(mutation.get_x(), mutation.get_y(), 0, 0);
+   flower_transform.start_transform();
+   Flowers::FlowerRenderer(&mutation).render();
+   flower_transform.restore_transform();
+}
+
+camera_transform.restore_transform();
+
 return;
 
 }

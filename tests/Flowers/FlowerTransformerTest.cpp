@@ -10,7 +10,8 @@ TEST(Flowers_FlowerTransformerTest, can_be_created_without_blowing_up)
 
 TEST(Flowers_FlowerTransformerTest, mutations__returns_mutations_of_the_input_flower)
 {
-   Flowers::FlowerTransformer flower_transformer;
+   Flowers::Flower flower;
+   Flowers::FlowerTransformer flower_transformer(&flower);
    flower_transformer.mutations();
    SUCCEED();
 }
