@@ -32,6 +32,7 @@ namespace FlowersGame
    ALLEGRO_DISPLAY* infer_display();
    void draw_press_enter_text();
    void start_game();
+   void clear_mutations();
    void reveal_mutations();
    void create_mutations();
    void draw_title();

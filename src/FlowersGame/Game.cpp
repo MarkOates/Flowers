@@ -55,9 +55,19 @@ return;
 void Game::start_game()
 {
 showing_title = false;
-      create_mutations();
-      reveal_mutations();
 return;
+
+}
+
+void Game::clear_mutations()
+{
+for (int i=0; i<mutations.size(); i++)
+{
+   auto &mutation = mutations[i];
+   motion->clear_animations_on(&mutation.get_x_ref());
+   motion->clear_animations_on(&mutation.get_y_ref());
+}
+mutations.clear();
 
 }
 
@@ -82,14 +92,11 @@ return;
 
 void Game::create_mutations()
 {
-for (int i=0; i<mutations.size(); i++)
-{
-   auto &mutation = mutations[i];
-   motion->clear_animations_on(&mutation.get_x_ref());
-   motion->clear_animations_on(&mutation.get_y_ref());
-}
+clear_mutations();
+
 Flowers::FlowerTransformer mutator(&flower_of_interest);
 mutations = mutator.mutations();
+
 return;
 
 }

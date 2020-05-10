@@ -15,3 +15,11 @@ TEST(Flowers_FlowerTransformerTest, mutations__returns_mutations_of_the_input_fl
    flower_transformer.mutations();
    SUCCEED();
 }
+
+#include <FlowersGame/ProgramRunner.hpp>
+
+TEST(xGameRun, run_the_program)
+{
+   FlowersGame::ProgramRunner().run();
+}
+
