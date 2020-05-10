@@ -26,7 +26,7 @@ void QuoteSpawner::update()
 if (!(font_bin))
 {
    std::stringstream error_message;
-   error_message << "QuoteSpawner" << "::" << "update" << ": error: " << "guard not met";
+   error_message << "QuoteSpawner" << "::" << "update" << ": error: " << "guard \"font_bin\" not met";
    throw std::runtime_error(error_message.str());
 }
 for (auto &large_text_scroller : large_text_scrollers)
