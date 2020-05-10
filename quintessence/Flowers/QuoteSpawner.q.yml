@@ -1,0 +1,39 @@
+properties:
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+  - name: quote_generator
+    type: Flowers::QuoteGenerator
+    init_with: ""
+  - name: large_text_scrollers
+    type: std::vector<Flowers::LargeTextScroller>
+    init_with: "{}"
+functions:
+ # Poly-Italic.otf
+  - name: update
+    guards: [ font_bin ]
+    body: |
+      for (auto &large_text_scroller : large_text_scrollers)
+      {
+         large_text_scroller.increment_by_step();
+      }
+      return;
+    body_dependency_symbols:
+      - std::stringstream
+  - name: draw
+    body: |
+      for (auto &large_text_scroller : large_text_scrollers)
+      {
+         large_text_scroller.draw();
+      }
+      return;
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: std::vector<Flowers::LargeTextScroller>
+    headers: [ vector, Flowers/LargeTextScroller.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: Flowers::QuoteGenerator
+    headers: [ Flowers/QuoteGenerator.hpp ]
