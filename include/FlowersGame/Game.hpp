@@ -4,6 +4,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Motion.hpp>
+#include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <Flowers/Flower.hpp>
 #include <allegro5/allegro.h>
@@ -26,6 +27,7 @@ namespace FlowersGame
       std::vector<Flowers::Flower> flower_history;
       std::string state;
       allegro_flare::placement2d camera_transform;
+      AllegroFlare::Random random;
 
    public:
       Game(AllegroFlare::Framework* framework=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::Motion* motion=nullptr);

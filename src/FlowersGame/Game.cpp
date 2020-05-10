@@ -27,6 +27,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , flower_history({})
    , state("undefined")
    , camera_transform(0, 0, 1920, 1080)
+   , random(12345)
 {
 }
 
@@ -99,7 +100,7 @@ void Game::create_mutations()
 {
 clear_mutations();
 
-Flowers::FlowerTransformer mutator(&flower_of_interest);
+Flowers::FlowerTransformer mutator(&flower_of_interest, &random);
 mutations = mutator.mutations();
 
 return;

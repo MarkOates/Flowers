@@ -33,6 +33,9 @@ properties:
   - name: camera_transform
     type: allegro_flare::placement2d
     init_with: "0, 0, 1920, 1080"
+  - name: random
+    type: AllegroFlare::Random
+    init_with: "12345"
 functions:
 
 
@@ -100,7 +103,7 @@ functions:
     body: |
       clear_mutations();
 
-      Flowers::FlowerTransformer mutator(&flower_of_interest);
+      Flowers::FlowerTransformer mutator(&flower_of_interest, &random);
       mutations = mutator.mutations();
 
       return;
@@ -299,6 +302,8 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_DISPLAY*
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Random
+    headers: [ AllegroFlare/Random.hpp ]
   - symbol: AllegroFlare::Framework*
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::FontBin*
