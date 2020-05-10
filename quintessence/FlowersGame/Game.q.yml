@@ -24,6 +24,9 @@ properties:
   - name: mutations
     type: std::vector<Flowers::Flower>
     init_with: "{}"
+  - name: flower_history
+    type: std::vector<Flowers::Flower>
+    init_with: "{}"
   - name: state
     type: std::string
     init_with: "\"undefined\""
@@ -99,6 +102,22 @@ functions:
       - Flowers::FlowerTransformer
 
 
+  - name: select_mutation
+    parameters:
+      - name: index
+        type: int
+        default_argument: 0
+    body: |
+      if (index < 0 || index >= mutations.size())
+      {
+         throw std::runtime_error("could not select mutation, index out of bounds");
+      }
+
+      flower_history.push_back(flower_of_interest);
+      flower_of_interest = mutations[index];
+      return;
+
+
   - name: draw_title
     body: |
       int display_width = al_get_display_width(infer_display());
@@ -144,6 +163,18 @@ functions:
       - Flowers::FlowerRenderer
       - allegro_flare::placement2d
 
+
+  - name: key_char_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      switch(ev->keyboard.keycode)
+      {
+      }
+      return;
 
   - name: key_down_func
     override: true

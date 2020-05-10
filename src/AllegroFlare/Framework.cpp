@@ -368,7 +368,7 @@ namespace AllegroFlare
             screens.key_up_funcs();
             break;
          case ALLEGRO_EVENT_KEY_CHAR:
-            screens.key_char_funcs();
+            screens.key_char_funcs(&this_event);
             break;
          case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
             screens.mouse_up_funcs();

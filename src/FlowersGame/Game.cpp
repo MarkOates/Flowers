@@ -24,6 +24,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , showing_title(true)
    , flower_of_interest()
    , mutations({})
+   , flower_history({})
    , state("undefined")
 {
 }
@@ -101,6 +102,19 @@ return;
 
 }
 
+void Game::select_mutation(int index)
+{
+if (index < 0 || index >= mutations.size())
+{
+   throw std::runtime_error("could not select mutation, index out of bounds");
+}
+
+flower_history.push_back(flower_of_interest);
+flower_of_interest = mutations[index];
+return;
+
+}
+
 void Game::draw_title()
 {
 int display_width = al_get_display_width(infer_display());
@@ -138,6 +152,15 @@ for (auto &mutation : mutations)
 
 camera_transform.restore_transform();
 
+return;
+
+}
+
+void Game::key_char_func(ALLEGRO_EVENT* ev)
+{
+switch(ev->keyboard.keycode)
+{
+}
 return;
 
 }

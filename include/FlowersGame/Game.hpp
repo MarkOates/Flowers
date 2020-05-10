@@ -22,6 +22,7 @@ namespace FlowersGame
       bool showing_title;
       Flowers::Flower flower_of_interest;
       std::vector<Flowers::Flower> mutations;
+      std::vector<Flowers::Flower> flower_history;
       std::string state;
 
    public:
@@ -35,8 +36,10 @@ namespace FlowersGame
    void clear_mutations();
    void reveal_mutations();
    void create_mutations();
+   void select_mutation(int index=0);
    void draw_title();
    void draw_gameplay();
+   void key_char_func(ALLEGRO_EVENT* ev=nullptr) override;
    void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
    void primary_timer_func() override;
    };

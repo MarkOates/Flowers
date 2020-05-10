@@ -34,7 +34,7 @@ namespace AllegroFlare
       void mouse_warp_funcs();
       void mouse_down_funcs();
       void mouse_up_funcs();
-      void key_char_funcs();
+      void key_char_funcs(ALLEGRO_EVENT *ev);
       void joy_button_down_funcs();
       void joy_button_up_funcs();
       void joy_axis_funcs();
