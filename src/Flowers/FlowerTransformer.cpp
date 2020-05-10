@@ -46,9 +46,9 @@ Flowers::Flower flower = *source_flower;
 flower.set_peduncle_height(flower.get_peduncle_height() * random_float_incl(0.7f, 1.24f));
 ALLEGRO_COLOR original_color = flower.get_petal_color();
 ALLEGRO_COLOR variance_color = random_color();
-float mix_ratio = 0.2;
+float mix_ratio = 0.3;
 ALLEGRO_COLOR mix = AllegroFlare::color::mix(original_color, variance_color, mix_ratio);
-flower.set_petal_color(random_color());
+flower.set_petal_color(mix);
 
 return flower;
 

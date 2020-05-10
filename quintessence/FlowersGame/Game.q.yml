@@ -77,13 +77,16 @@ functions:
     body: |
       float TAU = 3.14159 * 2;
       //int num_mutations = mutations.size();
+      float source_flower_x = flower_of_interest.get_x();
+      float source_flower_y = flower_of_interest.get_y();
+
       for (int i=0; i<mutations.size(); i++)
       {
          auto &mutation = mutations[i];
          float delta = (float) i / mutations.size();
          float radius = 300;
-         float dest_x = std::sin(delta * TAU) * radius;
-         float dest_y = std::cos(delta * TAU) * radius;
+         float dest_x = std::sin(delta * TAU) * radius + source_flower_x;
+         float dest_y = std::cos(delta * TAU) * radius + source_flower_y;
 
          motion->cmove_to(&mutation.get_x_ref(), dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
          motion->cmove_to(&mutation.get_y_ref(), dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
@@ -105,6 +108,21 @@ functions:
       - Flowers::FlowerTransformer
 
 
+
+  - name: move_camera_to
+    parameters:
+      - name: dest_x
+        type: float
+        default_argument: 0.0f
+      - name: dest_y
+        type: float
+        default_argument: 0.0f
+    body: |
+      motion->cmove_to(&camera_transform.position.x, dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
+      motion->cmove_to(&camera_transform.position.y, dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
+      return;
+
+
   - name: select_mutation
     parameters:
       - name: index
@@ -118,6 +136,10 @@ functions:
 
       flower_history.push_back(flower_of_interest);
       flower_of_interest = mutations[index];
+      move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());
+
+      clear_mutations();
+
       return;
 
 
@@ -149,14 +171,33 @@ functions:
       camera_transform.align = AllegroFlare::vec2d(0.5, 0.5);
       camera_transform.start_reverse_transform();
 
-      Flowers::FlowerRenderer(&flower_of_interest).render();
+      // draw flower history
 
-      for (auto &mutation : mutations)
+      for (auto &flower : mutations)
       {
-         allegro_flare::placement2d flower_transform(mutation.get_x(), mutation.get_y(), 0, 0);
+         allegro_flare::placement2d flower_transform(flower.get_x(), flower.get_y(), 0, 0);
          flower_transform.start_transform();
-         Flowers::FlowerRenderer(&mutation).render();
+         Flowers::FlowerRenderer(&flower).render();
          flower_transform.restore_transform();
+      }
+
+      // draw flower of interest
+
+      allegro_flare::placement2d flower_transform(flower_of_interest.get_x(), flower_of_interest.get_y(), 0, 0);
+      flower_transform.start_transform();
+      Flowers::FlowerRenderer(&flower_of_interest).render();
+      flower_transform.restore_transform();
+
+      // draw mutations
+
+      int mutation_num = 0;
+      for (auto &flower : mutations)
+      {
+         allegro_flare::placement2d flower_transform(flower.get_x(), flower.get_y(), 0, 0);
+         flower_transform.start_transform();
+         Flowers::FlowerRenderer(&flower).render();
+         flower_transform.restore_transform();
+         mutation_num++;
       }
 
       camera_transform.restore_transform();

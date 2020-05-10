@@ -38,6 +38,7 @@ namespace FlowersGame
    void clear_mutations();
    void reveal_mutations();
    void create_mutations();
+   void move_camera_to(float dest_x=0.0f, float dest_y=0.0f);
    void select_mutation(int index=0);
    void draw_title();
    void draw_gameplay();
