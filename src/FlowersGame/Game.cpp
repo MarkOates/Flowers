@@ -72,6 +72,7 @@ for (int i=0; i<mutations.size(); i++)
    float radius = 300;
    float dest_x = std::sin(delta * TAU) * radius;
    float dest_y = std::cos(delta * TAU) * radius;
+
    motion->cmove_to(&mutation.get_x_ref(), dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
    motion->cmove_to(&mutation.get_y_ref(), dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
 }
@@ -81,6 +82,12 @@ return;
 
 void Game::create_mutations()
 {
+for (int i=0; i<mutations.size(); i++)
+{
+   auto &mutation = mutations[i];
+   motion->clear_animations_on(&mutation.get_x_ref());
+   motion->clear_animations_on(&mutation.get_y_ref());
+}
 Flowers::FlowerTransformer mutator(&flower_of_interest);
 mutations = mutator.mutations();
 return;

@@ -2,6 +2,7 @@
 
 #include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
+#include <AllegroFlare/Color.hpp>
 
 
 namespace Flowers
@@ -43,6 +44,8 @@ Flowers::Flower FlowerTransformer::mutation()
 Flowers::Flower flower = *source_flower;
 
 flower.set_peduncle_height(flower.get_peduncle_height() * random_float_incl(0.7f, 1.24f));
+ALLEGRO_COLOR mix = AllegroFlare::color::mix(random_color(), flower.get_petal_color(), 0.5);
+flower.set_petal_color(mix);
 
 return flower;
 

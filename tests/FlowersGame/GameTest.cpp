@@ -37,7 +37,7 @@ TEST(DISABLED_FlowersGame_GameTest, primary_timer_func__draws_the_title)
 
 #include <FlowersGame/ProgramRunner.hpp>
 
-TEST(FlowersGame_ProgramRunnerTest, run__will_run_the_program)
+TEST(GameRun, run__will_run_the_program)
 {
    FlowersGame::ProgramRunner program_runner;
 
