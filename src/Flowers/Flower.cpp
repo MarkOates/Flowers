@@ -41,12 +41,6 @@ void Flower::set_petal_color(ALLEGRO_COLOR petal_color)
 }
 
 
-void Flower::set_peduncle_height(float peduncle_height)
-{
-   this->peduncle_height = peduncle_height;
-}
-
-
 void Flower::set_peduncle_thickness(float peduncle_thickness)
 {
    this->peduncle_thickness = peduncle_thickness;
@@ -176,6 +170,13 @@ float &Flower::get_y_ref()
 float Flower::calculate_receptacle_y()
 {
 return peduncle_height;
+}
+
+void Flower::set_peduncle_height(float peduncle_height)
+{
+if (peduncle_height <= 0) this->peduncle_height = 0;
+else this->peduncle_height = peduncle_height;
+
 }
 } // namespace Flowers
 

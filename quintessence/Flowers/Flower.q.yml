@@ -16,7 +16,6 @@ properties:
     init_with: 5
     constructor_arg: true
     getter: true
-    setter: true
   - name: peduncle_thickness
     type: float
     init_with: 3.0f
@@ -66,6 +65,14 @@ functions:
   - name: calculate_receptacle_y
     type: float
     body: return peduncle_height;
+  - name: set_peduncle_height
+    parameters:
+      - name: peduncle_height
+        type: float
+        default_argument: 5
+    body: |
+      if (peduncle_height <= 0) this->peduncle_height = 0;
+      else this->peduncle_height = peduncle_height;
 dependencies:
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]

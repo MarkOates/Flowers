@@ -27,7 +27,6 @@ namespace Flowers
 
       void set_pistil_color(ALLEGRO_COLOR pistil_color);
       void set_petal_color(ALLEGRO_COLOR petal_color);
-      void set_peduncle_height(float peduncle_height);
       void set_peduncle_thickness(float peduncle_thickness);
       void set_x(float x);
       void set_y(float y);
@@ -51,6 +50,7 @@ namespace Flowers
       float &get_x_ref();
       float &get_y_ref();
    float calculate_receptacle_y();
+   void set_peduncle_height(float peduncle_height=5);
    };
 }
 
