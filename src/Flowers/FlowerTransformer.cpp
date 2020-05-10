@@ -8,7 +8,8 @@ namespace Flowers
 {
 
 
-FlowerTransformer::FlowerTransformer()
+FlowerTransformer::FlowerTransformer(Flowers::Flower* source_flower)
+   : source_flower(source_flower)
 {
 }
 

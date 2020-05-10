@@ -1,8 +1,15 @@
+properties:
+  - name: source_flower
+    type: Flowers::Flower*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: mutations
     type: std::vector<Flowers::Flower>
     body: |
       return {};
 dependencies:
+  - symbol: Flowers::Flower*
+    headers: [ Flowers/Flower.hpp ]
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]

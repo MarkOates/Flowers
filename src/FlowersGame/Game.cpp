@@ -3,6 +3,7 @@
 #include <FlowersGame/Game.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
+#include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <Flowers/FlowerRenderer.hpp>
@@ -20,6 +21,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin)
    , font_bin(font_bin)
    , showing_title(true)
    , flower_of_interest()
+   , mutations({})
    , state("undefined")
 {
 }
@@ -51,6 +53,14 @@ return;
 void Game::start_game()
 {
 showing_title = false;
+return;
+
+}
+
+void Game::create_mutations()
+{
+Flowers::FlowerTransformer mutator(&flower_of_interest);
+mutations = mutator.mutations();
 return;
 
 }
@@ -92,6 +102,9 @@ case ALLEGRO_KEY_ESCAPE:
    break;
 case ALLEGRO_KEY_ENTER:
    start_game();
+   break;
+case ALLEGRO_KEY_M:
+   create_mutations();
    break;
 }
 return;

@@ -17,6 +17,9 @@ properties:
   - name: flower_of_interest
     type: Flowers::Flower
     init_with: ""
+  - name: mutations
+    type: std::vector<Flowers::Flower>
+    init_with: "{}"
   - name: state
     type: std::string
     init_with: "\"undefined\""
@@ -41,6 +44,13 @@ functions:
     body: |
       showing_title = false;
       return;
+  - name: create_mutations
+    body: |
+      Flowers::FlowerTransformer mutator(&flower_of_interest);
+      mutations = mutator.mutations();
+      return;
+    body_dependency_symbols:
+      - Flowers::FlowerTransformer
   - name: draw_title
     body: |
       int display_width = al_get_display_width(infer_display());
@@ -85,6 +95,9 @@ functions:
       case ALLEGRO_KEY_ENTER:
          start_game();
          break;
+      case ALLEGRO_KEY_M:
+         create_mutations();
+         break;
       }
       return;
   - name: primary_timer_func
@@ -119,7 +132,11 @@ dependencies:
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Flowers::FlowerRenderer
     headers: [ Flowers/FlowerRenderer.hpp ]
+  - symbol: Flowers::FlowerTransformer
+    headers: [ Flowers/FlowerTransformer.hpp ]
   - symbol: Flowers::Flower
     headers: [ Flowers/Flower.hpp ]
   - symbol: allegro_flare::placement2d
     headers: [ allegro_flare/placement2d.h ]
+  - symbol: std::vector<Flowers::Flower>
+    headers: [ vector, Flowers/Flower.hpp ]

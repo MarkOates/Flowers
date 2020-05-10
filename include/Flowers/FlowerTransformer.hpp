@@ -10,9 +10,10 @@ namespace Flowers
    class FlowerTransformer
    {
    private:
+      Flowers::Flower* source_flower;
 
    public:
-      FlowerTransformer();
+      FlowerTransformer(Flowers::Flower* source_flower=nullptr);
       ~FlowerTransformer();
 
 
