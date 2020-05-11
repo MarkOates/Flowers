@@ -55,3 +55,14 @@ TEST(Flowers_FlowerTest, calc_petal_color_saturation__returns_the_saturation_of_
    //ASSERT_EQ(0.453781f, flower.calc_petal_color_saturation());
 }
 
+TEST(Flowers_FlowerTest, infer_has_dark_petals__returns_true_if_the_value_of_the_petal_is_less_than_0_45)
+{
+   Flowers::Flower flower;
+   flower.set_petal_color(al_color_name("black"));
+   ASSERT_EQ(true, flower.infer_has_dark_petals());
+   flower.set_petal_color(al_color_name("midnightblue"));
+   ASSERT_EQ(true, flower.infer_has_dark_petals());
+   flower.set_petal_color(al_color_name("mediumblue"));
+   ASSERT_EQ(false, flower.infer_has_dark_petals());
+}
+

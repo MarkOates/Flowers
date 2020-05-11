@@ -77,6 +77,11 @@ properties:
     getter: true
     setter: true
 functions:
+  - name: infer_has_dark_petals
+    type: bool
+    body: |
+      float value = calc_petal_color_value();
+      return (value < 0.45f);
   - name: calc_petal_color_value
     type: float
     body: |

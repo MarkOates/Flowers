@@ -208,6 +208,13 @@ float &Flower::get_y_ref()
 }
 
 
+bool Flower::infer_has_dark_petals()
+{
+float value = calc_petal_color_value();
+return (value < 0.45f);
+
+}
+
 float Flower::calc_petal_color_value()
 {
 ALLEGRO_COLOR color = get_petal_color();

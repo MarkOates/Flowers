@@ -4,9 +4,7 @@ functions:
     type: bool
     override: true
     body: |
-      float value = game->get_flower_of_interest().calc_petal_color_value();
-      if (value < 0.2f) return true;
-      return false;
+      return game->get_flower_of_interest().infer_has_dark_petals();
     body_dependency_symbols:
       - al_color_rgb_to_hsl
   - name: on_achieved

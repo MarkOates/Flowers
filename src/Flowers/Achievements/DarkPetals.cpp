@@ -24,9 +24,7 @@ DarkPetals::~DarkPetals()
 
 bool DarkPetals::test_condition()
 {
-float value = game->get_flower_of_interest().calc_petal_color_value();
-if (value < 0.2f) return true;
-return false;
+return game->get_flower_of_interest().infer_has_dark_petals();
 
 }
 
