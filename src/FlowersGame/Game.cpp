@@ -40,6 +40,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , achieved({})
    , selection_time(0.0f)
    , quote_spawner(font_bin)
+   , num_generations(0)
 {
 }
 
@@ -113,6 +114,7 @@ return;
 void Game::start_game()
 {
 load_achievements();
+num_generations = 0;
 showing_title = false;
 flower_of_interest = Flowers::Flower();
 flower_of_interest.set_created_at(al_get_time());
@@ -205,7 +207,9 @@ clear_mutations();
 
 check_achievements();
 
-quote_spawner.spawn();
+num_generations++;
+
+if (num_generations % 20 == 10) quote_spawner.spawn();
 
 set_selection_time(al_get_time());
 

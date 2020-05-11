@@ -34,6 +34,7 @@ namespace FlowersGame
       std::vector<std::string> achieved;
       float selection_time;
       Flowers::QuoteSpawner quote_spawner;
+      int num_generations;
 
    public:
       Game(AllegroFlare::Framework* framework=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::Motion* motion=nullptr);
