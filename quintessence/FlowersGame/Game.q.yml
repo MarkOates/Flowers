@@ -51,7 +51,7 @@ properties:
     setter: true
   - name: quote_spawner
     type: Flowers::QuoteSpawner
-    init_with: "{}"
+    init_with: "font_bin"
 functions:
   - name: dump_flower_of_interest_stats
     body: |
@@ -299,6 +299,7 @@ functions:
 
       // draw achievements
 
+      quote_spawner.draw();
       draw_achievements();
 
       return;
@@ -377,6 +378,7 @@ functions:
       al_clear_to_color(background_color);
 
       check_achievements();
+      quote_spawner.update();
 
       if (flower_of_interest.calc_offspring_duration() > flower_of_interest.get_speed_sec()
          && !flower_of_interest.get_spawned_offspring())

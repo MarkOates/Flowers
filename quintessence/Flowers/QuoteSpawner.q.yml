@@ -2,6 +2,7 @@ properties:
   - name: font_bin
     type: AllegroFlare::FontBin*
     init_with: nullptr
+    constructor_arg: true
   - name: quote_generator
     type: Flowers::QuoteGenerator
     init_with: ""

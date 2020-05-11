@@ -39,7 +39,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , achievements({})
    , achieved({})
    , selection_time(0.0f)
-   , quote_spawner({})
+   , quote_spawner(font_bin)
 {
 }
 
@@ -303,6 +303,7 @@ camera_transform.restore_transform();
 
 // draw achievements
 
+quote_spawner.draw();
 draw_achievements();
 
 return;
@@ -368,6 +369,7 @@ ALLEGRO_COLOR background_color = al_color_html("c6dee7");
 al_clear_to_color(background_color);
 
 check_achievements();
+quote_spawner.update();
 
 if (flower_of_interest.calc_offspring_duration() > flower_of_interest.get_speed_sec()
    && !flower_of_interest.get_spawned_offspring())

@@ -13,8 +13,8 @@ namespace Flowers
 {
 
 
-QuoteSpawner::QuoteSpawner()
-   : font_bin(nullptr)
+QuoteSpawner::QuoteSpawner(AllegroFlare::FontBin* font_bin)
+   : font_bin(font_bin)
    , quote_generator()
    , large_text_scrollers({})
 {

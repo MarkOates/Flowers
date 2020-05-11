@@ -18,7 +18,7 @@ namespace Flowers
       std::vector<Flowers::LargeTextScroller> large_text_scrollers;
 
    public:
-      QuoteSpawner();
+      QuoteSpawner(AllegroFlare::FontBin* font_bin=nullptr);
       ~QuoteSpawner();
 
 
