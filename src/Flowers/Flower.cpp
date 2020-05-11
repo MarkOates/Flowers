@@ -1,6 +1,8 @@
 
 
 #include <Flowers/Flower.hpp>
+#include <allegro5/allegro_color.h>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro.h>
 
 
@@ -205,6 +207,24 @@ float &Flower::get_y_ref()
    return y;
 }
 
+
+float Flower::calc_petal_color_value()
+{
+ALLEGRO_COLOR color = get_petal_color();
+float h, s, v;
+al_color_rgb_to_hsv(color.r, color.g, color.b, &h, &s, &v);
+return v;
+
+}
+
+float Flower::calc_petal_color_saturation()
+{
+ALLEGRO_COLOR color = get_petal_color();
+float h, s, v;
+al_color_rgb_to_hsv(color.r, color.g, color.b, &h, &s, &v);
+return s;
+
+}
 
 float Flower::calc_offspring_duration()
 {

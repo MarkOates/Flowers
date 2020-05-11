@@ -77,6 +77,24 @@ properties:
     getter: true
     setter: true
 functions:
+  - name: calc_petal_color_value
+    type: float
+    body: |
+      ALLEGRO_COLOR color = get_petal_color();
+      float h, s, v;
+      al_color_rgb_to_hsv(color.r, color.g, color.b, &h, &s, &v);
+      return v;
+    body_dependency_symbols:
+      - al_color_rgb_to_hsv
+  - name: calc_petal_color_saturation
+    type: float
+    body: |
+      ALLEGRO_COLOR color = get_petal_color();
+      float h, s, v;
+      al_color_rgb_to_hsv(color.r, color.g, color.b, &h, &s, &v);
+      return s;
+    body_dependency_symbols:
+      - al_color_rgb_to_hsv
   - name: calc_offspring_duration
     type: float
     body: |
@@ -95,6 +113,8 @@ functions:
       if (peduncle_height <= 0) this->peduncle_height = 0;
       else this->peduncle_height = peduncle_height;
 dependencies:
+  - symbol: al_color_rgb_to_hsv
+    headers: [ allegro5/allegro_color.h ]
   - symbol: al_get_time
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_COLOR

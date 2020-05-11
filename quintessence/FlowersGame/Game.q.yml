@@ -77,6 +77,7 @@ functions:
       achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
       achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
       achievements.add("Saturated Color", new Flowers::Achievements::Saturated(this));
+      achievements.add("Dark Petals", new Flowers::Achievements::DarkPetals(this));
       return;
     body_dependency_symbols:
       - al_draw_text
@@ -424,3 +425,4 @@ dependencies:
       - Flowers/Achievements/FourLeaf.hpp
       - Flowers/Achievements/Peduncle.hpp
       - Flowers/Achievements/Saturated.hpp
+      - Flowers/Achievements/DarkPetals.hpp

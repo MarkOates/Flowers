@@ -3,6 +3,8 @@
 
 #include <Flowers/Flower.hpp>
 
+#include <allegro5/allegro_color.h>
+
 TEST(Flowers_FlowerTest, can_be_created_without_blowing_up)
 {
    Flowers::Flower flower;
@@ -25,5 +27,31 @@ TEST(Flowers_FlowerTest, speed_sec__is_initialized_with_2)
 {
    Flowers::Flower flower;
    ASSERT_EQ(3.0f, flower.get_speed_sec());
+}
+
+TEST(Flowers_FlowerTest, calc_petal_color_value__returns_the_value_of_the_petal_color)
+{
+   Flowers::Flower flower;
+   flower.set_petal_color(al_color_name("black"));
+   ASSERT_EQ(0.0, flower.calc_petal_color_value());
+   flower.set_petal_color(al_color_name("white"));
+   ASSERT_EQ(1.0, flower.calc_petal_color_value());
+   flower.set_petal_color(al_color_name("gray"));
+   //ASSERT_EQ(0.501961f, flower.calc_petal_color_value());
+}
+
+TEST(Flowers_FlowerTest, calc_petal_color_saturation__returns_the_saturation_of_the_petal_color)
+{
+   Flowers::Flower flower;
+   flower.set_petal_color(al_color_name("black"));
+   ASSERT_EQ(0.0, flower.calc_petal_color_saturation());
+   flower.set_petal_color(al_color_name("white"));
+   ASSERT_EQ(0.0, flower.calc_petal_color_saturation());
+   flower.set_petal_color(al_color_name("red"));
+   ASSERT_EQ(1.0, flower.calc_petal_color_saturation());
+   flower.set_petal_color(al_color_name("aqua"));
+   ASSERT_EQ(1.0, flower.calc_petal_color_saturation());
+   flower.set_petal_color(al_color_name("violet"));
+   //ASSERT_EQ(0.453781f, flower.calc_petal_color_saturation());
 }
 
