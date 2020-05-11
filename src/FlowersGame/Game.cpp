@@ -5,6 +5,7 @@
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro.h>
 #include <Flowers/Achievements/FourLeaf.hpp>
+#include <Flowers/Achievements/Peduncle.hpp>
 #include <cmath>
 #include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
@@ -89,6 +90,7 @@ return;
 void Game::load_achievements()
 {
 achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
+achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
 return;
 
 }

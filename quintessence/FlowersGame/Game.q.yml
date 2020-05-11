@@ -75,6 +75,7 @@ functions:
   - name: load_achievements
     body: |
       achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
+      achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
       return;
     body_dependency_symbols:
       - al_draw_text
@@ -420,3 +421,4 @@ dependencies:
   - symbol: all_achievements
     headers:
       - Flowers/Achievements/FourLeaf.hpp
+      - Flowers/Achievements/Peduncle.hpp
