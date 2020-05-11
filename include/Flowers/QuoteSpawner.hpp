@@ -25,6 +25,7 @@ namespace Flowers
    void spawn();
    void update();
    void draw();
+   void cleanup();
    std::string run();
    };
 }

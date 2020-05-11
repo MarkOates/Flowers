@@ -68,6 +68,22 @@ return;
 
 }
 
+void QuoteSpawner::cleanup()
+{
+for (unsigned i=0; i<large_text_scrollers.size(); i++)
+{
+   Flowers::LargeTextScroller &large_text_scroller = large_text_scrollers[i];
+   if (large_text_scroller.get_finished())
+   {
+      al_destroy_bitmap(large_text_scroller.get_bitmap());
+      large_text_scrollers.erase(large_text_scrollers.begin() + i);
+      i--;
+   }
+}
+return;
+
+}
+
 std::string QuoteSpawner::run()
 {
 return "Hello World!";

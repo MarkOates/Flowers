@@ -35,7 +35,7 @@ if (!(font))
       error_message << "LargeTextRenderer" << "::" << "render" << ": error: " << "guard \"font\" not met";
       throw std::runtime_error(error_message.str());
    }
-ALLEGRO_COLOR font_fill_color = al_color_name("black");
+ALLEGRO_COLOR font_fill_color = al_color_name("gray");
 al_draw_text(font, font_fill_color, 0, 0, ALLEGRO_ALIGN_LEFT, text.c_str());
 return;
 

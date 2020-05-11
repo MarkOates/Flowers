@@ -379,6 +379,7 @@ al_clear_to_color(background_color);
 
 check_achievements();
 quote_spawner.update();
+quote_spawner.cleanup();
 
 if (flower_of_interest.calc_offspring_duration() > flower_of_interest.get_speed_sec()
    && !flower_of_interest.get_spawned_offspring())
