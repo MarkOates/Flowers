@@ -83,6 +83,7 @@ functions:
       achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
       achievements.add("Saturated Color", new Flowers::Achievements::Saturated(this));
       achievements.add("Dark Petals", new Flowers::Achievements::DarkPetals(this));
+      achievements.add("Fast Flower", new Flowers::Achievements::Fast(this));
       return;
     body_dependency_symbols:
       - al_draw_text
@@ -433,3 +434,4 @@ dependencies:
       - Flowers/Achievements/Peduncle.hpp
       - Flowers/Achievements/Saturated.hpp
       - Flowers/Achievements/DarkPetals.hpp
+      - Flowers/Achievements/Fast.hpp
