@@ -35,7 +35,7 @@ TEST(DISABLED_FlowersGame_GameTest, primary_timer_func__draws_the_title)
    SUCCEED();
 }
 
-TEST(FlowersGame_GameTest, primary_timer_func__will_check_achievements_and_render_achieved)
+TEST(DISABLED_FlowersGame_GameTest, primary_timer_func__will_check_achievements_and_render_achieved)
 {
    al_init();
    al_init_font_addon();
@@ -72,7 +72,7 @@ TEST(GameRun, run__will_run_the_program)
 {
    FlowersGame::ProgramRunner program_runner;
 
-   //program_runner.run();
+   program_runner.run();
 
    SUCCEED();
 }

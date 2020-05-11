@@ -7,7 +7,11 @@ properties:
     type: std::string
     init_with: "\"\""
     constructor_arg: true
+
+
 functions:
+
+
   - name: render
     type: void
     guards: [ font ]
@@ -18,6 +22,8 @@ functions:
     body_dependency_symbols:
       - al_draw_text
       - al_color_name
+
+
   - name: create_bitmap
     type: ALLEGRO_BITMAP*
     guards: [ font ]
@@ -34,6 +40,8 @@ functions:
     body_dependency_symbols:
       - ALLEGRO_BITMAP*
       - allegro_flare::RenderCache
+
+
 dependencies:
   - symbol: allegro_flare::RenderCache
     headers: [ allegro_flare/render_cache.h ]

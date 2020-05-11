@@ -13,6 +13,7 @@
 #include <Flowers/FlowerRenderer.hpp>
 #include <allegro_flare/placement2d.h>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro.h>
 
 
 namespace FlowersGame
@@ -224,7 +225,7 @@ camera_transform.start_reverse_transform();
 
 // draw flower history
 
-for (auto &flower : mutations)
+for (auto &flower : flower_history)
 {
    allegro_flare::placement2d flower_transform(flower.get_x(), flower.get_y(), 0, 0);
    flower_transform.start_transform();
@@ -247,7 +248,16 @@ for (auto &flower : mutations)
    allegro_flare::placement2d flower_transform(flower.get_x(), flower.get_y(), 0, 0);
    flower_transform.start_transform();
    Flowers::FlowerRenderer(&flower).render();
+
+   // draw keyboard input
+   ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 22");
+   ALLEGRO_COLOR color = al_color_html("344b6d");
+   std::stringstream selection_input;
+   selection_input << (char)(mutation_num + 1 + 64);
+   al_draw_text(font, color, 0, 20, ALLEGRO_ALIGN_CENTER, selection_input.str().c_str());
+
    flower_transform.restore_transform();
+
    mutation_num++;
 }
 
