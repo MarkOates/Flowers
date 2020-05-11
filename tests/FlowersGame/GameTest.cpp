@@ -60,7 +60,7 @@ TEST(FlowersGame_GameTest, primary_timer_func__will_check_achievements_and_rende
 
    al_flip_display();
 
-   sleep(2);
+   //sleep(2);
 
    font_bin.clear();
    al_uninstall_system();
