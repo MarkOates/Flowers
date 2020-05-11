@@ -75,6 +75,7 @@ void Game::dump_flower_of_interest_stats()
 {
 Flowers::Flower f = flower_of_interest;
 std::cout << "sat: " << f.calc_petal_color_saturation() << std::endl;
+std::cout << "val: " << f.calc_petal_color_value() << std::endl;
 
 }
 
