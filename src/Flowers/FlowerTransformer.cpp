@@ -76,7 +76,8 @@ if (random->get_one_in_chance(5))
    else
    {
       // remove a petal
-      if (flower.get_num_petals() <= 0) flower.set_num_petals(flower.get_num_petals() - 1);
+      flower.set_num_petals(flower.get_num_petals() - 1);
+      if (flower.get_num_petals() <= 0) flower.set_num_petals(0);
    }
 }
 
