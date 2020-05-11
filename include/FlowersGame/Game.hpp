@@ -42,6 +42,7 @@ namespace FlowersGame
 
       Flowers::Flower get_flower_of_interest();
       std::vector<std::string> &get_achieved_ref();
+   void dump_flower_of_interest_stats();
    ALLEGRO_DISPLAY* infer_display();
    void draw_press_enter_text();
    void load_achievements();

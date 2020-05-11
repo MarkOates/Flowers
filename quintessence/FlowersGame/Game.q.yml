@@ -50,6 +50,10 @@ properties:
     init_with: 0.0f
     setter: true
 functions:
+  - name: dump_flower_of_interest_stats
+    body: |
+      Flowers::Flower f = flower_of_interest;
+      std::cout << "sat: " << f.calc_petal_color_saturation() << std::endl;
 
 
   - name: infer_display
@@ -179,6 +183,8 @@ functions:
       flower_of_interest = mutations[index];
       flower_of_interest.set_created_at(al_get_time());
       flower_of_interest.set_spawned_offspring(false);
+
+      dump_flower_of_interest_stats();
 
       // move the camera
       move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());

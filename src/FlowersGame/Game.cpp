@@ -71,6 +71,13 @@ std::vector<std::string> &Game::get_achieved_ref()
 }
 
 
+void Game::dump_flower_of_interest_stats()
+{
+Flowers::Flower f = flower_of_interest;
+std::cout << "sat: " << f.calc_petal_color_saturation() << std::endl;
+
+}
+
 ALLEGRO_DISPLAY* Game::infer_display()
 {
 return al_get_current_display();
@@ -184,6 +191,8 @@ flower_history.push_back(flower_of_interest);
 flower_of_interest = mutations[index];
 flower_of_interest.set_created_at(al_get_time());
 flower_of_interest.set_spawned_offspring(false);
+
+dump_flower_of_interest_stats();
 
 // move the camera
 move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());

@@ -24,10 +24,8 @@ DarkPetals::~DarkPetals()
 
 bool DarkPetals::test_condition()
 {
-ALLEGRO_COLOR color = game->get_flower_of_interest().get_petal_color();
-float h, s, v;
-al_color_rgb_to_hsv(color.r, color.g, color.b, &h, &s, &v);
-if (v < 0.2f) return true;
+float value = game->get_flower_of_interest().calc_petal_color_value();
+if (value < 0.2f) return true;
 return false;
 
 }

@@ -24,10 +24,8 @@ Saturated::~Saturated()
 
 bool Saturated::test_condition()
 {
-ALLEGRO_COLOR color = game->get_flower_of_interest().get_petal_color();
-float h, s, l;
-al_color_rgb_to_hsl(color.r, color.g, color.b, &h, &s, &l);
-if (s > 0.7) return true;
+float saturation = game->get_flower_of_interest().calc_petal_color_saturation();
+if (saturation > 0.7) return true;
 return false;
 
 }
