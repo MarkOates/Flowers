@@ -208,6 +208,13 @@ float &Flower::get_y_ref()
 }
 
 
+bool Flower::has_black_petals()
+{
+ALLEGRO_COLOR color = get_petal_color();
+return (color.r == 0.0f && color.g == 0.0f && color.b == 0.0);
+
+}
+
 bool Flower::infer_is_fast()
 {
 if (speed_sec < 0.85f) return true;

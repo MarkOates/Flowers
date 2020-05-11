@@ -9,6 +9,7 @@
 #include <Flowers/Achievements/Saturated.hpp>
 #include <Flowers/Achievements/DarkPetals.hpp>
 #include <Flowers/Achievements/Fast.hpp>
+#include <Flowers/Achievements/BlackPetals.hpp>
 #include <cmath>
 #include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
@@ -107,6 +108,7 @@ achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
 achievements.add("Saturated Color", new Flowers::Achievements::Saturated(this));
 achievements.add("Dark Petals", new Flowers::Achievements::DarkPetals(this));
 achievements.add("Fast Flower", new Flowers::Achievements::Fast(this));
+achievements.add("Black Petals", new Flowers::Achievements::BlackPetals(this));
 return;
 
 }

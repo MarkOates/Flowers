@@ -77,6 +77,11 @@ properties:
     getter: true
     setter: true
 functions:
+  - name: has_black_petals
+    type: bool
+    body: |
+      ALLEGRO_COLOR color = get_petal_color();
+      return (color.r == 0.0f && color.g == 0.0f && color.b == 0.0);
   - name: infer_is_fast
     type: bool
     body: |
