@@ -1,0 +1,39 @@
+functions:
+  - name: test_condition
+    guard: [ game ]
+    type: bool
+    override: true
+    body: |
+      ALLEGRO_COLOR color = game->get_flower_of_interest().get_petal_color();
+      float h, s, l;
+      al_color_rgb_to_hsl(color.r, color.g, color.b, &h, &s, &l);
+      if (s > 0.7) return true;
+      return false;
+    body_dependency_symbols:
+      - al_color_rgb_to_hsl
+  - name: on_achieved
+    guard: [ game ]
+    type: void
+    override: true
+    body: |
+      game->get_achieved_ref().push_back("Saturated Color");
+      return;
+
+
+
+parent_classes:
+  - class: AllegroFlare::Achievement
+    scope: public
+    init_with: "{}"
+properties:
+  - name: game
+    type: FlowersGame::Game*
+    constructor_arg: true
+    init_with: nullptr
+dependencies:
+  - symbol: al_color_rgb_to_hsl
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: FlowersGame::Game*
+    headers: [ FlowersGame/Game.hpp ]
+  - symbol: AllegroFlare::Achievement
+    headers: [ AllegroFlare/Achievement.hpp ]
