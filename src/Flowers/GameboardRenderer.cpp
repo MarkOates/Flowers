@@ -5,6 +5,8 @@
 #include <allegro5/allegro_color.h>
 #include <Flowers/FlowerRenderer.hpp>
 #include <allegro_flare/placement2d.h>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Flowers
@@ -59,11 +61,12 @@ return;
 
 void GameboardRenderer::render()
 {
-if (!gameboard)
-{
-   throw std::runtime_error("[Flowers::GameboardRenderer.render error]: gameboard cannot be a nullptr");
-}
-
+if (!(gameboard))
+   {
+      std::stringstream error_message;
+      error_message << "GameboardRenderer" << "::" << "render" << ": error: " << "guard \"gameboard\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 // draw the dirt
 
 float gameboard_width = gameboard->get_width();

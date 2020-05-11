@@ -37,12 +37,8 @@ functions:
       return;
   - name: render
     type: void
+    guards: [ gameboard ]
     body: |
-      if (!gameboard)
-      {
-         throw std::runtime_error("[Flowers::GameboardRenderer.render error]: gameboard cannot be a nullptr");
-      }
-
       // draw the dirt
 
       float gameboard_width = gameboard->get_width();
