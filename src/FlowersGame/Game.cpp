@@ -149,7 +149,6 @@ return;
 void Game::check_achievements()
 {
 achievements.check_all();
-std::cout << achieved.size() << std::endl;
 return;
 
 }

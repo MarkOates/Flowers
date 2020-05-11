@@ -148,7 +148,6 @@ functions:
   - name: check_achievements
     body: |
       achievements.check_all();
-      std::cout << achieved.size() << std::endl;
       return;
 
 
