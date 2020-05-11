@@ -58,6 +58,7 @@ namespace Flowers
       bool get_null_object();
       float &get_x_ref();
       float &get_y_ref();
+   bool infer_is_fast();
    bool infer_has_dark_petals();
    float calc_petal_color_value();
    float calc_petal_color_saturation();

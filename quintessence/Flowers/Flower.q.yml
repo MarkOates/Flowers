@@ -77,6 +77,11 @@ properties:
     getter: true
     setter: true
 functions:
+  - name: infer_is_fast
+    type: bool
+    body: |
+      if (speed_sec < 0.85f) return true;
+      return false;
   - name: infer_has_dark_petals
     type: bool
     body: |

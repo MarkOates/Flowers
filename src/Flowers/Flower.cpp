@@ -208,6 +208,13 @@ float &Flower::get_y_ref()
 }
 
 
+bool Flower::infer_is_fast()
+{
+if (speed_sec < 0.85f) return true;
+return false;
+
+}
+
 bool Flower::infer_has_dark_petals()
 {
 float value = calc_petal_color_value();
