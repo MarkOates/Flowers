@@ -16,7 +16,7 @@ namespace Flowers
       bool finished;
 
    public:
-      LargeTextScroller(ALLEGRO_BITMAP* bitmap=nullptr, float scale=3.0f);
+      LargeTextScroller(ALLEGRO_BITMAP* bitmap=nullptr, float scale=2.0f);
       ~LargeTextScroller();
 
       void set_scroll_speed(float scroll_speed);

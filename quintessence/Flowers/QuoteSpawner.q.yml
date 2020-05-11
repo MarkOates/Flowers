@@ -14,7 +14,7 @@ functions:
   - name: spawn
     guards: [ font_bin ]
     body: |
-      ALLEGRO_FONT *font = font_bin->operator[]("Poly-Italic.otf 32");
+      ALLEGRO_FONT *font = font_bin->operator[]("Poly-Italic.otf 16");
       Flowers::LargeTextRenderer renderer(font, quote_generator.generate_quote().first);
       ALLEGRO_BITMAP *bitmap = renderer.create_bitmap();
       Flowers::LargeTextScroller scroller(bitmap);

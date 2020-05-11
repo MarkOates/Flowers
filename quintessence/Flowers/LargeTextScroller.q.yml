@@ -6,7 +6,7 @@ properties:
     getter: true
   - name: scale
     type: float
-    init_with: 3.0f
+    init_with: 2.0f
     constructor_arg: true
   - name: scroll_speed
     type: float

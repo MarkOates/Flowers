@@ -34,7 +34,7 @@ if (!(font_bin))
       error_message << "QuoteSpawner" << "::" << "spawn" << ": error: " << "guard \"font_bin\" not met";
       throw std::runtime_error(error_message.str());
    }
-ALLEGRO_FONT *font = font_bin->operator[]("Poly-Italic.otf 32");
+ALLEGRO_FONT *font = font_bin->operator[]("Poly-Italic.otf 16");
 Flowers::LargeTextRenderer renderer(font, quote_generator.generate_quote().first);
 ALLEGRO_BITMAP *bitmap = renderer.create_bitmap();
 Flowers::LargeTextScroller scroller(bitmap);
