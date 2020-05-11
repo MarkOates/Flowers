@@ -38,7 +38,7 @@ properties:
     getter_ref: true
   - name: speed_sec
     type: float
-    init_with: 2.0
+    init_with: 3.0
     getter: true
     setter: true
   - name: age

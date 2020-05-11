@@ -24,6 +24,6 @@ TEST(Flowers_FlowerTest, set_peduncle_height__will_not_set_the_height_to_negativ
 TEST(Flowers_FlowerTest, speed_sec__is_initialized_with_2)
 {
    Flowers::Flower flower;
-   ASSERT_EQ(2.0f, flower.get_speed_sec());
+   ASSERT_EQ(3.0f, flower.get_speed_sec());
 }
 

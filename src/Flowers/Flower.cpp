@@ -15,7 +15,7 @@ Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float pedu
    , peduncle_thickness(peduncle_thickness)
    , x(x)
    , y(y)
-   , speed_sec(2.0)
+   , speed_sec(3.0)
    , age(0.0)
    , num_petals(6)
    , lifespan(10.0)

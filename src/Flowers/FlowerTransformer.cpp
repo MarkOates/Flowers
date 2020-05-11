@@ -85,6 +85,21 @@ if (random->get_one_in_chance(5))
    }
 }
 
+// speed
+if (random->get_one_in_chance(2))
+{
+   // jump
+   int jump_length = 0.5f;
+   if (random->get_one_in_chance(2))
+   {
+      flower.set_speed_sec(flower.get_speed_sec() - jump_length);
+   }
+   else
+   {
+      flower.set_speed_sec(flower.get_speed_sec() + jump_length);
+   }
+}
+
 return flower;
 
 }

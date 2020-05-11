@@ -109,9 +109,10 @@ functions:
          float radius = 300;
          float dest_x = std::sin(delta * TAU) * radius + source_flower_x;
          float dest_y = std::cos(delta * TAU) * radius + source_flower_y;
+         float speed = mutation.get_speed_sec();
 
-         motion->cmove_to(&mutation.get_x_ref(), dest_x, 2.0, AllegroFlare::interpolator::double_fast_in);
-         motion->cmove_to(&mutation.get_y_ref(), dest_y, 2.0, AllegroFlare::interpolator::tripple_fast_in);
+         motion->cmove_to(&mutation.get_x_ref(), dest_x, speed, AllegroFlare::interpolator::double_fast_in);
+         motion->cmove_to(&mutation.get_y_ref(), dest_y, speed, AllegroFlare::interpolator::tripple_fast_in);
       }
       return;
     body_dependency_symbols:

@@ -40,6 +40,6 @@ TEST(Flowers_FlowerTransformerTest, mutations__returns_mutations_of_the_input_fl
 
 TEST(xGameRun, run_the_program)
 {
-   //FlowersGame::ProgramRunner().run();
+   FlowersGame::ProgramRunner().run();
 }
 
