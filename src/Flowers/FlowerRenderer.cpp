@@ -1,6 +1,9 @@
 
 
 #include <Flowers/FlowerRenderer.hpp>
+#include <allegro5/allegro_primitives.h>
+#include <stdexcept>
+#include <sstream>
 #include <cmath>
 #include <cmath>
 #include <stdexcept>
@@ -13,8 +16,9 @@ namespace Flowers
 {
 
 
-FlowerRenderer::FlowerRenderer(Flowers::Flower* flower)
+FlowerRenderer::FlowerRenderer(Flowers::Flower* flower, bool render_timer)
    : flower(flower)
+   , render_timer(render_timer)
    , outline_thickness(4.0f)
    , outline_color(al_color_name("purple"))
    , TAU(6.283f)
@@ -26,6 +30,27 @@ FlowerRenderer::~FlowerRenderer()
 {
 }
 
+
+void FlowerRenderer::render_time_arc()
+{
+if (!(flower))
+   {
+      std::stringstream error_message;
+      error_message << "FlowerRenderer" << "::" << "render_time_arc" << ": error: " << "guard \"flower\" not met";
+      throw std::runtime_error(error_message.str());
+   }
+float arc_radius = 100.0f;
+float arc_thickness = 5.0f;
+ALLEGRO_COLOR arc_color = al_color_html("9bb6d3");
+float TAU = 3.14159 * 2;
+
+float time_now = al_get_time();
+float created_at_time = flower->get_created_at();
+float meter_length = (time_now - created_at_time) / flower->get_speed_sec();
+
+al_draw_arc(0, 0, arc_radius, TAU * 0.25, TAU * meter_length, arc_color, arc_thickness);
+
+}
 
 void FlowerRenderer::render_petals()
 {
@@ -91,6 +116,7 @@ else
    render_peduncle();
    render_petals();
    render_pistil();
+   if (render_timer) render_time_arc();
 }
 
 return;

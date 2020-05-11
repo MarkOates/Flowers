@@ -3,6 +3,10 @@ properties:
     type: Flowers::Flower*
     init_with: nullptr
     constructor_arg: true
+  - name: render_timer
+    type: bool
+    init_with: false
+    constructor_arg: true
   - name: outline_thickness
     type: float
     init_with: 4.0f
@@ -13,6 +17,23 @@ properties:
     type: float
     init_with: 6.283f
 functions:
+  - name: render_time_arc
+    guards: [ flower ]
+    type: void
+    body: |
+      float arc_radius = 100.0f;
+      float arc_thickness = 5.0f;
+      ALLEGRO_COLOR arc_color = al_color_html("9bb6d3");
+      float TAU = 3.14159 * 2;
+
+      float time_now = al_get_time();
+      float created_at_time = flower->get_created_at();
+      float meter_length = (time_now - created_at_time) / flower->get_speed_sec();
+
+      al_draw_arc(0, 0, arc_radius, TAU * 0.25, TAU * meter_length, arc_color, arc_thickness);
+    body_dependency_symbols:
+      - al_draw_arc
+
   - name: render_petals
     type: void
     body: |
@@ -74,6 +95,7 @@ functions:
          render_peduncle();
          render_petals();
          render_pistil();
+         if (render_timer) render_time_arc();
       }
 
       return;
@@ -91,6 +113,8 @@ dependencies:
     headers: [ stdexcept ]
   - symbol: Flowers::Flower*
     headers: [ Flowers/Flower.hpp ]
+  - symbol: al_draw_arc
+    headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_draw_line
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_name

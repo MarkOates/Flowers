@@ -41,6 +41,11 @@ properties:
     init_with: 3.0
     getter: true
     setter: true
+  - name: created_at
+    type: float
+    init_with: 0.0
+    getter: true
+    setter: true
   - name: age
     type: float
     init_with: 0.0
@@ -54,6 +59,11 @@ properties:
   - name: lifespan
     type: float
     init_with: 10.0
+    getter: true
+    setter: true
+  - name: spawned_offspring
+    type: bool
+    init_with: false
     getter: true
     setter: true
   - name: dead

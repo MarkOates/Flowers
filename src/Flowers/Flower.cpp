@@ -16,9 +16,11 @@ Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float pedu
    , x(x)
    , y(y)
    , speed_sec(3.0)
+   , created_at(0.0)
    , age(0.0)
    , num_petals(6)
    , lifespan(10.0)
+   , spawned_offspring(false)
    , dead(false)
    , null_object(false)
 {
@@ -66,6 +68,12 @@ void Flower::set_speed_sec(float speed_sec)
 }
 
 
+void Flower::set_created_at(float created_at)
+{
+   this->created_at = created_at;
+}
+
+
 void Flower::set_age(float age)
 {
    this->age = age;
@@ -81,6 +89,12 @@ void Flower::set_num_petals(int num_petals)
 void Flower::set_lifespan(float lifespan)
 {
    this->lifespan = lifespan;
+}
+
+
+void Flower::set_spawned_offspring(bool spawned_offspring)
+{
+   this->spawned_offspring = spawned_offspring;
 }
 
 
@@ -138,6 +152,12 @@ float Flower::get_speed_sec()
 }
 
 
+float Flower::get_created_at()
+{
+   return created_at;
+}
+
+
 float Flower::get_age()
 {
    return age;
@@ -153,6 +173,12 @@ int Flower::get_num_petals()
 float Flower::get_lifespan()
 {
    return lifespan;
+}
+
+
+bool Flower::get_spawned_offspring()
+{
+   return spawned_offspring;
 }
 
 

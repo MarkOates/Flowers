@@ -16,9 +16,11 @@ namespace Flowers
       float x;
       float y;
       float speed_sec;
+      float created_at;
       float age;
       int num_petals;
       float lifespan;
+      bool spawned_offspring;
       bool dead;
       bool null_object;
 
@@ -32,9 +34,11 @@ namespace Flowers
       void set_x(float x);
       void set_y(float y);
       void set_speed_sec(float speed_sec);
+      void set_created_at(float created_at);
       void set_age(float age);
       void set_num_petals(int num_petals);
       void set_lifespan(float lifespan);
+      void set_spawned_offspring(bool spawned_offspring);
       void set_dead(bool dead);
       void set_null_object(bool null_object);
 
@@ -45,9 +49,11 @@ namespace Flowers
       float get_x();
       float get_y();
       float get_speed_sec();
+      float get_created_at();
       float get_age();
       int get_num_petals();
       float get_lifespan();
+      bool get_spawned_offspring();
       bool get_dead();
       bool get_null_object();
       float &get_x_ref();

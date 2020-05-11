@@ -31,12 +31,14 @@ namespace FlowersGame
       AllegroFlare::Random random;
       AllegroFlare::Achievements achievements;
       std::vector<std::string> achieved;
+      float selection_time;
 
    public:
       Game(AllegroFlare::Framework* framework=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::Motion* motion=nullptr);
       ~Game();
 
       void set_flower_of_interest(Flowers::Flower flower_of_interest);
+      void set_selection_time(float selection_time);
 
       Flowers::Flower get_flower_of_interest();
       std::vector<std::string> &get_achieved_ref();

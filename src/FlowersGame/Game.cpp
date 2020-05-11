@@ -34,6 +34,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , random(12345)
    , achievements({})
    , achieved({})
+   , selection_time(0.0f)
 {
 }
 
@@ -46,6 +47,12 @@ Game::~Game()
 void Game::set_flower_of_interest(Flowers::Flower flower_of_interest)
 {
    this->flower_of_interest = flower_of_interest;
+}
+
+
+void Game::set_selection_time(float selection_time)
+{
+   this->selection_time = selection_time;
 }
 
 
@@ -90,6 +97,8 @@ void Game::start_game()
 {
 load_achievements();
 showing_title = false;
+flower_of_interest = Flowers::Flower();
+flower_of_interest.set_created_at(al_get_time());
 return;
 
 }
@@ -162,13 +171,21 @@ if (index < 0 || index >= mutations.size())
    throw std::runtime_error("could not select mutation, index out of bounds");
 }
 
+// safe the previous flower
 flower_history.push_back(flower_of_interest);
+
+// set the new flower (and create_time)
 flower_of_interest = mutations[index];
+flower_of_interest.set_created_at(al_get_time());
+
+// move the camera
 move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());
 
 clear_mutations();
 
 check_achievements();
+
+set_selection_time(al_get_time());
 
 return;
 
@@ -238,7 +255,7 @@ for (auto &flower : flower_history)
 
 allegro_flare::placement2d flower_transform(flower_of_interest.get_x(), flower_of_interest.get_y(), 0, 0);
 flower_transform.start_transform();
-Flowers::FlowerRenderer(&flower_of_interest).render();
+Flowers::FlowerRenderer(&flower_of_interest, true).render();
 flower_transform.restore_transform();
 
 // draw mutations
