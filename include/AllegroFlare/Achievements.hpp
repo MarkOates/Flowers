@@ -19,6 +19,8 @@ namespace AllegroFlare
 
       void add(std::string name, Achievement *achievement);
       void check_all();
+      int get_num_achievements();
+      void clear_all();
    };
 }
 

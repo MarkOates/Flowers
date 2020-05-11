@@ -93,16 +93,30 @@ void Game::draw_press_enter_text()
 int display_width = al_get_display_width(infer_display());
 int display_height = al_get_display_height(infer_display());
 ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 28");
-ALLEGRO_COLOR color = al_color_html("9bb6d3");
 float line_height = al_get_font_line_height(font);
+
+std::stringstream achievements_text;
+achievements_text << "There are " << achievements.get_num_achievements() << " achievements.";
+
+// instructions text
+std::string instructions = "Press ENTER to start. Use LETTER_KEYS to choose your flower. Press ESCAPE to quit.";
+ALLEGRO_COLOR instructions_color = al_color_name("black");
+al_draw_text(font, instructions_color, display_width/2, display_height/2 - line_height/2 + 200, ALLEGRO_ALIGN_CENTER, instructions.c_str());
+
+al_draw_text(font, instructions_color, display_width/2, display_height/2 - line_height/2 + 250,
+  ALLEGRO_ALIGN_CENTER, achievements_text.str().c_str());
+
+// copyright text
 std::string title = "Copyright 2020 - Mark Oates";
-al_draw_text(font, color, display_width/2, display_height/2 - line_height/2 + 200, ALLEGRO_ALIGN_CENTER, title.c_str());
+ALLEGRO_COLOR color = al_color_html("9bb6d3");
+al_draw_text(font, color, display_width/2, display_height - line_height/2, ALLEGRO_ALIGN_CENTER, title.c_str());
 return;
 
 }
 
 void Game::load_achievements()
 {
+achievements.clear_all();
 achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
 achievements.add("Peduncle", new Flowers::Achievements::Peduncle(this));
 achievements.add("Saturated Color", new Flowers::Achievements::Saturated(this));

@@ -51,6 +51,7 @@ font_bin.set_full_path("/Users/markoates/Repos/Flowers/bin/programs/data/fonts")
 AllegroFlare::Motion motion;
 
 FlowersGame::Game game(&framework, &font_bin, &framework.motion());
+game.load_achievements(); // hack
 AllegroFlare::FrameworkScreenRegistrar registrar(&screens, &game);
 registrar.append();
 

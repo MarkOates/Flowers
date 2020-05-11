@@ -40,6 +40,16 @@ namespace AllegroFlare
          }
       }
    }
+
+   int Achievements::get_num_achievements()
+   {
+      return all_achievements.size();
+   }
+
+   void Achievements::clear_all()
+   {
+      all_achievements.clear();
+   }
 }
 
 
