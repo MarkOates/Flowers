@@ -50,6 +50,7 @@ namespace FlowersGame
    void draw_press_enter_text();
    void load_achievements();
    void start_game();
+   void show_victory_banner();
    void clear_mutations();
    void reveal_mutations();
    void create_mutations();

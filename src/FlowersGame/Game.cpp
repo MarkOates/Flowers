@@ -10,6 +10,8 @@
 #include <Flowers/Achievements/DarkPetals.hpp>
 #include <Flowers/Achievements/Fast.hpp>
 #include <Flowers/Achievements/BlackPetals.hpp>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_color.h>
 #include <cmath>
 #include <Flowers/FlowerTransformer.hpp>
 #include <allegro5/allegro.h>
@@ -134,6 +136,27 @@ num_generations = 0;
 showing_title = false;
 flower_of_interest = Flowers::Flower();
 flower_of_interest.set_created_at(al_get_time());
+return;
+
+}
+
+void Game::show_victory_banner()
+{
+int display_width = al_get_display_width(infer_display());
+int display_height = al_get_display_height(infer_display());
+ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 40");
+float line_height = al_get_font_line_height(font);
+
+// instructions text
+std::string instructions = "You Win";
+ALLEGRO_COLOR instructions_color = al_color_name("black");
+al_draw_text(font, instructions_color, display_width/2, display_height/2 - line_height/2,
+   ALLEGRO_ALIGN_CENTER, instructions.c_str());
+
+std::string clarity_text = "You have unlocked all the achievements!";
+ALLEGRO_FONT *clarity_font = font_bin->operator[]("Montserrat-Regular.ttf 28");
+al_draw_text(clarity_font, instructions_color, display_width/2, display_height/2 - line_height/2 + 100,
+  ALLEGRO_ALIGN_CENTER, clarity_text.c_str());
 return;
 
 }
@@ -334,6 +357,11 @@ quote_transform.restore_transform();
 // draw achievements
 
 draw_achievements();
+
+// draw victory banner
+
+if (achievements.all_achieved()) show_victory_banner();
+
 
 return;
 

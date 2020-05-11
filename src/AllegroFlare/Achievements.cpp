@@ -50,6 +50,15 @@ namespace AllegroFlare
    {
       all_achievements.clear();
    }
+
+   bool Achievements::all_achieved()
+   {
+      for (auto &achievement : all_achievements)
+      {
+         if (!achievement.second.second) return false;
+      }
+      return true;
+   }
 }
 
 

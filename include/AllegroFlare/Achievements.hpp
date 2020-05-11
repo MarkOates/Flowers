@@ -21,6 +21,7 @@ namespace AllegroFlare
       void check_all();
       int get_num_achievements();
       void clear_all();
+      bool all_achieved();
    };
 }
 
