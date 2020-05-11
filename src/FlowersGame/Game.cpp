@@ -205,6 +205,8 @@ clear_mutations();
 
 check_achievements();
 
+quote_spawner.spawn();
+
 set_selection_time(al_get_time());
 
 return;
@@ -301,9 +303,16 @@ for (auto &flower : mutations)
 
 camera_transform.restore_transform();
 
+// draw quote
+
+allegro_flare::placement2d quote_transform(al_get_display_width(infer_display())/2,
+    al_get_display_height(infer_display())-50, 0, 0);
+quote_transform.start_transform();
+quote_spawner.draw();
+quote_transform.restore_transform();
+
 // draw achievements
 
-quote_spawner.draw();
 draw_achievements();
 
 return;
