@@ -3,8 +3,11 @@
 #include <FlowersGame/Game.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro.h>
+#include <Flowers/Achievements/FourLeaf.hpp>
 #include <cmath>
 #include <Flowers/FlowerTransformer.hpp>
+#include <allegro5/allegro.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <Flowers/FlowerRenderer.hpp>
@@ -28,12 +31,32 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , state("undefined")
    , camera_transform(0, 0, 1920, 1080)
    , random(12345)
+   , achievements({})
+   , achieved({})
 {
 }
 
 
 Game::~Game()
 {
+}
+
+
+void Game::set_flower_of_interest(Flowers::Flower flower_of_interest)
+{
+   this->flower_of_interest = flower_of_interest;
+}
+
+
+Flowers::Flower Game::get_flower_of_interest()
+{
+   return flower_of_interest;
+}
+
+
+std::vector<std::string> Game::get_achieved()
+{
+   return achieved;
 }
 
 
@@ -51,6 +74,13 @@ ALLEGRO_COLOR color = al_color_html("9bb6d3");
 float line_height = al_get_font_line_height(font);
 std::string title = "Copyright 2020 - Mark Oates";
 al_draw_text(font, color, display_width/2, display_height/2 - line_height/2 + 200, ALLEGRO_ALIGN_CENTER, title.c_str());
+return;
+
+}
+
+void Game::load_achievements()
+{
+achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
 return;
 
 }
@@ -115,6 +145,13 @@ return;
 
 }
 
+void Game::check_achievements()
+{
+achievements.check_all();
+return;
+
+}
+
 void Game::select_mutation(int index)
 {
 if (index < 0 || index >= mutations.size())
@@ -128,7 +165,34 @@ move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());
 
 clear_mutations();
 
+check_achievements();
+
 return;
+
+}
+
+void Game::draw_achievements()
+{
+ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 22");
+ALLEGRO_COLOR color = al_color_name("gray");
+float line_height = al_get_font_line_height(font);
+int display_width = al_get_display_width(infer_display());
+int display_height = al_get_display_height(infer_display());
+std::vector<std::string> elements = achieved;
+//{ std::string("Four Leaf Clover"), std::string("Saturated"), std::string("Golden Rose") };
+float distance = 200;
+float start_x = display_width/2 - (distance * (elements.size() - 1)) / 2;
+int counter = 0;
+for (auto &ach : elements) //achieved)
+{
+   al_draw_text(font, color,
+      start_x + distance * counter,
+      display_height - 100,
+      ALLEGRO_ALIGN_CENTER,
+      ach.c_str()
+   );
+   counter++;
+}
 
 }
 
@@ -187,6 +251,10 @@ for (auto &flower : mutations)
 }
 
 camera_transform.restore_transform();
+
+// draw achievements
+
+draw_achievements();
 
 return;
 
@@ -249,6 +317,8 @@ void Game::primary_timer_func()
 {
 ALLEGRO_COLOR background_color = al_color_html("c6dee7");
 al_clear_to_color(background_color);
+
+check_achievements();
 
 if (showing_title) draw_title();
 else draw_gameplay();

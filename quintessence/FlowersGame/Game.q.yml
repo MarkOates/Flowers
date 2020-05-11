@@ -21,6 +21,8 @@ properties:
   - name: flower_of_interest
     type: Flowers::Flower
     init_with: ""
+    getter: true
+    setter: true
   - name: mutations
     type: std::vector<Flowers::Flower>
     init_with: "{}"
@@ -36,6 +38,13 @@ properties:
   - name: random
     type: AllegroFlare::Random
     init_with: "12345"
+  - name: achievements
+    type: AllegroFlare::Achievements
+    init_with: "{}"
+  - name: achieved
+    type: std::vector<std::string>
+    init_with: "{}"
+    getter: true
 functions:
 
 
@@ -57,6 +66,15 @@ functions:
     body_dependency_symbols:
       - al_draw_text
       - al_color_name
+
+
+  - name: load_achievements
+    body: |
+      achievements.add("Four Petal Flower", new Flowers::Achievements::FourLeaf(this));
+      return;
+    body_dependency_symbols:
+      - al_draw_text
+      - all_achievements
 
 
   - name: start_game
@@ -126,6 +144,12 @@ functions:
       return;
 
 
+  - name: check_achievements
+    body: |
+      achievements.check_all();
+      return;
+
+
   - name: select_mutation
     parameters:
       - name: index
@@ -143,7 +167,35 @@ functions:
 
       clear_mutations();
 
+      check_achievements();
+
       return;
+
+
+  - name: draw_achievements
+    body: |
+      ALLEGRO_FONT *font = font_bin->operator[]("Montserrat-Regular.ttf 22");
+      ALLEGRO_COLOR color = al_color_name("gray");
+      float line_height = al_get_font_line_height(font);
+      int display_width = al_get_display_width(infer_display());
+      int display_height = al_get_display_height(infer_display());
+      std::vector<std::string> elements = achieved;
+      //{ std::string("Four Leaf Clover"), std::string("Saturated"), std::string("Golden Rose") };
+      float distance = 200;
+      float start_x = display_width/2 - (distance * (elements.size() - 1)) / 2;
+      int counter = 0;
+      for (auto &ach : elements) //achieved)
+      {
+         al_draw_text(font, color,
+            start_x + distance * counter,
+            display_height - 100,
+            ALLEGRO_ALIGN_CENTER,
+            ach.c_str()
+         );
+         counter++;
+      }
+    body_dependency_symbols:
+      - al_draw_text
 
 
   - name: draw_title
@@ -204,6 +256,10 @@ functions:
       }
 
       camera_transform.restore_transform();
+
+      // draw achievements
+
+      draw_achievements();
 
       return;
     body_dependency_symbols:
@@ -279,6 +335,8 @@ functions:
       ALLEGRO_COLOR background_color = al_color_html("c6dee7");
       al_clear_to_color(background_color);
 
+      check_achievements();
+
       if (showing_title) draw_title();
       else draw_gameplay();
 
@@ -302,6 +360,8 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_DISPLAY*
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Achievements
+    headers: [ AllegroFlare/Achievements.hpp ]
   - symbol: AllegroFlare::Random
     headers: [ AllegroFlare/Random.hpp ]
   - symbol: AllegroFlare::Framework*
@@ -322,3 +382,6 @@ dependencies:
     headers: [ vector, utility, Flowers/Flower.hpp ]
   - symbol: std::vector<Flowers::Flower>
     headers: [ vector, Flowers/Flower.hpp ]
+  - symbol: all_achievements
+    headers:
+      - Flowers/Achievements/FourLeaf.hpp
