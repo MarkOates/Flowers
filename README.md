@@ -19,3 +19,7 @@ As you, one-by-one, choose the flower you like the most, you explore the domain 
 
 The Genre Rule (flowers) and Technical Rule #1 (procedural content) are both fulfilled by the procedural generation of the flowers, which is the
 primary component of the gameplay.
+
+For the remaining requirements, I'm envoking the bonus rule, Act of Monkey, to reverse the Artistical Rule from "Make fun of old-fashioned things." to "Celebrate and cherish old-fashioned things."
+During gameplay, you will be rewarded for developing and growing your flowers with positive and inspiring quotes on the topic of aging. These quotes will 
+appear and disappear with a scrolling motion, fulfilling the Technical Rule #2 (scrolling text).
