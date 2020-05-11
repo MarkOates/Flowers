@@ -25,7 +25,7 @@ Saturated::~Saturated()
 bool Saturated::test_condition()
 {
 float saturation = game->get_flower_of_interest().calc_petal_color_saturation();
-if (saturation > 0.7) return true;
+if (saturation > 0.6) return true;
 return false;
 
 }
