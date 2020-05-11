@@ -69,6 +69,14 @@ float mix_ratio = 0.2;
 ALLEGRO_COLOR mix = AllegroFlare::color::mix(original_color, variance_color, mix_ratio);
 flower.set_petal_color(mix);
 
+if (flower.infer_has_dark_petals())
+{
+   if (random->get_one_in_chance(5))
+   {
+      flower.set_petal_color(al_color_name("black"));
+   }
+}
+
 // num petals
 if (random->get_one_in_chance(5))
 {
