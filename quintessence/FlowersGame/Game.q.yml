@@ -49,6 +49,9 @@ properties:
     type: float
     init_with: 0.0f
     setter: true
+  - name: quote_spawner
+    type: Flowers::QuoteSpawner
+    init_with: "{}"
 functions:
   - name: dump_flower_of_interest_stats
     body: |
@@ -420,6 +423,8 @@ dependencies:
     headers: [ Flowers/FlowerRenderer.hpp ]
   - symbol: Flowers::FlowerTransformer
     headers: [ Flowers/FlowerTransformer.hpp ]
+  - symbol: Flowers::QuoteSpawner
+    headers: [ Flowers/QuoteSpawner.hpp ]
   - symbol: Flowers::Flower
     headers: [ Flowers/Flower.hpp ]
   - symbol: allegro_flare::placement2d

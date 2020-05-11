@@ -8,6 +8,7 @@
 #include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <Flowers/Flower.hpp>
+#include <Flowers/QuoteSpawner.hpp>
 #include <allegro5/allegro.h>
 #include <allegro_flare/placement2d.h>
 #include <string>
@@ -32,6 +33,7 @@ namespace FlowersGame
       AllegroFlare::Achievements achievements;
       std::vector<std::string> achieved;
       float selection_time;
+      Flowers::QuoteSpawner quote_spawner;
 
    public:
       Game(AllegroFlare::Framework* framework=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::Motion* motion=nullptr);

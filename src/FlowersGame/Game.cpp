@@ -39,6 +39,7 @@ Game::Game(AllegroFlare::Framework* framework, AllegroFlare::FontBin* font_bin, 
    , achievements({})
    , achieved({})
    , selection_time(0.0f)
+   , quote_spawner({})
 {
 }
 
