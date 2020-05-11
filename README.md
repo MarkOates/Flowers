@@ -6,9 +6,9 @@ This is my official entry to the [TINS 2020](https://tins.amarillion.org/2020/ru
 
 * **Genre Rule**: Flowers - There should be different flowers in the game, the more the better.
 * **Artistical Rule**: Make fun of old-fashioned things.
-* **Technical Rule #1** - Your game must include procedural content. Bonus points if procedural generation is used to create the gameplay environment.
-* **Technical Rule #2** - Some kind of special text scroller.
-* **Bonus Rule** - Act of monkey - you may replace a single rule by a rule that has the opposite effect.
+* **Technical Rule #1**: Your game must include procedural content. Bonus points if procedural generation is used to create the gameplay environment.
+* **Technical Rule #2**: Some kind of special text scroller.
+* **Bonus Rule**: Act of monkey - you may replace a single rule by a rule that has the opposite effect.
 
 ### About the Game
 
