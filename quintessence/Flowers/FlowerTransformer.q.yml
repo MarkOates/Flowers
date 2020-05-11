@@ -18,14 +18,14 @@ functions:
       if (random->get_one_in_chance(3))
       {
          // jump
-         int length_variance = 13;
+         int jump_length = 13;
          if (random->get_one_in_chance(2))
          {
-            flower.set_peduncle_height(flower.get_peduncle_height() - length_variance);
+            flower.set_peduncle_height(flower.get_peduncle_height() - jump_length);
          }
          else
          {
-            flower.set_peduncle_height(flower.get_peduncle_height() + length_variance);
+            flower.set_peduncle_height(flower.get_peduncle_height() + jump_length);
          }
       }
       else
