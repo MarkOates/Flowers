@@ -10,6 +10,16 @@ properties:
     init_with: "{}"
 functions:
  # Poly-Italic.otf
+  - name: spawn
+    guards: [ font_bin ]
+    body: |
+      ALLEGRO_FONT *font = font_bin->operator[]("Poly-Italic.otf 32");
+      Flowers::LargeTextRenderer renderer(font, quote_generator.generate_quote().first);
+      ALLEGRO_BITMAP *bitmap = renderer.create_bitmap();
+      Flowers::LargeTextScroller scroller(bitmap);
+      large_text_scrollers.push_back(scroller);
+    body_dependency_symbols:
+      - Flowers::LargeTextRenderer
   - name: update
     guards: [ font_bin ]
     body: |
@@ -31,6 +41,8 @@ functions:
     type: std::string
     body: return "Hello World!";
 dependencies:
+  - symbol: Flowers::LargeTextRenderer
+    headers: [ Flowers/LargeTextRenderer.hpp ]
   - symbol: std::vector<Flowers::LargeTextScroller>
     headers: [ vector, Flowers/LargeTextScroller.hpp ]
   - symbol: AllegroFlare::FontBin*

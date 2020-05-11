@@ -22,6 +22,7 @@ namespace Flowers
       ~QuoteSpawner();
 
 
+   void spawn();
    void update();
    void draw();
    std::string run();
