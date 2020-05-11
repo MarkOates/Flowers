@@ -15,6 +15,7 @@ Flower::Flower(ALLEGRO_COLOR pistil_color, ALLEGRO_COLOR petal_color, float pedu
    , peduncle_thickness(peduncle_thickness)
    , x(x)
    , y(y)
+   , speed_sec(2.0)
    , age(0.0)
    , num_petals(6)
    , lifespan(10.0)
@@ -56,6 +57,12 @@ void Flower::set_x(float x)
 void Flower::set_y(float y)
 {
    this->y = y;
+}
+
+
+void Flower::set_speed_sec(float speed_sec)
+{
+   this->speed_sec = speed_sec;
 }
 
 
@@ -122,6 +129,12 @@ float Flower::get_x()
 float Flower::get_y()
 {
    return y;
+}
+
+
+float Flower::get_speed_sec()
+{
+   return speed_sec;
 }
 
 

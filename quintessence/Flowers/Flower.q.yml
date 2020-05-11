@@ -36,6 +36,11 @@ properties:
     getter: true
     setter: true
     getter_ref: true
+  - name: speed_sec
+    type: float
+    init_with: 2.0
+    getter: true
+    setter: true
   - name: age
     type: float
     init_with: 0.0

@@ -15,6 +15,7 @@ namespace Flowers
       float peduncle_thickness;
       float x;
       float y;
+      float speed_sec;
       float age;
       int num_petals;
       float lifespan;
@@ -30,6 +31,7 @@ namespace Flowers
       void set_peduncle_thickness(float peduncle_thickness);
       void set_x(float x);
       void set_y(float y);
+      void set_speed_sec(float speed_sec);
       void set_age(float age);
       void set_num_petals(int num_petals);
       void set_lifespan(float lifespan);
@@ -42,6 +44,7 @@ namespace Flowers
       float get_peduncle_thickness();
       float get_x();
       float get_y();
+      float get_speed_sec();
       float get_age();
       int get_num_petals();
       float get_lifespan();
