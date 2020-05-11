@@ -30,7 +30,7 @@ TEST(Flowers_GameboardRendererTest, render__renders_the_gameboard)
 
    al_flip_display();
 
-   sleep(2);
+   //sleep(2);
 
    al_uninstall_system();
 }
