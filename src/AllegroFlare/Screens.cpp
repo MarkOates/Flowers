@@ -4,6 +4,8 @@
 
 #include <AllegroFlare/Screen.hpp>
 
+#include <algorithm>
+
 
 namespace AllegroFlare
 {
