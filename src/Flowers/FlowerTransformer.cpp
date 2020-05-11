@@ -89,7 +89,7 @@ if (random->get_one_in_chance(5))
 if (random->get_one_in_chance(2))
 {
    // jump
-   int jump_length = 0.5f;
+   float jump_length = 0.2f;
    if (random->get_one_in_chance(2))
    {
       flower.set_speed_sec(flower.get_speed_sec() - jump_length);
