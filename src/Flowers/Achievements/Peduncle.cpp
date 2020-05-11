@@ -22,11 +22,6 @@ Peduncle::~Peduncle()
 }
 
 
-std::string Peduncle::run()
-{
-return "Hello World!";
-}
-
 bool Peduncle::test_condition()
 {
 if (game->get_flower_of_interest().get_peduncle_height() > 30) return true;

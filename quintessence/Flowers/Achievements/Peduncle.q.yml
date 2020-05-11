@@ -1,16 +1,4 @@
-parent_classes:
-  - class: AllegroFlare::Achievement
-    scope: public
-    init_with: "{}"
-properties:
-  - name: game
-    type: FlowersGame::Game*
-    constructor_arg: true
-    init_with: nullptr
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
   - name: test_condition
     guard: [ game ]
     type: bool
@@ -25,8 +13,21 @@ functions:
     body: |
       game->get_achieved_ref().push_back("Little Stem");
       return;
+
+
+
+parent_classes:
+  - class: AllegroFlare::Achievement
+    scope: public
+    init_with: "{}"
+properties:
+  - name: game
+    type: FlowersGame::Game*
+    constructor_arg: true
+    init_with: nullptr
 dependencies:
   - symbol: FlowersGame::Game*
     headers: [ FlowersGame/Game.hpp ]
   - symbol: AllegroFlare::Achievement
     headers: [ AllegroFlare/Achievement.hpp ]
+

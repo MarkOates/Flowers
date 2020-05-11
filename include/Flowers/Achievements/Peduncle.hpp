@@ -3,7 +3,6 @@
 
 #include <AllegroFlare/Achievement.hpp>
 #include <FlowersGame/Game.hpp>
-#include <string>
 
 
 namespace Flowers
@@ -20,7 +19,6 @@ namespace Flowers
          ~Peduncle();
 
 
-      std::string run();
       bool test_condition() override;
       void on_achieved() override;
       };
