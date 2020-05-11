@@ -17,8 +17,9 @@ As you, one-by-one, choose the flower you like the most, you explore the domain 
 
 ### Implementation of the Rules
 
-The Genre Rule (flowers) and Technical Rule #1 (procedural content) are both fulfilled by the procedural generation of the flowers, which is the
-primary component of the gameplay.
+The Genre Rule (flowers) and Technical Rule #1 (procedural content) are both fulfilled by the procedural generation of flowers, which is the
+primary component of the gameplay.  (Do I get get the "bonus points" because the whole environment of the game is proceedural the content? Or does it have to be 
+an external environment not the gameplay? I'll leave that decision up to you.)
 
 For the remaining requirements, I'm envoking the bonus rule, Act of Monkey, to reverse the Artistical Rule from "Make fun of old-fashioned things." to "Celebrate and cherish old-fashioned things."
 During gameplay, you will be rewarded for developing and growing your flowers with positive and inspiring quotes on the topic of aging. These quotes will 
