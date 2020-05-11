@@ -44,7 +44,7 @@ properties:
   - name: achieved
     type: std::vector<std::string>
     init_with: "{}"
-    getter: true
+    getter_ref: true
 functions:
 
 
@@ -79,6 +79,7 @@ functions:
 
   - name: start_game
     body: |
+      load_achievements();
       showing_title = false;
       return;
 
@@ -147,6 +148,7 @@ functions:
   - name: check_achievements
     body: |
       achievements.check_all();
+      std::cout << achieved.size() << std::endl;
       return;
 
 

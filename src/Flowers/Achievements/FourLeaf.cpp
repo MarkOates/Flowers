@@ -26,14 +26,14 @@ bool FourLeaf::test_condition()
 {
    if (!game) return false;
    if (game->get_flower_of_interest().get_num_petals() == 4) return true;
+   return false;
 }
 
 
 void FourLeaf::on_achieved()
 {
-   if (!game) throw std::runtime_error("achievemnt failed");
-   //std::cout << "You have achieved FourLeaf!" << std::endl;
-   game->get_achieved().push_back("Four Leaf Clover"); // green, within a certain height, 4 petals
+   if (!game) throw std::runtime_error("achievemnt processing failed");
+   game->get_achieved_ref().push_back("Four Leaf Clover"); // green, within a certain height, 4 petals
 }
 
 

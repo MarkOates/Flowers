@@ -54,7 +54,7 @@ Flowers::Flower Game::get_flower_of_interest()
 }
 
 
-std::vector<std::string> Game::get_achieved()
+std::vector<std::string> &Game::get_achieved_ref()
 {
    return achieved;
 }
@@ -87,6 +87,7 @@ return;
 
 void Game::start_game()
 {
+load_achievements();
 showing_title = false;
 return;
 
@@ -148,6 +149,7 @@ return;
 void Game::check_achievements()
 {
 achievements.check_all();
+std::cout << achieved.size() << std::endl;
 return;
 
 }
