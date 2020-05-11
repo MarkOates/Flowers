@@ -2,6 +2,8 @@
 
 #include <Flowers/QuoteSpawner.hpp>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Flowers
@@ -24,11 +26,11 @@ QuoteSpawner::~QuoteSpawner()
 void QuoteSpawner::update()
 {
 if (!(font_bin))
-{
-   std::stringstream error_message;
-   error_message << "QuoteSpawner" << "::" << "update" << ": error: " << "guard \"font_bin\" not met";
-   throw std::runtime_error(error_message.str());
-}
+   {
+      std::stringstream error_message;
+      error_message << "QuoteSpawner" << "::" << "update" << ": error: " << "guard \"font_bin\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 for (auto &large_text_scroller : large_text_scrollers)
 {
    large_text_scroller.increment_by_step();

@@ -3,6 +3,10 @@
 #include <Flowers/FlowerTransformer.hpp>
 #include <AllegroFlare/Color.hpp>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <sstream>
+#include <stdexcept>
 #include <sstream>
 
 
@@ -25,17 +29,17 @@ FlowerTransformer::~FlowerTransformer()
 Flowers::Flower FlowerTransformer::mutation()
 {
 if (!(source_flower))
-{
-   std::stringstream error_message;
-   error_message << "FlowerTransformer" << "::" << "mutation" << ": error: " << "guard \"source_flower\" not met";
-   throw std::runtime_error(error_message.str());
-}
+   {
+      std::stringstream error_message;
+      error_message << "FlowerTransformer" << "::" << "mutation" << ": error: " << "guard \"source_flower\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 if (!(random))
-{
-   std::stringstream error_message;
-   error_message << "FlowerTransformer" << "::" << "mutation" << ": error: " << "guard \"random\" not met";
-   throw std::runtime_error(error_message.str());
-}
+   {
+      std::stringstream error_message;
+      error_message << "FlowerTransformer" << "::" << "mutation" << ": error: " << "guard \"random\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 Flowers::Flower flower = *source_flower;
 
 // height
@@ -88,17 +92,17 @@ return flower;
 std::vector<Flowers::Flower> FlowerTransformer::mutations()
 {
 if (!(source_flower))
-{
-   std::stringstream error_message;
-   error_message << "FlowerTransformer" << "::" << "mutations" << ": error: " << "guard \"source_flower\" not met";
-   throw std::runtime_error(error_message.str());
-}
+   {
+      std::stringstream error_message;
+      error_message << "FlowerTransformer" << "::" << "mutations" << ": error: " << "guard \"source_flower\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 if (!(random))
-{
-   std::stringstream error_message;
-   error_message << "FlowerTransformer" << "::" << "mutations" << ": error: " << "guard \"random\" not met";
-   throw std::runtime_error(error_message.str());
-}
+   {
+      std::stringstream error_message;
+      error_message << "FlowerTransformer" << "::" << "mutations" << ": error: " << "guard \"random\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 int number_of_mutations = random->get_random_int(3, 7);
 std::vector<Flowers::Flower> results = {};
 
