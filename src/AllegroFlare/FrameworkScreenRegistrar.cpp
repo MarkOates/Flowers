@@ -1,7 +1,10 @@
 
 
 #include <AllegroFlare/FrameworkScreenRegistrar.hpp>
-
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace AllegroFlare
@@ -22,9 +25,18 @@ FrameworkScreenRegistrar::~FrameworkScreenRegistrar()
 
 bool FrameworkScreenRegistrar::append()
 {
-if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screens");
-if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screen");
-
+if (!(screens))
+   {
+      std::stringstream error_message;
+      error_message << "FrameworkScreenRegistrar" << "::" << "append" << ": error: " << "guard \"screens\" not met";
+      throw std::runtime_error(error_message.str());
+   }
+if (!(screen))
+   {
+      std::stringstream error_message;
+      error_message << "FrameworkScreenRegistrar" << "::" << "append" << ": error: " << "guard \"screen\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 screens->add(screen);
 return true;
 
@@ -32,9 +44,18 @@ return true;
 
 bool FrameworkScreenRegistrar::remove()
 {
-if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screens");
-if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screen");
-
+if (!(screens))
+   {
+      std::stringstream error_message;
+      error_message << "FrameworkScreenRegistrar" << "::" << "remove" << ": error: " << "guard \"screens\" not met";
+      throw std::runtime_error(error_message.str());
+   }
+if (!(screen))
+   {
+      std::stringstream error_message;
+      error_message << "FrameworkScreenRegistrar" << "::" << "remove" << ": error: " << "guard \"screen\" not met";
+      throw std::runtime_error(error_message.str());
+   }
 screens->remove(screen);
 return true;
 

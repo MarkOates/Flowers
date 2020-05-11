@@ -34,3 +34,4 @@ TEST(AllegroFlare_FrameworkScreenRegistrarTest, remove__unregisters_the_screen_t
    EXPECT_EQ(true, framework_screen_registrar.remove());
 }
 
+

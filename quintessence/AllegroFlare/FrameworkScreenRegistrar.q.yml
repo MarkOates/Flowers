@@ -9,19 +9,15 @@ properties:
     constructor_arg: true
 functions:
   - name: append
+    guards: [ screens, screen ]
     type: bool
     body: |
-      if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screens");
-      if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.append]: nullptr screen");
-
       screens->add(screen);
       return true;
   - name: remove
+    guards: [ screens, screen ]
     type: bool
     body: |
-      if (!screens) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screens");
-      if (!screen) throw std::runtime_error("[AllegroFlare::FrameworkScreenRegistrar.remove]: nullptr screen");
-
       screens->remove(screen);
       return true;
 dependencies:
