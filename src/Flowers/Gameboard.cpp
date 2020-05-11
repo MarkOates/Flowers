@@ -2,6 +2,7 @@
 
 #include <Flowers/Gameboard.hpp>
 #include <Flowers/FlowerGenerator.hpp>
+#include <stdexcept>
 
 
 namespace Flowers
