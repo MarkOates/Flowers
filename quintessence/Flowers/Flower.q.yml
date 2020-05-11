@@ -77,6 +77,12 @@ properties:
     getter: true
     setter: true
 functions:
+  - name: calc_offspring_duration
+    type: float
+    body: |
+      return al_get_time() - created_at;
+    body_dependency_symbols:
+      - al_get_time
   - name: calculate_receptacle_y
     type: float
     body: return peduncle_height;
@@ -89,5 +95,7 @@ functions:
       if (peduncle_height <= 0) this->peduncle_height = 0;
       else this->peduncle_height = peduncle_height;
 dependencies:
+  - symbol: al_get_time
+    headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]

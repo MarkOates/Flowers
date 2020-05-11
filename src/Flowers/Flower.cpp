@@ -1,7 +1,7 @@
 
 
 #include <Flowers/Flower.hpp>
-
+#include <allegro5/allegro.h>
 
 
 namespace Flowers
@@ -205,6 +205,12 @@ float &Flower::get_y_ref()
    return y;
 }
 
+
+float Flower::calc_offspring_duration()
+{
+return al_get_time() - created_at;
+
+}
 
 float Flower::calculate_receptacle_y()
 {

@@ -58,6 +58,7 @@ namespace Flowers
       bool get_null_object();
       float &get_x_ref();
       float &get_y_ref();
+   float calc_offspring_duration();
    float calculate_receptacle_y();
    void set_peduncle_height(float peduncle_height=5);
    };

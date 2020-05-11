@@ -177,6 +177,7 @@ flower_history.push_back(flower_of_interest);
 // set the new flower (and create_time)
 flower_of_interest = mutations[index];
 flower_of_interest.set_created_at(al_get_time());
+flower_of_interest.set_spawned_offspring(false);
 
 // move the camera
 move_camera_to(flower_of_interest.get_x(), flower_of_interest.get_y());
@@ -307,11 +308,11 @@ case ALLEGRO_KEY_ENTER:
    start_game();
    break;
 case ALLEGRO_KEY_M:
-   if (mutations.empty())
-   {
-      create_mutations();
-      reveal_mutations();
-   }
+   //if (mutations.empty())
+   //{
+      //create_mutations();
+      //reveal_mutations();
+   //}
    break;
 case ALLEGRO_KEY_A:
    if (mutations.size() >= 1) select_mutation(0);
@@ -348,6 +349,14 @@ ALLEGRO_COLOR background_color = al_color_html("c6dee7");
 al_clear_to_color(background_color);
 
 check_achievements();
+
+if (flower_of_interest.calc_offspring_duration() > flower_of_interest.get_speed_sec()
+   && !flower_of_interest.get_spawned_offspring())
+{
+   flower_of_interest.set_spawned_offspring(true);
+   create_mutations();
+   reveal_mutations();
+}
 
 if (showing_title) draw_title();
 else draw_gameplay();
